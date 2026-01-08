@@ -1,7 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { HeroIntro, Testimonials, TwoWorlds, VisitUs, Membership, Gallery } from '@/components/LandingSections';
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), {
   ssr: false,
@@ -35,14 +34,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Landing Page Sections */}
-      <HeroIntro />
-      <Testimonials />
-      <TwoWorlds />
-      <Gallery />
-      <VisitUs />
-      <Membership />
     </>
   );
 }
