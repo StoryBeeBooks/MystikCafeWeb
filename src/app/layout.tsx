@@ -29,8 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${rubikDirt.variable} ${inter.variable}`}>
-      <body className="font-[var(--font-inter)] antialiased">
-        {children}
+      <body className="font-[var(--font-inter)] antialiased min-h-screen w-full overflow-x-hidden">
+        <main className="w-full">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

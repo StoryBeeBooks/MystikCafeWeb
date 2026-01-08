@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section with 3D */}
-      <section className="h-screen w-screen bg-white relative overflow-hidden">
+      <section className="h-screen w-full bg-white relative overflow-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"

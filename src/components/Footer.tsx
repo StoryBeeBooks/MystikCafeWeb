@@ -5,10 +5,10 @@ import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa6';
 
 export default function Footer() {
   return (
-    <footer className="relative">
+    <footer className="relative w-full">
       
       {/* Simple Wave Transition */}
-      <div className="relative h-20 md:h-24 overflow-hidden bg-transparent -mb-1">
+      <div className="relative h-20 md:h-24 overflow-hidden bg-transparent -mb-1 w-full">
         <svg 
           viewBox="0 0 1440 100" 
           preserveAspectRatio="none" 
@@ -22,9 +22,9 @@ export default function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="relative bg-[#1a3314]">
+      <div className="relative bg-[#1a3314] w-full">
 
-        <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-12 py-12 md:py-16">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-8 md:px-12 py-12 md:py-16">
           
           {/* Top: CTA + Logo Row */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mb-12">
