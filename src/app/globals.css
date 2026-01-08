@@ -6,7 +6,10 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background: #ffffff;
-  overflow: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
 }
