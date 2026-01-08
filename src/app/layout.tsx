@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bubblegum_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 
@@ -10,6 +10,17 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const bubblegumSans = Bubblegum_Sans({
+  weight: "400",
+  variable: "--font-bubblegum",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -26,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bubblegumSans.variable} ${inter.variable} antialiased`}
       >
         {children}
         <Footer />
