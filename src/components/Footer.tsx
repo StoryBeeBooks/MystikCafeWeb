@@ -26,8 +26,8 @@ export default function Footer() {
           <div className="max-w-4xl mx-auto text-center pt-16 pb-8">
             <p className="text-white/70 text-sm mb-4 tracking-[0.3em] uppercase font-medium">Join Us</p>
             
-            {/* Stylized CTA Text with border box like Toronto Zoo */}
-            <div className="inline-block border-4 border-white/80 rounded-lg px-8 py-6 mb-8">
+            {/* Stylized CTA Text with border box */}
+            <Link href="/book" className="inline-block border-4 border-white/80 rounded-lg px-8 py-6 mb-8 hover:border-[#8FCE00] transition-colors">
               <h2 className="text-4xl md:text-5xl font-black text-white tracking-wide font-[var(--font-bubblegum)]">
                 EXPLORERS
               </h2>
@@ -35,7 +35,7 @@ export default function Footer() {
               <h2 className="text-4xl md:text-5xl font-black text-white tracking-wide font-[var(--font-bubblegum)]">
                 WILD
               </h2>
-            </div>
+            </Link>
             
             {/* Logo */}
             <div className="flex justify-center mb-6">
@@ -62,47 +62,16 @@ export default function Footer() {
             </svg>
           </div>
 
-          {/* Footer Columns */}
-          <div className="max-w-6xl mx-auto pb-8">
-            <div className="grid md:grid-cols-4 gap-8 text-left">
+          {/* Footer Three Columns */}
+          <div className="max-w-5xl mx-auto pb-8">
+            <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
               
-              {/* About Us Column */}
-              <div>
-                <h3 className="text-white font-bold text-lg mb-4 font-[var(--font-bubblegum)]">About Us</h3>
-                <nav className="flex flex-col gap-2 text-sm text-white/80">
-                  <Link href="/" className="hover:text-[#8FCE00] transition-colors">Home</Link>
-                  <Link href="/faq" className="hover:text-[#8FCE00] transition-colors">About Mystik Cafe</Link>
-                  <Link href="/contact" className="hover:text-[#8FCE00] transition-colors">Contact Us</Link>
-                  <Link href="/policies" className="hover:text-[#8FCE00] transition-colors">Privacy</Link>
-                </nav>
-              </div>
-
-              {/* Work With Us Column */}
-              <div>
-                <h3 className="text-white font-bold text-lg mb-4 font-[var(--font-bubblegum)]">Work With Us</h3>
-                <nav className="flex flex-col gap-2 text-sm text-white/80">
-                  <Link href="/sponsors" className="hover:text-[#8FCE00] transition-colors">Become a Partner</Link>
-                  <Link href="/sponsors" className="hover:text-[#8FCE00] transition-colors">Sponsors & Partners</Link>
-                </nav>
-              </div>
-
-              {/* Visitor Info & Policies Column */}
-              <div>
-                <h3 className="text-white font-bold text-lg mb-4 font-[var(--font-bubblegum)]">Visitor Info & Policies</h3>
-                <nav className="flex flex-col gap-2 text-sm text-white/80">
-                  <Link href="/safety" className="hover:text-[#8FCE00] transition-colors">For Your Safety</Link>
-                  <Link href="/conduct" className="hover:text-[#8FCE00] transition-colors">Code of Conduct</Link>
-                  <Link href="/policies" className="hover:text-[#8FCE00] transition-colors">Policies</Link>
-                  <Link href="/faq" className="hover:text-[#8FCE00] transition-colors">FAQ</Link>
-                </nav>
-              </div>
-
-              {/* Follow Us Column with Social Icons */}
-              <div>
+              {/* Social Icons */}
+              <div className="flex flex-col items-center md:items-start">
                 <h3 className="text-white font-bold text-lg mb-4 tracking-wider font-[var(--font-bubblegum)]">
                   FOLLOW US <span className="inline-block ml-1">↘</span>
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex gap-3">
                   {/* Facebook */}
                   <a 
                     href="https://www.facebook.com/61576326151475/" 
@@ -139,26 +108,36 @@ export default function Footer() {
                       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
                     </svg>
                   </a>
-                  {/* YouTube */}
-                  <a 
-                    href="#" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="w-11 h-11 bg-[#FF0000] hover:scale-110 rounded-full flex items-center justify-center transition-transform shadow-lg"
-                    aria-label="YouTube"
-                  >
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </a>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Copyright */}
-          <div className="border-t border-white/10 py-6 text-center text-sm text-white/50">
-            <p>© 2026 Mystik Cafe. All rights reserved.</p>
+              {/* Navigation Links */}
+              <div className="flex flex-col items-center">
+                <nav className="flex flex-col gap-2 text-sm text-white/80">
+                  <Link href="/" className="hover:text-[#8FCE00] transition-colors">Home</Link>
+                  <Link href="/faq" className="hover:text-[#8FCE00] transition-colors">FAQ</Link>
+                  <Link href="/policies" className="hover:text-[#8FCE00] transition-colors">Policies</Link>
+                  <Link href="/sponsors" className="hover:text-[#8FCE00] transition-colors">Sponsors & Partners</Link>
+                  <Link href="/safety" className="hover:text-[#8FCE00] transition-colors">For Your Safety</Link>
+                  <Link href="/conduct" className="hover:text-[#8FCE00] transition-colors">Code of Conduct</Link>
+                </nav>
+              </div>
+
+              {/* Contact Info */}
+              <div className="flex flex-col items-center md:items-end text-sm text-white/80">
+                <address className="not-italic space-y-1 text-center md:text-right">
+                  <p>56C Kensington Ave.</p>
+                  <p>Toronto, ON M5T 2K1</p>
+                  <a href="mailto:info@mystikcafe.ca" className="block hover:text-[#8FCE00] transition-colors">
+                    info@mystikcafe.ca
+                  </a>
+                  <a href="tel:647-560-6524" className="block hover:text-[#8FCE00] transition-colors">
+                    647-560-6524
+                  </a>
+                  <p className="mt-4">© 2026 Mystik Cafe</p>
+                </address>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -27,6 +27,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Mystik Cafe",
   description: "Welcome to Mystik Cafe",
+  icons: {
+    icon: "https://assets.k12path.com/MystikCafe/Mystik%20Cafe%20Logo.png",
+  },
 };
 
 export default function RootLayout({
