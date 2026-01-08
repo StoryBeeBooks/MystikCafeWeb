@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Footer from '@/components/Footer';
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), {
   ssr: false,
@@ -13,17 +14,23 @@ const HeroScene = dynamic(() => import('@/components/HeroScene'), {
 
 export default function Home() {
   return (
-    <main className="h-screen w-screen bg-white relative overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://assets.k12path.com/MystikCafe/background.jpg)' }}
-      />
+    <div className="min-h-screen flex flex-col">
+      {/* Hero Section */}
+      <main className="h-screen w-screen bg-white relative overflow-hidden flex-shrink-0">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(https://assets.k12path.com/MystikCafe/background.jpg)' }}
+        />
+        
+        {/* 3D Scene Overlay */}
+        <div className="relative z-10 h-full w-full">
+          <HeroScene />
+        </div>
+      </main>
       
-      {/* 3D Scene Overlay */}
-      <div className="relative z-10 h-full w-full">
-        <HeroScene />
-      </div>
-    </main>
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }
