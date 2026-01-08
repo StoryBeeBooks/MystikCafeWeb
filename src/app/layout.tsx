@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Rubik_Dirt, Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
 
 const rubikDirt = Rubik_Dirt({
   weight: "400",
@@ -33,7 +32,6 @@ export default function RootLayout({
         <main className="w-full">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );
