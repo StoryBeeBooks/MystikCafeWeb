@@ -1,0 +1,453 @@
+'use client';
+
+import { useState } from 'react';
+
+// Testimonial data
+const testimonials = [
+  {
+    name: "Grace",
+    location: "Toronto",
+    text: "I've visited twice now and both experiences were amazing! The staff are very kind, accommodating, knowledgeable, and are passionate about providing high quality care to their reptile friends. Perfect for any occasion (solo hangout, dates, friend groups, families with young kids)",
+    rating: 5,
+  },
+  {
+    name: "Anna",
+    location: "Sydney, AU",
+    text: "I'm still buzzing from this place! North America's first reptile café, and it's hands-down one of the coolest experiences ever. Getting up close with these amazing little reptiles, guided by passionate animal ambassadors, was unreal. Add surprisingly good coffee to the mix and I'm obsessed. Already planning my next visit! Amazing staff, amazing vibes, amazing experience. 10/10. ❤️😍",
+    rating: 5,
+  },
+  {
+    name: "Bruce",
+    location: "New York, NY",
+    text: "A very Unique experience at Mystik Cafe! These ancient creatures had roamed around earth for millions of years and now you got a chance to interact with them. A M A Z I N G! You can also tell the employees are extremely passionate about what they are doing, it's great seeing a local Canadian business providing jobs for local enthusiasts!",
+    rating: 5,
+  },
+];
+
+// Star rating component
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <div className="flex gap-1">
+      {[...Array(5)].map((_, i) => (
+        <svg
+          key={i}
+          className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+// Hero Intro Section
+export function HeroIntro() {
+  return (
+    <section className="bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-900 text-white py-20 px-4 relative overflow-hidden">
+      {/* Jungle pattern overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0C13.4 0 0 13.4 0 30c0 16.6 13.4 30 30 30 16.6 0 30-13.4 30-30C60 13.4 46.6 0 30 0zm0 54c-13.3 0-24-10.7-24-24S16.7 6 30 6s24 10.7 24 24-10.7 24-24 24z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E")`,
+        }} />
+      </div>
+      
+      <div className="max-w-6xl mx-auto text-center relative z-10">
+        {/* Logo */}
+        <div className="mb-8">
+          <img 
+            src="https://assets.k12path.com/MystikCafe/Mystik%20Cafe%20Logo.jpg" 
+            alt="Mystik Cafe Logo" 
+            className="w-48 h-48 mx-auto rounded-full shadow-2xl border-4 border-emerald-400/30 object-cover"
+          />
+        </div>
+        
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <span className="bg-gradient-to-r from-emerald-300 via-yellow-300 to-emerald-300 bg-clip-text text-transparent">
+            Reptile Jungle
+          </span>
+          <br />
+          <span className="text-3xl md:text-4xl font-light text-emerald-200">Experiences</span>
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+          A tropical heaven in Northern Canada. North America's first reptile café awaits you.
+        </p>
+        
+        <a 
+          href="#book" 
+          className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-10 rounded-full text-lg hover:scale-105 transition-transform shadow-xl hover:shadow-yellow-400/30"
+        >
+          BOOK NOW
+        </a>
+      </div>
+      
+      {/* Decorative leaves */}
+      <div className="absolute -bottom-10 left-0 w-32 h-32 opacity-20">
+        <svg viewBox="0 0 100 100" fill="currentColor" className="text-emerald-400">
+          <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0z"/>
+        </svg>
+      </div>
+      <div className="absolute -top-10 right-0 w-40 h-40 opacity-20">
+        <svg viewBox="0 0 100 100" fill="currentColor" className="text-emerald-400">
+          <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0z"/>
+        </svg>
+      </div>
+    </section>
+  );
+}
+
+// Testimonials Section
+export function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <section className="bg-stone-100 py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-stone-800">
+          What Our Guests Say
+        </h2>
+        <p className="text-center text-stone-600 mb-12 text-lg">Real experiences from real adventurers</p>
+        
+        {/* Desktop: Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-stone-200 relative"
+            >
+              {/* Quote mark */}
+              <div className="absolute -top-4 left-6 text-6xl text-emerald-500/20 font-serif">"</div>
+              
+              <div className="mb-4">
+                <StarRating rating={testimonial.rating} />
+              </div>
+              
+              <p className="text-stone-600 mb-6 leading-relaxed relative z-10">
+                "{testimonial.text}"
+              </p>
+              
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  {testimonial.name[0]}
+                </div>
+                <div>
+                  <p className="font-semibold text-stone-800">{testimonial.name}</p>
+                  <p className="text-sm text-stone-500">{testimonial.location}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Mobile: Carousel */}
+        <div className="md:hidden">
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-stone-200 relative">
+            <div className="absolute -top-4 left-6 text-6xl text-emerald-500/20 font-serif">"</div>
+            
+            <div className="mb-4">
+              <StarRating rating={testimonials[activeIndex].rating} />
+            </div>
+            
+            <p className="text-stone-600 mb-6 leading-relaxed relative z-10 min-h-[150px]">
+              "{testimonials[activeIndex].text}"
+            </p>
+            
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                {testimonials[activeIndex].name[0]}
+              </div>
+              <div>
+                <p className="font-semibold text-stone-800">{testimonials[activeIndex].name}</p>
+                <p className="text-sm text-stone-500">{testimonials[activeIndex].location}</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === activeIndex ? 'bg-emerald-500' : 'bg-stone-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Two Worlds Section
+export function TwoWorlds() {
+  return (
+    <section className="bg-white py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
+            Two Worlds of Discovery
+          </h2>
+          <p className="text-xl text-stone-600">Sip. Explore. Connect.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Ocean Café */}
+          <div className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
+            {/* Image placeholder */}
+            <div className="aspect-[4/3] bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 relative">
+              {/* Placeholder for ocean café image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white/80">
+                  <svg className="w-20 h-20 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-sm">[Ocean Café Image]</p>
+                </div>
+              </div>
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+            
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-4xl">🐠</span>
+                <h3 className="text-3xl font-bold">Ocean Café</h3>
+              </div>
+              <p className="text-blue-100 mb-2">Complimentary entry with café purchase</p>
+              <p className="text-white/90 text-lg font-medium">11AM - 6:30PM (Wed OFF)</p>
+              <p className="text-white/70 text-sm mt-2">Glowing exotic fishes await you</p>
+            </div>
+          </div>
+          
+          {/* Reptile Jungle */}
+          <div className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
+            {/* Image placeholder */}
+            <div className="aspect-[4/3] bg-gradient-to-br from-emerald-500 via-green-600 to-lime-700 relative">
+              {/* Placeholder for reptile jungle image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white/80">
+                  <svg className="w-20 h-20 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-sm">[Reptile Jungle Image]</p>
+                </div>
+              </div>
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+            
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-4xl">🦎</span>
+                <h3 className="text-3xl font-bold">Reptile Jungle</h3>
+              </div>
+              <p className="text-emerald-100 mb-2">Ticketed animal encounter experience</p>
+              <p className="text-white/90 text-lg font-medium">11AM - 6:00PM (Wed OFF)</p>
+              <p className="text-white/70 text-sm mt-2">Reserve your appointment online</p>
+            </div>
+          </div>
+        </div>
+        
+        <p className="text-center text-stone-500 mt-8 text-sm">
+          Last entry 30 minutes before closing. Hours may vary on holidays.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// Visit Us Section
+export function VisitUs() {
+  return (
+    <section className="relative py-20 px-4 overflow-hidden">
+      {/* Background with jungle vibes */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-800 via-emerald-900 to-stone-900" />
+      
+      {/* Pattern overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px)`,
+        }} />
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: Image placeholder */}
+          <div className="relative">
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-emerald-700 to-emerald-900 border-4 border-emerald-600/30">
+              {/* Placeholder for cafe interior/ambiance image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white/60">
+                  <svg className="w-24 h-24 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-sm">[Café Interior/Ambiance Image]</p>
+                  <p className="text-xs mt-2 opacity-70">Suggested: Cold brew with lush greenery</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Decorative element */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl" />
+            <div className="absolute -top-4 -left-4 w-32 h-32 bg-emerald-400/20 rounded-full blur-2xl" />
+          </div>
+          
+          {/* Right: Info */}
+          <div className="text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Visit Us in Person
+              <span className="block text-2xl font-normal text-emerald-300 mt-2">at Kensington Market</span>
+            </h2>
+            
+            <p className="text-xl text-emerald-100 mb-6 leading-relaxed">
+              Where jungle thrills and ocean vibes collide.
+            </p>
+            
+            <p className="text-emerald-200/80 mb-8 leading-relaxed">
+              Sip, snack, and connect in a dreamy world of glowing exotic fishes, curious reptiles, and wild surprises. Mystik is your escape into the unexpected.
+            </p>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/10">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl">📍</div>
+                <div>
+                  <p className="text-lg font-semibold text-white">56C Kensington Ave.</p>
+                  <p className="text-emerald-200">Toronto, ON M5T 2K1</p>
+                </div>
+              </div>
+            </div>
+            
+            <p className="text-yellow-300/90 text-sm mb-8 italic">
+              ⚠️ Reservations recommended for "Reptile Jungle". Walk-ins not guaranteed.
+            </p>
+            
+            <a 
+              href="#book" 
+              id="book"
+              className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold py-4 px-10 rounded-full text-lg hover:scale-105 transition-transform shadow-xl"
+            >
+              BOOK NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Membership Section
+export function Membership() {
+  const benefits = [
+    { icon: "🦎", title: "Meet Every Reptile", desc: "Exclusive access to all our scaly friends" },
+    { icon: "📚", title: "Learn Their Stories", desc: "History, origin, and unique personality of each pet" },
+    { icon: "🎓", title: "Expert Knowledge", desc: "Monthly educational sessions with our animal ambassadors" },
+    { icon: "☕", title: "Member Perks", desc: "Discounts on café items and priority booking" },
+    { icon: "📸", title: "Photo Moments", desc: "Exclusive photo opportunities with rare species" },
+    { icon: "🎁", title: "Special Events", desc: "VIP invitations to new arrivals and seasonal events" },
+  ];
+
+  return (
+    <section className="bg-gradient-to-b from-stone-900 to-stone-800 py-20 px-4 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <span className="inline-block bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            EXCLUSIVE ACCESS
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Mystik Membership
+          </h2>
+          <p className="text-xl text-stone-400 max-w-2xl mx-auto">
+            Join our community of reptile enthusiasts and unlock a world of scaly wonders
+          </p>
+        </div>
+        
+        {/* Benefits Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {benefits.map((benefit, index) => (
+            <div 
+              key={index}
+              className="bg-stone-800/50 backdrop-blur-sm border border-stone-700/50 rounded-2xl p-6 hover:bg-stone-800/80 transition-colors group"
+            >
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{benefit.icon}</div>
+              <h3 className="text-xl font-semibold text-white mb-2">{benefit.title}</h3>
+              <p className="text-stone-400">{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+        
+        {/* CTA Card */}
+        <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-white rounded-full" />
+            <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white rounded-full" />
+          </div>
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to Join the Adventure?
+            </h3>
+            <p className="text-emerald-100 text-lg mb-8 max-w-xl mx-auto">
+              Sign up for our membership and start your journey into the mystical world of reptiles
+            </p>
+            <a 
+              href="#"
+              className="inline-block bg-white text-emerald-700 font-bold py-4 px-10 rounded-full text-lg hover:scale-105 transition-transform shadow-xl hover:shadow-white/20"
+            >
+              BECOME A MEMBER
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Gallery Section (placeholder for images)
+export function Gallery() {
+  return (
+    <section className="bg-white py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
+            Moments at Mystik
+          </h2>
+          <p className="text-stone-600 text-lg">Captured memories from our jungle paradise</p>
+        </div>
+        
+        {/* Gallery Grid - Placeholders */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <div 
+              key={item}
+              className={`relative rounded-2xl overflow-hidden bg-gradient-to-br from-stone-200 to-stone-300 ${
+                item === 1 || item === 6 ? 'md:col-span-2 md:row-span-2 aspect-square' : 'aspect-square'
+              }`}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-stone-500">
+                  <svg className="w-12 h-12 mx-auto mb-2 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="text-xs">[Gallery Image {item}]</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
