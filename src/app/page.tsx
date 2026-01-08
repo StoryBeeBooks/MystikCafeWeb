@@ -21,7 +21,7 @@ export default function Home() {
       />
       
       {/* 3D Scene Overlay */}
-      <div className="relative z-10">
+      <div className="relative z-10 h-full w-full">
         <HeroScene />
       </div>
     </main>
