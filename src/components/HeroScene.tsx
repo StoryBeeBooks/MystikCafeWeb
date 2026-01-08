@@ -11,7 +11,7 @@ function ChameleonModel() {
   return (
     <primitive 
       object={scene} 
-      scale={0.8}
+      scale={0.05}
       position={[0, -1, 0]}
       rotation={[0, Math.PI / 4, 0]}
     />
@@ -46,7 +46,7 @@ export default function HeroScene() {
 
   return (
     <div className="h-full w-full cursor-move">
-      <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+      <Canvas camera={{ position: [0, 0, 20], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
         
