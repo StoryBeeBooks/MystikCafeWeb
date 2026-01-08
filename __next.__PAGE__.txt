@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[54075,["/MystikCafeWeb/_next/static/chunks/980c403cf3c1557f.js"],"default"]
+3:I[97367,["/MystikCafeWeb/_next/static/chunks/4fd93823156e59e8.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"ALUDHOKkDD1oi9FKemf30","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"h-screen w-screen bg-white","children":["$","$L2",null,{}]}],[["$","script","script-0",{"src":"/MystikCafeWeb/_next/static/chunks/980c403cf3c1557f.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null
