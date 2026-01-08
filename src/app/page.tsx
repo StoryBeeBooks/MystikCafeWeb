@@ -14,16 +14,11 @@ const HeroScene = dynamic(() => import('@/components/HeroScene'), {
 export default function Home() {
   return (
     <main className="h-screen w-screen bg-white relative overflow-hidden">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="https://assets.k12path.com/MystikCafe/background%20video.mp4" type="video/mp4" />
-      </video>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(https://assets.k12path.com/MystikCafe/background.jpg)' }}
+      />
       
       {/* 3D Scene Overlay */}
       <div className="relative z-10">
