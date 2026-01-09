@@ -328,9 +328,6 @@ export default function SafetyPage() {
         </section>
       </div>
 
-      {/* Jungle Banner */}
-      <div style={styles.jungleBanner} />
-
       {/* Just Remember Section */}
       <section style={styles.rememberSection}>
         <div style={styles.rememberContainer}>
