@@ -17,13 +17,19 @@ export default function Footer() {
       <div className="relative z-10 text-center px-6">
         
         {/* Join Us text */}
-        <p className="font-[var(--font-distressed)] text-white text-2xl md:text-3xl tracking-wider mb-6">
+        <p 
+          className="text-white text-2xl md:text-3xl tracking-wider mb-6"
+          style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
+        >
           Join Us
         </p>
         
         {/* Main CTA Button */}
         <Link href="/book">
-          <button className="font-[var(--font-distressed)] text-white text-3xl md:text-5xl tracking-wide px-10 md:px-14 py-4 md:py-6 bg-[#8FCE00] hover:bg-[#7ab800] rounded-2xl shadow-[0_8px_30px_rgba(143,206,0,0.4)] hover:shadow-[0_12px_40px_rgba(143,206,0,0.6)] transform hover:scale-105 transition-all duration-300">
+          <button 
+            className="text-white text-3xl md:text-5xl tracking-wide px-10 md:px-14 py-4 md:py-6 bg-[#8FCE00] hover:bg-[#7ab800] rounded-2xl shadow-[0_8px_30px_rgba(143,206,0,0.4)] hover:shadow-[0_12px_40px_rgba(143,206,0,0.6)] transform hover:scale-105 transition-all duration-300"
+            style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
+          >
             Explorers of the Wild
           </button>
         </Link>

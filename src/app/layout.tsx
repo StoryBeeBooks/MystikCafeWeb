@@ -13,6 +13,7 @@ const rubikDistressed = Rubik_Distressed({
   weight: "400",
   variable: "--font-distressed",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
