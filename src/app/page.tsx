@@ -3,45 +3,39 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Gallery } from '@/components/LandingSections';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // Loading component with progress bar
-function LoadingScreen() {
-  const [progress, setProgress] = useState(0);
+function LoadingScreen({ progress }: { progress: number }) {
   const [currentEmoji, setCurrentEmoji] = useState(0);
   
   const emojis = ['🦎', '🐢', '🦜', '🐍', '🐊', '🦖', '🌿', '🌴'];
   
   useEffect(() => {
-    // Simulate progress
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 90) return prev;
-        return prev + Math.random() * 15;
-      });
-    }, 200);
-    
     // Rotate emojis
     const emojiInterval = setInterval(() => {
       setCurrentEmoji(prev => (prev + 1) % emojis.length);
     }, 400);
     
     return () => {
-      clearInterval(progressInterval);
       clearInterval(emojiInterval);
     };
   }, []);
   
   const loadingStyles = {
     container: {
-      height: '100%',
-      width: '100%',
+      position: 'absolute' as const,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       display: 'flex',
       flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#0D2818',
       padding: '24px',
+      zIndex: 100,
     },
     emojiRow: {
       display: 'flex',
@@ -138,7 +132,6 @@ function LoadingScreen() {
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), {
   ssr: false,
-  loading: () => <LoadingScreen />,
 });
 
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
@@ -369,8 +362,38 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
+  useEffect(() => {
+    // Simulate progress while assets load
+    const progressInterval = setInterval(() => {
+      setLoadingProgress(prev => {
+        if (prev >= 85) {
+          clearInterval(progressInterval);
+          return prev;
+        }
+        return prev + Math.random() * 8;
+      });
+    }, 300);
+
+    return () => clearInterval(progressInterval);
+  }, []);
+
+  const handleSceneLoaded = useCallback(() => {
+    // Complete the progress bar
+    setLoadingProgress(100);
+    // Small delay before hiding loading screen for smooth transition
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+  }, []);
+
   return (
     <>
+      {/* Loading Screen */}
+      {isLoading && <LoadingScreen progress={loadingProgress} />}
+
       {/* Hero Section with 3D */}
       <section className="h-screen w-full bg-white relative overflow-hidden">
         {/* Background Image */}
@@ -388,6 +411,8 @@ export default function Home() {
           zIndex: 20,
           textAlign: 'center',
           width: '90%',
+          opacity: isLoading ? 0 : 1,
+          transition: 'opacity 0.5s ease',
         }}>
           <h1 className="hero-title" style={{
             fontFamily: 'Rubik Distressed, sans-serif',
@@ -405,11 +430,14 @@ export default function Home() {
         
         {/* 3D Scene Overlay */}
         <div className="relative z-10 h-full w-full">
-          <HeroScene />
+          <HeroScene onLoaded={handleSceneLoaded} />
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce" style={{
+          opacity: isLoading ? 0 : 1,
+          transition: 'opacity 0.5s ease 0.3s',
+        }}>
           <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
             <div className="w-1.5 h-3 bg-white/70 rounded-full animate-pulse" />
           </div>

@@ -1,12 +1,22 @@
 'use client';
 
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, ContactShadows } from '@react-three/drei';
+import { Canvas, useThree } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Environment, ContactShadows, useProgress } from '@react-three/drei';
 import { Suspense, useState, useEffect } from 'react';
 
+// Preload the model
+useGLTF.preload('https://assets.k12path.com/MystikCafe/chameleon.glb');
+
 // 1. The Chameleon Model Component
-function ChameleonModel() {
+function ChameleonModel({ onLoaded }: { onLoaded?: () => void }) {
   const { scene } = useGLTF('https://assets.k12path.com/MystikCafe/chameleon.glb');
+  
+  useEffect(() => {
+    if (scene && onLoaded) {
+      // Small delay to ensure textures are fully processed
+      setTimeout(() => onLoaded(), 100);
+    }
+  }, [scene, onLoaded]);
   
   return (
     <primitive 
@@ -18,7 +28,27 @@ function ChameleonModel() {
   );
 }
 
-// 2. Loading indicator
+// 2. Loading Progress Tracker
+function LoadingTracker({ onReady }: { onReady: () => void }) {
+  const { progress, loaded, total } = useProgress();
+  const [assetsReady, setAssetsReady] = useState(false);
+  
+  useEffect(() => {
+    // Wait until progress reaches 100% and stays there
+    if (progress >= 100 && !assetsReady) {
+      // Additional delay to ensure everything is rendered
+      const timer = setTimeout(() => {
+        setAssetsReady(true);
+        onReady();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [progress, assetsReady, onReady]);
+  
+  return null;
+}
+
+// 3. Loading indicator (3D fallback inside canvas)
 function Loader() {
   return (
     <mesh>
@@ -83,10 +113,11 @@ function ScrollStripe() {
   );
 }
 
-// 4. The Main Scene
-export default function HeroScene() {
+// 5. The Main Scene
+export default function HeroScene({ onLoaded }: { onLoaded?: () => void }) {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -99,12 +130,13 @@ export default function HeroScene() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const handleReady = () => {
+    setIsReady(true);
+    if (onLoaded) onLoaded();
+  };
+
   if (!mounted) {
-    return (
-      <div className="h-full w-full flex items-center justify-center bg-white">
-        <div className="text-gray-400">Loading...</div>
-      </div>
-    );
+    return null;
   }
 
   return (
@@ -114,6 +146,8 @@ export default function HeroScene() {
         position: 'relative',
         cursor: 'move',
         touchAction: 'pan-y',
+        opacity: isReady ? 1 : 0,
+        transition: 'opacity 0.5s ease',
       }}
     >
       <Canvas 
@@ -126,7 +160,8 @@ export default function HeroScene() {
         <Environment preset="forest" />
 
         <Suspense fallback={<Loader />}>
-          <ChameleonModel />
+          <ChameleonModel onLoaded={handleReady} />
+          <LoadingTracker onReady={handleReady} />
         </Suspense>
 
         <OrbitControls 
