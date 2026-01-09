@@ -100,7 +100,7 @@ export default function PetsPage() {
             maxWidth: '600px',
             margin: '0 auto',
           }}>
-            28 amazing animals waiting to meet you
+            Come and meet all of our residents in person!
           </p>
         </div>
       </section>
@@ -167,236 +167,282 @@ export default function PetsPage() {
         </div>
       </section>
 
-      {/* Pet Detail Modal */}
+      {/* Pet Detail Modal - Elegant Fullscreen Design */}
       {selectedPet && (
         <div 
+          className="pet-modal-overlay"
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(13, 40, 24, 0.95)',
+            backgroundColor: '#0D2818',
             zIndex: 2000,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 'clamp(16px, 4vw, 40px)',
-            animation: 'fadeIn 0.3s ease',
+            overflow: 'auto',
+            animation: 'fadeIn 0.4s ease',
           }}
-          onClick={closePetModal}
         >
-          <div 
-            style={{
-              backgroundColor: '#0D2818',
-              borderRadius: 'clamp(16px, 3vw, 32px)',
-              maxWidth: '900px',
-              width: '100%',
-              maxHeight: '90vh',
-              overflow: 'auto',
-              border: '2px solid rgba(74, 222, 128, 0.3)',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
-              animation: 'scaleIn 0.3s ease',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closePetModal}
-              style={{
-                position: 'absolute',
-                top: 'clamp(16px, 4vw, 32px)',
-                right: 'clamp(16px, 4vw, 32px)',
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: '2px solid rgba(245, 230, 211, 0.3)',
-                backgroundColor: 'rgba(13, 40, 24, 0.9)',
-                color: '#F5E6D3',
-                fontSize: '24px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#ff6b6b';
-                e.currentTarget.style.borderColor = '#ff6b6b';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(13, 40, 24, 0.9)';
-                e.currentTarget.style.borderColor = 'rgba(245, 230, 211, 0.3)';
-              }}
-            >
-              ×
-            </button>
+          {/* Decorative Background */}
+          <div style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'radial-gradient(ellipse at 30% 20%, rgba(74, 222, 128, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(74, 222, 128, 0.05) 0%, transparent 50%)',
+            pointerEvents: 'none',
+          }} />
 
-            {/* Modal Content */}
-            <div className="modal-content" style={{
+          {/* Close Button - Floating */}
+          <button
+            onClick={closePetModal}
+            style={{
+              position: 'fixed',
+              top: '24px',
+              right: '24px',
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              border: 'none',
+              backgroundColor: 'rgba(245, 230, 211, 0.1)',
+              backdropFilter: 'blur(10px)',
+              color: '#F5E6D3',
+              fontSize: '28px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 107, 107, 0.8)';
+              e.currentTarget.style.transform = 'rotate(90deg)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(245, 230, 211, 0.1)';
+              e.currentTarget.style.transform = 'rotate(0deg)';
+            }}
+          >
+            ×
+          </button>
+
+          {/* Main Content Container */}
+          <div style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: 'clamp(60px, 8vw, 100px) clamp(24px, 5vw, 60px)',
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}>
+            <div className="modal-layout" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: '0',
+              gap: 'clamp(40px, 6vw, 80px)',
+              alignItems: 'center',
             }}>
-              {/* Image Section */}
+              {/* Left: Image with elegant frame */}
               <div style={{
-                aspectRatio: '1',
-                backgroundColor: 'rgba(245, 230, 211, 0.1)',
-                backgroundImage: selectedPet.image ? `url(${selectedPet.image})` : 'none',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 'clamp(16px, 3vw, 32px) 0 0 clamp(16px, 3vw, 32px)',
+                position: 'relative',
+                animation: 'slideInLeft 0.5s ease',
               }}>
-                {!selectedPet.image && (
-                  <span style={{ fontSize: '8rem' }}>🦎</span>
-                )}
-              </div>
-
-              {/* Info Section */}
-              <div style={{
-                padding: 'clamp(24px, 4vw, 40px)',
-                display: 'flex',
-                flexDirection: 'column',
-              }}>
-                {/* Name & Audio */}
+                {/* Decorative frame */}
                 <div style={{
+                  position: 'absolute',
+                  top: '-12px',
+                  left: '-12px',
+                  right: '12px',
+                  bottom: '12px',
+                  border: '2px solid rgba(74, 222, 128, 0.3)',
+                  borderRadius: '24px',
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  left: '12px',
+                  right: '-12px',
+                  bottom: '-12px',
+                  border: '2px solid rgba(74, 222, 128, 0.15)',
+                  borderRadius: '24px',
+                }} />
+                
+                {/* Main Image */}
+                <div style={{
+                  position: 'relative',
+                  aspectRatio: '4/5',
+                  backgroundColor: 'rgba(245, 230, 211, 0.05)',
+                  backgroundImage: selectedPet.image ? `url(${selectedPet.image})` : 'none',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: '24px',
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-start',
-                  marginBottom: '16px',
-                  gap: '16px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                  boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)',
                 }}>
-                  <h2 style={{
-                    fontFamily: '"Rubik Distressed", cursive',
-                    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                    color: '#4ade80',
-                    lineHeight: '1.2',
-                  }}>
-                    {selectedPet.name}
-                  </h2>
+                  {!selectedPet.image && (
+                    <span style={{ fontSize: 'clamp(6rem, 15vw, 10rem)', opacity: 0.5 }}>🦎</span>
+                  )}
                   
-                  {/* Audio Play Button */}
+                  {/* Audio Button - Floating on image */}
                   <button
                     onClick={() => {
                       if (selectedPet.audio) {
                         setIsPlaying(!isPlaying);
-                        // Audio playback would go here
                       }
                     }}
                     style={{
-                      width: '50px',
-                      height: '50px',
+                      position: 'absolute',
+                      bottom: '20px',
+                      right: '20px',
+                      width: '60px',
+                      height: '60px',
                       borderRadius: '50%',
-                      border: '2px solid #4ade80',
-                      backgroundColor: isPlaying ? '#4ade80' : 'transparent',
+                      border: 'none',
+                      backgroundColor: isPlaying ? '#4ade80' : 'rgba(13, 40, 24, 0.85)',
+                      backdropFilter: 'blur(10px)',
                       color: isPlaying ? '#0D2818' : '#4ade80',
-                      fontSize: '20px',
-                      cursor: selectedPet.audio ? 'pointer' : 'not-allowed',
-                      opacity: selectedPet.audio ? 1 : 0.3,
+                      fontSize: '24px',
+                      cursor: selectedPet.audio ? 'pointer' : 'default',
+                      opacity: selectedPet.audio ? 1 : 0.4,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexShrink: 0,
                       transition: 'all 0.3s ease',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                     }}
                     title={selectedPet.audio ? 'Play sound' : 'Audio coming soon'}
                   >
-                    {isPlaying ? '⏸' : '▶'}
+                    {isPlaying ? '⏸' : '🔊'}
                   </button>
                 </div>
+              </div>
 
-                {/* Scientific Name */}
+              {/* Right: Info with elegant typography */}
+              <div style={{
+                animation: 'slideInRight 0.5s ease',
+              }}>
+                {/* Scientific Name - Above title */}
                 {selectedPet.species && (
                   <p style={{
-                    color: 'rgba(245, 230, 211, 0.6)',
+                    color: '#4ade80',
                     fontStyle: 'italic',
-                    fontSize: 'clamp(0.9rem, 1.8vw, 1.1rem)',
-                    marginBottom: '20px',
+                    fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
+                    marginBottom: '8px',
+                    letterSpacing: '0.05em',
                   }}>
                     {selectedPet.species}
                   </p>
                 )}
 
+                {/* Name */}
+                <h2 style={{
+                  fontFamily: '"Rubik Distressed", cursive',
+                  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                  color: '#F5E6D3',
+                  lineHeight: '1.1',
+                  marginBottom: 'clamp(20px, 3vw, 32px)',
+                }}>
+                  {selectedPet.name}
+                </h2>
+
+                {/* Elegant divider */}
+                <div style={{
+                  width: '80px',
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4ade80, transparent)',
+                  marginBottom: 'clamp(20px, 3vw, 32px)',
+                  borderRadius: '2px',
+                }} />
+
                 {/* Description */}
                 {selectedPet.description && (
                   <p style={{
-                    color: '#F5E6D3',
-                    fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)',
-                    lineHeight: '1.7',
-                    marginBottom: '24px',
+                    color: 'rgba(245, 230, 211, 0.85)',
+                    fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
+                    lineHeight: '1.8',
+                    marginBottom: 'clamp(28px, 4vw, 40px)',
                   }}>
                     {selectedPet.description}
                   </p>
                 )}
 
-                {/* Info Grid */}
+                {/* Info Cards - Horizontal elegant style */}
                 <div style={{
-                  display: 'grid',
-                  gap: '12px',
-                  marginBottom: '24px',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '16px',
+                  marginBottom: 'clamp(28px, 4vw, 40px)',
                 }}>
                   {selectedPet.origin && (
                     <div style={{
-                      display: 'flex',
-                      gap: '12px',
-                      padding: '12px 16px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.05)',
-                      borderRadius: '12px',
+                      padding: '16px 24px',
+                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      borderRadius: '16px',
+                      flex: '1 1 140px',
                     }}>
-                      <span style={{ fontSize: '1.2rem' }}>🌍</span>
-                      <div>
-                        <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.8rem', marginBottom: '2px' }}>Origin</p>
-                        <p style={{ color: '#F5E6D3', fontSize: '0.95rem' }}>{selectedPet.origin}</p>
-                      </div>
-                    </div>
-                  )}
-                  {selectedPet.diet && (
-                    <div style={{
-                      display: 'flex',
-                      gap: '12px',
-                      padding: '12px 16px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.05)',
-                      borderRadius: '12px',
-                    }}>
-                      <span style={{ fontSize: '1.2rem' }}>🍽️</span>
-                      <div>
-                        <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.8rem', marginBottom: '2px' }}>Diet</p>
-                        <p style={{ color: '#F5E6D3', fontSize: '0.95rem' }}>{selectedPet.diet}</p>
-                      </div>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Origin</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem', fontWeight: '500' }}>{selectedPet.origin}</p>
                     </div>
                   )}
                   {selectedPet.lifespan && (
                     <div style={{
-                      display: 'flex',
-                      gap: '12px',
-                      padding: '12px 16px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.05)',
-                      borderRadius: '12px',
+                      padding: '16px 24px',
+                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      borderRadius: '16px',
+                      flex: '1 1 140px',
                     }}>
-                      <span style={{ fontSize: '1.2rem' }}>⏳</span>
-                      <div>
-                        <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.8rem', marginBottom: '2px' }}>Lifespan</p>
-                        <p style={{ color: '#F5E6D3', fontSize: '0.95rem' }}>{selectedPet.lifespan}</p>
-                      </div>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Lifespan</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
                     </div>
                   )}
                 </div>
 
-                {/* Fun Fact */}
+                {/* Diet with icon */}
+                {selectedPet.diet && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: 'clamp(28px, 4vw, 40px)',
+                    padding: '16px 20px',
+                    backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(245, 230, 211, 0.08)',
+                  }}>
+                    <span style={{ fontSize: '1.5rem' }}>🍽️</span>
+                    <div>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>Diet</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem' }}>{selectedPet.diet}</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Fun Fact - Elegant quote style */}
                 {selectedPet.funFact && (
                   <div style={{
-                    backgroundColor: 'rgba(74, 222, 128, 0.1)',
-                    borderLeft: '4px solid #4ade80',
-                    padding: '16px 20px',
-                    borderRadius: '0 12px 12px 0',
-                    marginTop: 'auto',
+                    position: 'relative',
+                    padding: '24px 28px',
+                    background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(74, 222, 128, 0.02) 100%)',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(74, 222, 128, 0.2)',
                   }}>
-                    <p style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: '600', marginBottom: '4px' }}>
-                      ✨ Fun Fact
-                    </p>
-                    <p style={{ color: '#F5E6D3', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                      {selectedPet.funFact}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-12px',
+                      left: '24px',
+                      backgroundColor: '#0D2818',
+                      padding: '4px 12px',
+                    }}>
+                      <span style={{ color: '#4ade80', fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em' }}>✨ FUN FACT</span>
+                    </div>
+                    <p style={{ 
+                      color: '#F5E6D3', 
+                      fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', 
+                      lineHeight: '1.7',
+                      fontStyle: 'italic',
+                    }}>
+                      "{selectedPet.funFact}"
                     </p>
                   </div>
                 )}
@@ -412,14 +458,18 @@ export default function PetsPage() {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-40px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+          from { opacity: 0; transform: translateX(40px); }
+          to { opacity: 1; transform: translateX(0); }
         }
         .pets-grid {
           grid-template-columns: repeat(4, 1fr);
         }
-        .modal-content {
+        .modal-layout {
           grid-template-columns: 1fr 1fr;
         }
         @media (max-width: 1024px) {
@@ -427,16 +477,15 @@ export default function PetsPage() {
             grid-template-columns: repeat(3, 1fr) !important;
           }
         }
+        @media (max-width: 900px) {
+          .modal-layout {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
         @media (max-width: 768px) {
           .pets-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .modal-content {
-            grid-template-columns: 1fr !important;
-          }
-          .modal-content > div:first-child {
-            border-radius: clamp(16px, 3vw, 32px) clamp(16px, 3vw, 32px) 0 0 !important;
-            max-height: 300px;
           }
         }
       `}</style>
