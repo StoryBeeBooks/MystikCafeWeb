@@ -56,20 +56,20 @@ const styles = {
   linksContainer: {
     maxWidth: '1152px',
     margin: '0 auto',
-    padding: '48px 24px',
+    padding: 'clamp(24px, 5vw, 48px) clamp(16px, 3vw, 24px)',
   },
   linksGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '48px',
+    gap: 'clamp(24px, 5vw, 48px)',
     textAlign: 'center' as const,
   },
   columnTitle: {
     color: 'white',
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2vw, 18px)',
     fontFamily: 'Rubik Distressed, sans-serif',
     letterSpacing: '0.1em',
-    marginBottom: '20px',
+    marginBottom: 'clamp(12px, 2vw, 20px)',
     textAlign: 'center' as const,
   },
   linksList: {
@@ -78,18 +78,18 @@ const styles = {
     margin: 0,
   },
   linkItem: {
-    marginBottom: '12px',
+    marginBottom: 'clamp(8px, 1.5vw, 12px)',
   },
   link: {
     color: 'rgba(255, 255, 255, 0.8)',
     textDecoration: 'none',
-    fontSize: '16px',
+    fontSize: 'clamp(12px, 1.8vw, 16px)',
     cursor: lizardCursor,
     transition: 'color 0.3s ease',
   },
   socialIcons: {
     display: 'flex',
-    gap: '16px',
+    gap: 'clamp(12px, 2vw, 16px)',
     justifyContent: 'center',
   },
   socialLink: {
@@ -98,25 +98,25 @@ const styles = {
     transition: 'color 0.3s ease',
   },
   icon: {
-    width: '24px',
-    height: '24px',
+    width: 'clamp(18px, 2.5vw, 24px)',
+    height: 'clamp(18px, 2.5vw, 24px)',
   },
   contactInfo: {
-    marginTop: '20px',
+    marginTop: 'clamp(12px, 2vw, 20px)',
     color: 'rgba(255, 255, 255, 0.8)',
-    fontSize: '14px',
+    fontSize: 'clamp(11px, 1.6vw, 14px)',
     lineHeight: '1.8',
   },
   copyright: {
     position: 'relative' as const,
     zIndex: 10,
     textAlign: 'center' as const,
-    padding: '24px',
+    padding: 'clamp(16px, 3vw, 24px)',
     borderTop: '1px solid rgba(255, 255, 255, 0.2)',
   },
   copyrightText: {
     color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: '14px',
+    fontSize: 'clamp(11px, 1.6vw, 14px)',
   },
 };
 
