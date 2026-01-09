@@ -27,7 +27,7 @@ export default function Footer() {
         {/* Main CTA Button */}
         <Link href="/book">
           <button 
-            className="text-white text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider px-24 md:px-36 py-12 md:py-16 leading-tight bg-transparent border-2 border-white rounded-3xl hover:bg-black hover:cursor-pointer active:bg-black transition-all duration-300"
+            className="text-white text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider px-32 md:px-48 py-16 md:py-20 leading-tight bg-transparent border-2 border-white rounded-3xl hover:bg-black hover:cursor-pointer active:bg-black transition-all duration-300"
             style={{ 
               fontFamily: 'Rubik Distressed, sans-serif',
               cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
