@@ -2,8 +2,22 @@
 
 import { useState } from 'react';
 
+// Types for booking system
+interface CartItem {
+  id: string;
+  date: string;
+  time: string;
+  experience: 'sips' | 'ultimate';
+  quantity: number;
+  price: number;
+}
+
 export default function BookPage() {
   const [activeTab, setActiveTab] = useState<'tickets' | 'policies'>('tickets');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [selectedSlot, setSelectedSlot] = useState<{ time: string; experience: 'sips' | 'ultimate'; quantity: number } | null>(null);
 
   const tickets = [
     {
@@ -80,6 +94,96 @@ export default function BookPage() {
       bookable: true,
     },
   ];
+
+  // Time slots: 11 AM to 6 PM (last admission)
+  const timeSlots = ['11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM'];
+  
+  // Experience options
+  const experiences = {
+    sips: { name: 'Sips & Senses', price: 28.99, emoji: '🧉' },
+    ultimate: { name: 'Ultimate Mystik Experience', price: 33.99, emoji: '✨' },
+  };
+
+  // Calendar helper functions
+  const getDaysInMonth = (date: Date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDay = firstDay.getDay();
+    return { daysInMonth, startingDay };
+  };
+
+  const isWednesday = (date: Date) => date.getDay() === 3;
+  
+  const isPastDate = (date: Date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date < today;
+  };
+
+  const isSameDay = (date1: Date, date2: Date) => {
+    return date1.getDate() === date2.getDate() &&
+           date1.getMonth() === date2.getMonth() &&
+           date1.getFullYear() === date2.getFullYear();
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  };
+
+  const formatShortDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+
+  // Simulated availability (in production, this would come from a database)
+  const getAvailability = (date: Date, time: string) => {
+    // Simulate some slots being partially booked
+    const seed = date.getDate() + time.length;
+    return Math.max(0, 16 - (seed % 8));
+  };
+
+  const addToCart = () => {
+    if (!selectedDate || !selectedSlot) return;
+    
+    const newItem: CartItem = {
+      id: `${selectedDate.toISOString()}-${selectedSlot.time}-${selectedSlot.experience}`,
+      date: formatDate(selectedDate),
+      time: selectedSlot.time,
+      experience: selectedSlot.experience,
+      quantity: selectedSlot.quantity,
+      price: experiences[selectedSlot.experience].price * selectedSlot.quantity,
+    };
+
+    // Check if same slot already in cart
+    const existingIndex = cart.findIndex(item => 
+      item.date === newItem.date && item.time === newItem.time && item.experience === newItem.experience
+    );
+
+    if (existingIndex >= 0) {
+      const updatedCart = [...cart];
+      updatedCart[existingIndex].quantity += selectedSlot.quantity;
+      updatedCart[existingIndex].price += newItem.price;
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, newItem]);
+    }
+
+    setSelectedSlot(null);
+  };
+
+  const removeFromCart = (id: string) => {
+    setCart(cart.filter(item => item.id !== id));
+  };
+
+  const getCartTotal = () => {
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
+  const getTotalGuests = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  };
 
   return (
     <main style={{
@@ -435,6 +539,511 @@ export default function BookPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* ===== BOOKING CALENDAR SECTION ===== */}
+            <div style={{ marginTop: '80px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h2 style={{
+                  fontFamily: '"Rubik Distressed", cursive',
+                  fontSize: 'clamp(2rem, 4vw, 2.8rem)',
+                  color: '#4ade80',
+                  marginBottom: '12px',
+                }}>
+                  📅 Book Your Visit
+                </h2>
+                <p style={{ color: 'rgba(245, 230, 211, 0.8)', fontSize: 'clamp(0.9rem, 2vw, 1.1rem)' }}>
+                  Open Daily 11 AM – 6:30 PM · Last Admission 6 PM · Closed Wednesdays
+                </p>
+              </div>
+
+              <div className="booking-grid" style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: '32px',
+              }}>
+                {/* Calendar */}
+                <div style={{
+                  backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                  borderRadius: '24px',
+                  padding: 'clamp(20px, 4vw, 32px)',
+                  border: '1px solid rgba(245, 230, 211, 0.1)',
+                }}>
+                  {/* Month Navigation */}
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '24px',
+                  }}>
+                    <button
+                      onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
+                      style={{
+                        backgroundColor: 'rgba(74, 222, 128, 0.2)',
+                        border: 'none',
+                        borderRadius: '50%',
+                        width: '40px',
+                        height: '40px',
+                        cursor: 'pointer',
+                        color: '#4ade80',
+                        fontSize: '1.2rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      ←
+                    </button>
+                    <h3 style={{
+                      fontFamily: '"Rubik Distressed", cursive',
+                      fontSize: 'clamp(1.2rem, 3vw, 1.6rem)',
+                      color: '#F5E6D3',
+                    }}>
+                      {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                    </h3>
+                    <button
+                      onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
+                      style={{
+                        backgroundColor: 'rgba(74, 222, 128, 0.2)',
+                        border: 'none',
+                        borderRadius: '50%',
+                        width: '40px',
+                        height: '40px',
+                        cursor: 'pointer',
+                        color: '#4ade80',
+                        fontSize: '1.2rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      →
+                    </button>
+                  </div>
+
+                  {/* Day Headers */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(7, 1fr)',
+                    gap: '4px',
+                    marginBottom: '8px',
+                  }}>
+                    {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                      <div key={day} style={{
+                        textAlign: 'center',
+                        color: day === 'Wed' ? '#ff6b6b' : 'rgba(245, 230, 211, 0.6)',
+                        fontSize: 'clamp(0.7rem, 1.5vw, 0.85rem)',
+                        fontWeight: '600',
+                        padding: '8px 0',
+                      }}>
+                        {day}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Calendar Days */}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(7, 1fr)',
+                    gap: '4px',
+                  }}>
+                    {(() => {
+                      const { daysInMonth, startingDay } = getDaysInMonth(currentMonth);
+                      const days = [];
+                      
+                      // Empty cells for days before month starts
+                      for (let i = 0; i < startingDay; i++) {
+                        days.push(<div key={`empty-${i}`} />);
+                      }
+                      
+                      // Actual days
+                      for (let day = 1; day <= daysInMonth; day++) {
+                        const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
+                        const isClosed = isWednesday(date);
+                        const isPast = isPastDate(date);
+                        const isSelected = selectedDate && isSameDay(date, selectedDate);
+                        const isDisabled = isClosed || isPast;
+                        
+                        days.push(
+                          <button
+                            key={day}
+                            onClick={() => !isDisabled && setSelectedDate(date)}
+                            disabled={isDisabled}
+                            style={{
+                              aspectRatio: '1',
+                              border: isSelected ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.1)',
+                              borderRadius: '12px',
+                              backgroundColor: isSelected ? 'rgba(74, 222, 128, 0.3)' : 
+                                              isDisabled ? 'rgba(255, 107, 107, 0.1)' : 
+                                              'rgba(245, 230, 211, 0.05)',
+                              color: isDisabled ? 'rgba(255, 107, 107, 0.5)' : '#F5E6D3',
+                              fontSize: 'clamp(0.85rem, 2vw, 1rem)',
+                              fontWeight: isSelected ? '700' : '500',
+                              cursor: isDisabled ? 'not-allowed' : 'pointer',
+                              transition: 'all 0.2s ease',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            {day}
+                          </button>
+                        );
+                      }
+                      
+                      return days;
+                    })()}
+                  </div>
+
+                  {/* Legend */}
+                  <div style={{
+                    display: 'flex',
+                    gap: '16px',
+                    justifyContent: 'center',
+                    marginTop: '20px',
+                    flexWrap: 'wrap',
+                  }}>
+                    <span style={{ fontSize: '0.8rem', color: 'rgba(245, 230, 211, 0.6)' }}>
+                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: 'rgba(74, 222, 128, 0.3)', borderRadius: '3px', marginRight: '6px', border: '1px solid #4ade80' }}></span>
+                      Selected
+                    </span>
+                    <span style={{ fontSize: '0.8rem', color: 'rgba(245, 230, 211, 0.6)' }}>
+                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: 'rgba(255, 107, 107, 0.1)', borderRadius: '3px', marginRight: '6px' }}></span>
+                      Closed
+                    </span>
+                  </div>
+                </div>
+
+                {/* Time Slots & Experience Selection */}
+                {selectedDate && (
+                  <div style={{
+                    backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                    borderRadius: '24px',
+                    padding: 'clamp(20px, 4vw, 32px)',
+                    border: '1px solid rgba(245, 230, 211, 0.1)',
+                    animation: 'fadeIn 0.3s ease',
+                  }}>
+                    <h3 style={{
+                      fontFamily: '"Rubik Distressed", cursive',
+                      fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+                      color: '#4ade80',
+                      marginBottom: '8px',
+                    }}>
+                      {formatDate(selectedDate)}
+                    </h3>
+                    <p style={{
+                      color: 'rgba(245, 230, 211, 0.7)',
+                      fontSize: '0.9rem',
+                      marginBottom: '24px',
+                    }}>
+                      Select a time slot and experience
+                    </p>
+
+                    {/* Time Slots */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+                      gap: '10px',
+                      marginBottom: '24px',
+                    }}>
+                      {timeSlots.map(time => {
+                        const available = getAvailability(selectedDate, time);
+                        const isSelectedTime = selectedSlot?.time === time;
+                        
+                        return (
+                          <button
+                            key={time}
+                            onClick={() => setSelectedSlot(prev => ({ 
+                              time, 
+                              experience: prev?.experience || 'sips', 
+                              quantity: prev?.quantity || 1 
+                            }))}
+                            disabled={available === 0}
+                            style={{
+                              padding: '12px 8px',
+                              borderRadius: '12px',
+                              border: isSelectedTime ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.2)',
+                              backgroundColor: isSelectedTime ? 'rgba(74, 222, 128, 0.2)' : 
+                                              available === 0 ? 'rgba(255, 107, 107, 0.1)' : 
+                                              'rgba(245, 230, 211, 0.05)',
+                              color: available === 0 ? 'rgba(255, 107, 107, 0.5)' : '#F5E6D3',
+                              cursor: available === 0 ? 'not-allowed' : 'pointer',
+                              fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
+                              fontWeight: isSelectedTime ? '700' : '500',
+                              transition: 'all 0.2s ease',
+                            }}
+                          >
+                            {time}
+                            <br />
+                            <span style={{ 
+                              fontSize: '0.7rem', 
+                              color: available <= 4 ? '#ffc107' : 'rgba(245, 230, 211, 0.5)',
+                            }}>
+                              {available} spots
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Experience Selection */}
+                    {selectedSlot && (
+                      <div style={{ animation: 'fadeIn 0.3s ease' }}>
+                        <p style={{
+                          color: '#F5E6D3',
+                          fontSize: '0.95rem',
+                          fontWeight: '600',
+                          marginBottom: '12px',
+                        }}>
+                          Choose Experience:
+                        </p>
+                        <div style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
+                          gap: '12px',
+                          marginBottom: '20px',
+                        }}>
+                          {Object.entries(experiences).map(([key, exp]) => (
+                            <button
+                              key={key}
+                              onClick={() => setSelectedSlot(prev => prev ? { ...prev, experience: key as 'sips' | 'ultimate' } : null)}
+                              style={{
+                                padding: '16px',
+                                borderRadius: '16px',
+                                border: selectedSlot.experience === key ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.2)',
+                                backgroundColor: selectedSlot.experience === key ? 'rgba(74, 222, 128, 0.2)' : 'rgba(245, 230, 211, 0.05)',
+                                color: '#F5E6D3',
+                                cursor: 'pointer',
+                                textAlign: 'left',
+                                transition: 'all 0.2s ease',
+                              }}
+                            >
+                              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{exp.emoji}</div>
+                              <div style={{ fontWeight: '600', marginBottom: '4px' }}>{exp.name}</div>
+                              <div style={{ color: '#4ade80', fontWeight: '700' }}>${exp.price.toFixed(2)}/person</div>
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* Quantity Selection */}
+                        <div style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '16px',
+                          marginBottom: '24px',
+                          flexWrap: 'wrap',
+                        }}>
+                          <span style={{ color: '#F5E6D3', fontWeight: '600' }}>Number of Guests:</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <button
+                              onClick={() => setSelectedSlot(prev => prev && prev.quantity > 1 ? { ...prev, quantity: prev.quantity - 1 } : prev)}
+                              style={{
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '50%',
+                                border: '1px solid rgba(245, 230, 211, 0.3)',
+                                backgroundColor: 'rgba(245, 230, 211, 0.1)',
+                                color: '#F5E6D3',
+                                fontSize: '1.2rem',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              −
+                            </button>
+                            <span style={{ 
+                              color: '#4ade80', 
+                              fontSize: '1.3rem', 
+                              fontWeight: '700',
+                              minWidth: '30px',
+                              textAlign: 'center',
+                            }}>
+                              {selectedSlot.quantity}
+                            </span>
+                            <button
+                              onClick={() => setSelectedSlot(prev => {
+                                if (!prev) return prev;
+                                const maxAvailable = getAvailability(selectedDate, selectedSlot.time);
+                                return prev.quantity < maxAvailable ? { ...prev, quantity: prev.quantity + 1 } : prev;
+                              })}
+                              style={{
+                                width: '36px',
+                                height: '36px',
+                                borderRadius: '50%',
+                                border: '1px solid rgba(245, 230, 211, 0.3)',
+                                backgroundColor: 'rgba(245, 230, 211, 0.1)',
+                                color: '#F5E6D3',
+                                fontSize: '1.2rem',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <span style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.85rem' }}>
+                            (Max 16 per slot)
+                          </span>
+                        </div>
+
+                        {/* Subtotal & Add to Cart */}
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          padding: '20px',
+                          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                          borderRadius: '16px',
+                          flexWrap: 'wrap',
+                          gap: '16px',
+                        }}>
+                          <div>
+                            <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.85rem', marginBottom: '4px' }}>Subtotal</p>
+                            <p style={{ color: '#4ade80', fontSize: '1.5rem', fontWeight: '700' }}>
+                              ${(experiences[selectedSlot.experience].price * selectedSlot.quantity).toFixed(2)}
+                            </p>
+                          </div>
+                          <button
+                            onClick={addToCart}
+                            style={{
+                              padding: '14px 28px',
+                              backgroundColor: '#4ade80',
+                              color: '#0D2818',
+                              fontWeight: '700',
+                              fontSize: '1rem',
+                              borderRadius: '30px',
+                              border: 'none',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease',
+                              boxShadow: '0 4px 15px rgba(74, 222, 128, 0.3)',
+                            }}
+                          >
+                            Add to Cart 🛒
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Shopping Cart */}
+                {cart.length > 0 && (
+                  <div style={{
+                    backgroundColor: 'rgba(74, 222, 128, 0.05)',
+                    borderRadius: '24px',
+                    padding: 'clamp(20px, 4vw, 32px)',
+                    border: '2px solid #4ade80',
+                    animation: 'fadeIn 0.3s ease',
+                  }}>
+                    <h3 style={{
+                      fontFamily: '"Rubik Distressed", cursive',
+                      fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
+                      color: '#4ade80',
+                      marginBottom: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                    }}>
+                      🛒 Your Cart ({getTotalGuests()} guests)
+                    </h3>
+
+                    {/* Cart Items */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
+                      {cart.map(item => (
+                        <div key={item.id} style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          padding: '16px',
+                          backgroundColor: 'rgba(245, 230, 211, 0.05)',
+                          borderRadius: '12px',
+                          flexWrap: 'wrap',
+                          gap: '12px',
+                        }}>
+                          <div style={{ flex: 1, minWidth: '200px' }}>
+                            <p style={{ color: '#F5E6D3', fontWeight: '600', marginBottom: '4px' }}>
+                              {experiences[item.experience].emoji} {experiences[item.experience].name}
+                            </p>
+                            <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.85rem' }}>
+                              {item.date} at {item.time}
+                            </p>
+                            <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.8rem' }}>
+                              {item.quantity} guest{item.quantity > 1 ? 's' : ''}
+                            </p>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <span style={{ color: '#4ade80', fontWeight: '700' }}>${item.price.toFixed(2)}</span>
+                            <button
+                              onClick={() => removeFromCart(item.id)}
+                              style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                border: '1px solid rgba(255, 107, 107, 0.5)',
+                                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                                color: '#ff6b6b',
+                                cursor: 'pointer',
+                                fontSize: '1rem',
+                              }}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Cart Total & Checkout */}
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '20px',
+                      backgroundColor: 'rgba(74, 222, 128, 0.15)',
+                      borderRadius: '16px',
+                      flexWrap: 'wrap',
+                      gap: '16px',
+                    }}>
+                      <div>
+                        <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.9rem', marginBottom: '4px' }}>Total</p>
+                        <p style={{ color: '#F5E6D3', fontSize: '2rem', fontWeight: '700' }}>
+                          ${getCartTotal().toFixed(2)}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          // In production, this would redirect to Stripe Checkout
+                          alert('This would redirect to Stripe Checkout.\n\nCart Summary:\n' + 
+                            cart.map(item => `• ${experiences[item.experience].name} - ${item.date} at ${item.time} (${item.quantity} guests) - $${item.price.toFixed(2)}`).join('\n') +
+                            `\n\nTotal: $${getCartTotal().toFixed(2)}`
+                          );
+                        }}
+                        style={{
+                          padding: '16px 40px',
+                          backgroundColor: '#4ade80',
+                          color: '#0D2818',
+                          fontWeight: '700',
+                          fontSize: '1.1rem',
+                          borderRadius: '30px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          boxShadow: '0 4px 20px rgba(74, 222, 128, 0.4)',
+                        }}
+                      >
+                        Proceed to Checkout →
+                      </button>
+                    </div>
+
+                    <p style={{
+                      color: 'rgba(245, 230, 211, 0.5)',
+                      fontSize: '0.8rem',
+                      textAlign: 'center',
+                      marginTop: '16px',
+                    }}>
+                      🔒 Secure checkout powered by Stripe
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
