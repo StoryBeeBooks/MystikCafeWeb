@@ -415,37 +415,134 @@ export function Membership() {
   );
 }
 
-// Gallery Section (placeholder for images)
+// Gallery Section - Magazine-style editorial layout
 export function Gallery() {
+  const galleryImages = [
+    { src: 'https://assets.k12path.com/MystikCafe/IMG_2994.JPG', alt: 'Mystik Cafe Experience 1' },
+    { src: 'https://assets.k12path.com/MystikCafe/IMG_6146.JPG', alt: 'Mystik Cafe Experience 2' },
+    { src: 'https://assets.k12path.com/MystikCafe/IMG_6447.JPG', alt: 'Mystik Cafe Experience 3' },
+    { src: 'https://assets.k12path.com/MystikCafe/IMG_6516.JPG', alt: 'Mystik Cafe Experience 4' },
+    { src: 'https://assets.k12path.com/MystikCafe/065cb57b-51ee-4984-a30c-4d26bc09472a.jpg', alt: 'Mystik Cafe Experience 5' },
+    { src: 'https://assets.k12path.com/MystikCafe/718dee43-68dd-4cb8-b0c0-a1b2d0e0bfa1.jpg', alt: 'Mystik Cafe Experience 6' },
+    { src: 'https://assets.k12path.com/MystikCafe/772947bf-1fc7-499e-b7f5-46f1b616bcaa.jpg', alt: 'Mystik Cafe Experience 7' },
+    { src: 'https://assets.k12path.com/MystikCafe/A93D4A6D-BA0D-4E84-BE52-FDE3B1CFCFD2.jpg', alt: 'Mystik Cafe Experience 8' },
+  ];
+
   return (
-    <section className="bg-white py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
-            Moments at Mystik
+    <section className="bg-stone-950 py-24 px-4 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Header with editorial styling */}
+        <div className="text-center mb-16 relative">
+          <span className="block text-emerald-400 text-sm tracking-[0.4em] uppercase mb-4 font-light">
+            The Experience
+          </span>
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+            Moments at <span className="text-emerald-400">Mystik</span>
           </h2>
-          <p className="text-stone-600 text-lg">Captured memories from our jungle paradise</p>
+          <p className="text-stone-400 text-lg max-w-xl mx-auto">
+            Wild connections. Unforgettable memories. Real moments captured by our guests.
+          </p>
+          {/* Decorative line */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mt-8" />
         </div>
         
-        {/* Gallery Grid - Placeholders */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <div 
-              key={item}
-              className={`relative rounded-2xl overflow-hidden bg-gradient-to-br from-stone-200 to-stone-300 ${
-                item === 1 || item === 6 ? 'md:col-span-2 md:row-span-2 aspect-square' : 'aspect-square'
-              }`}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-stone-500">
-                  <svg className="w-12 h-12 mx-auto mb-2 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-xs">[Gallery Image {item}]</p>
-                </div>
-              </div>
+        {/* Magazine-style asymmetric grid */}
+        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
+          {/* Large featured image - top left */}
+          <div className="col-span-12 md:col-span-7 row-span-2 group relative overflow-hidden rounded-3xl">
+            <img 
+              src={galleryImages[0].src}
+              alt={galleryImages[0].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+              <span className="inline-block px-3 py-1 bg-emerald-500 text-white text-xs rounded-full mb-2">Featured</span>
+              <p className="text-white text-lg font-medium">Wild encounters await</p>
             </div>
-          ))}
+            {/* Corner accent */}
+            <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-emerald-400/50" />
+          </div>
+
+          {/* Vertical stack - right side */}
+          <div className="col-span-6 md:col-span-5 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[1].src}
+              alt={galleryImages[1].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+          </div>
+
+          <div className="col-span-6 md:col-span-5 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[2].src}
+              alt={galleryImages[2].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+          </div>
+
+          {/* Middle row - 3 images */}
+          <div className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[3].src}
+              alt={galleryImages[3].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
+          </div>
+
+          <div className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[4].src}
+              alt={galleryImages[4].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
+          </div>
+
+          <div className="col-span-12 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[5].src}
+              alt={galleryImages[5].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
+          </div>
+
+          {/* Bottom row - panoramic and square */}
+          <div className="col-span-12 md:col-span-8 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[6].src}
+              alt={galleryImages[6].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Magazine-style text overlay */}
+            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <p className="text-white/80 text-sm tracking-wider uppercase">Discover</p>
+              <p className="text-white text-xl md:text-2xl font-light">The Magic Within</p>
+            </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
+            <img 
+              src={galleryImages[7].src}
+              alt={galleryImages[7].alt}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-emerald-900/0 group-hover:bg-emerald-900/20 transition-colors duration-500" />
+            {/* Corner accent */}
+            <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-emerald-400/50" />
+          </div>
+        </div>
+
+        {/* Bottom tagline */}
+        <div className="text-center mt-16">
+          <p className="text-stone-500 text-sm tracking-widest uppercase">
+            Share your experience • Tag us @mystikcafe
+          </p>
         </div>
       </div>
     </section>

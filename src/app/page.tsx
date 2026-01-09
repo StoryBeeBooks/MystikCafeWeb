@@ -212,7 +212,7 @@ const visitStyles = {
     padding: '18px 50px',
     borderRadius: '40px',
     textDecoration: 'none',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     fontSize: '18px',
     fontFamily: 'Rubik Distressed, sans-serif',
     cursor: lizardCursor,
