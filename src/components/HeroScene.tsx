@@ -41,31 +41,16 @@ function TouchInstructionIcon() {
       boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
       display: 'flex',
       alignItems: 'center',
-      gap: '12px',
+      gap: '8px',
       zIndex: 30,
       fontSize: '12px',
       color: '#4A4A4A',
     }}>
-      {/* Two finger rotate icon */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="9" cy="8" r="3" stroke="#1B5E20" strokeWidth="1.5" fill="none"/>
-          <circle cx="15" cy="8" r="3" stroke="#1B5E20" strokeWidth="1.5" fill="none"/>
-          <path d="M9 11v6M15 11v6" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M6 14c-1.5 1.5-1.5 3 0 4.5M18 14c1.5 1.5 1.5 3 0 4.5" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-        <span style={{ fontWeight: '500' }}>Rotate</span>
-      </div>
-      <div style={{ width: '1px', height: '20px', backgroundColor: '#ddd' }} />
-      {/* One finger scroll icon */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="8" r="3" stroke="#1B5E20" strokeWidth="1.5" fill="none"/>
-          <path d="M12 11v8" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round"/>
-          <path d="M9 16l3 4 3-4" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <span style={{ fontWeight: '500' }}>Scroll</span>
-      </div>
+      {/* Scroll icon */}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke="#1B5E20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      <span style={{ fontWeight: '500' }}>Scroll to explore</span>
     </div>
   );
 }
@@ -79,7 +64,7 @@ export default function HeroScene() {
     setMounted(true);
     // Check if device is mobile/tablet
     const checkMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 1024px)').matches || 'ontouchstart' in window);
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -95,10 +80,17 @@ export default function HeroScene() {
   }
 
   return (
-    <div className="h-full w-full cursor-move" style={{ position: 'relative' }}>
+    <div 
+      className="h-full w-full" 
+      style={{ 
+        position: 'relative',
+        cursor: isMobile ? 'default' : 'move',
+        touchAction: 'pan-y',
+      }}
+    >
       <Canvas 
         camera={{ position: [0, 0, 20], fov: 45 }}
-        style={{ touchAction: isMobile ? 'pan-y' : 'none' }}
+        style={{ touchAction: 'pan-y' }}
       >
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
@@ -116,10 +108,7 @@ export default function HeroScene() {
           maxPolarAngle={Math.PI / 1.5}
           autoRotate={true}
           autoRotateSpeed={0.5}
-          touches={{
-            ONE: 0, // Disable one-finger rotate (allows scroll)
-            TWO: 1  // Two fingers to rotate (TOUCH.ROTATE = 1)
-          }}
+          enabled={!isMobile}
         />
         
         <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />

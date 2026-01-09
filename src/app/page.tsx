@@ -258,10 +258,10 @@ export default function Home() {
           transform: 'translateX(-50%)',
           zIndex: 20,
           textAlign: 'center',
+          width: '90%',
         }}>
-          <h1 style={{
+          <h1 className="hero-title" style={{
             fontFamily: 'Rubik Distressed, sans-serif',
-            fontSize: '64px',
             lineHeight: '1.2',
             margin: 0,
           }}>

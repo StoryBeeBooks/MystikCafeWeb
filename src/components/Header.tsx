@@ -190,21 +190,30 @@ export default function Header() {
           {/* Hamburger Menu */}
           <button 
             className="hamburger-btn"
+            style={{
+              display: 'none',
+              flexDirection: 'column' as const,
+              gap: '5px',
+              cursor: lizardCursor,
+              padding: '8px',
+              background: 'none',
+              border: 'none',
+            }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menu"
           >
-            <span style={{
-              ...styles.hamburgerLine,
-              transform: isMenuOpen ? 'rotate(45deg) translateY(7px)' : 'none',
-            }} />
-            <span style={{
-              ...styles.hamburgerLine,
-              opacity: isMenuOpen ? 0 : 1,
-            }} />
-            <span style={{
-              ...styles.hamburgerLine,
-              transform: isMenuOpen ? 'rotate(-45deg) translateY(-7px)' : 'none',
-            }} />
+            {isMenuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B2D2D" strokeWidth="2" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <>
+                <span style={styles.hamburgerLine} />
+                <span style={styles.hamburgerLine} />
+                <span style={styles.hamburgerLine} />
+              </>
+            )}
           </button>
         </div>
       </header>

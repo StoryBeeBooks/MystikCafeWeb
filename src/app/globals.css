@@ -14,3 +14,20 @@ html, body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hero title responsive sizing */
+.hero-title {
+  font-size: 64px;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 32px;
+  }
+}
