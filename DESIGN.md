@@ -47,6 +47,10 @@ When building UI, use these metaphors to guide your code decisions:
 > ⚠️ **Note:** Do NOT use `next/font/google` with CSS variables for this project. Static export (`output: 'export'`) breaks the font loading. Always use the CSS `@import` method above.
 
 ## 4. Motion & Interaction (The "Alive" Factor)
+- **Cursor (Lizard on Hover):** All links and buttons must show the lizard emoji cursor on hover:
+  ```jsx
+  cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
+  ```
 - **Hover States:** Leaves rustle when touched. Buttons should have a "bouncy" spring physics animation on hover, not a linear fade.
 - **Scrolling:** Elements should reveal themselves slowly (fade-up with a slight delay), like an animal stepping out from behind a tree.
 - **Micro-Interactions:** A chameleon eye following the cursor, or a leaf swaying gently in the corner.
