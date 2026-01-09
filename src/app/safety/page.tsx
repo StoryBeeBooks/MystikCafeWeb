@@ -1,120 +1,427 @@
-import Link from 'next/link';
+'use client';
+
+const styles = {
+  // Page Container
+  page: {
+    backgroundColor: '#F5E6D3',
+    minHeight: '100vh',
+  },
+
+  // Header Section
+  headerSection: {
+    backgroundColor: '#F5E6D3',
+    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px) clamp(30px, 5vw, 50px)',
+    textAlign: 'center' as const,
+  },
+  headerContainer: {
+    maxWidth: '800px',
+    margin: '0 auto',
+  },
+  headerIcon: {
+    fontSize: 'clamp(36px, 6vw, 48px)',
+    marginBottom: 'clamp(12px, 2vw, 20px)',
+  },
+  headerTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(32px, 6vw, 52px)',
+    color: '#0D2818',
+    marginBottom: 'clamp(8px, 1.5vw, 12px)',
+    lineHeight: '1.2',
+  },
+  headerSubtitle: {
+    fontSize: 'clamp(14px, 2vw, 18px)',
+    color: '#1B5E20',
+    marginBottom: 'clamp(20px, 4vw, 32px)',
+  },
+  headerIntro: {
+    fontSize: 'clamp(15px, 2vw, 17px)',
+    color: '#3D3D3D',
+    lineHeight: '1.8',
+    maxWidth: '650px',
+    margin: '0 auto',
+  },
+
+  // Main Content Grid
+  mainContent: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    maxWidth: '1100px',
+    margin: '0 auto',
+    padding: '0 clamp(16px, 4vw, 24px)',
+  },
+
+  // Do Not Section
+  doNotSection: {
+    backgroundColor: 'white',
+    padding: 'clamp(30px, 5vw, 50px)',
+  },
+  doNotTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(24px, 4vw, 32px)',
+    color: '#0D2818',
+    marginBottom: 'clamp(20px, 3vw, 32px)',
+  },
+  doNotHighlight: {
+    color: '#dc2626',
+  },
+  rulesList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+  },
+  ruleItem: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: 'clamp(10px, 1.5vw, 14px)',
+    marginBottom: 'clamp(14px, 2vw, 20px)',
+    fontSize: 'clamp(14px, 1.8vw, 16px)',
+    color: '#3D3D3D',
+    lineHeight: '1.6',
+  },
+  ruleIconNo: {
+    color: '#dc2626',
+    fontSize: 'clamp(16px, 2vw, 20px)',
+    flexShrink: 0,
+    marginTop: '2px',
+  },
+
+  // Welcome Section
+  welcomeSection: {
+    backgroundColor: 'white',
+    padding: 'clamp(30px, 5vw, 50px)',
+  },
+  welcomeTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(24px, 4vw, 32px)',
+    color: '#0D2818',
+    marginBottom: 'clamp(20px, 3vw, 32px)',
+  },
+  ruleIconYes: {
+    color: '#1B5E20',
+    fontSize: 'clamp(16px, 2vw, 20px)',
+    flexShrink: 0,
+    marginTop: '2px',
+  },
+
+  // Jungle Banner
+  jungleBanner: {
+    width: '100%',
+    height: 'clamp(60px, 10vw, 100px)',
+    backgroundImage: 'url(https://assets.k12path.com/MystikCafe/jungle-landscape-cartoon.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+
+  // Remember Section
+  rememberSection: {
+    backgroundColor: '#F5E6D3',
+    padding: 'clamp(50px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+  },
+  rememberContainer: {
+    maxWidth: '1000px',
+    margin: '0 auto',
+  },
+  rememberHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'clamp(12px, 2vw, 16px)',
+    marginBottom: 'clamp(30px, 5vw, 40px)',
+  },
+  rememberIcon: {
+    fontSize: 'clamp(28px, 4vw, 36px)',
+  },
+  rememberTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(28px, 5vw, 40px)',
+    color: '#0D2818',
+  },
+  rememberContent: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+    gap: 'clamp(30px, 5vw, 50px)',
+    alignItems: 'start',
+  },
+  rememberIntro: {
+    fontSize: 'clamp(15px, 2vw, 17px)',
+    color: '#3D3D3D',
+    lineHeight: '1.9',
+  },
+  rememberEmoji: {
+    color: '#4ade80',
+  },
+  rememberList: {
+    listStyle: 'disc',
+    paddingLeft: 'clamp(20px, 3vw, 28px)',
+    margin: 0,
+  },
+  rememberListItem: {
+    fontSize: 'clamp(14px, 1.8vw, 16px)',
+    color: '#3D3D3D',
+    lineHeight: '1.8',
+    marginBottom: 'clamp(12px, 2vw, 16px)',
+  },
+
+  // For Everyone Section
+  everyoneSection: {
+    backgroundColor: '#0D2818',
+    padding: 'clamp(50px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+  },
+  everyoneContainer: {
+    maxWidth: '1100px',
+    margin: '0 auto',
+  },
+  everyoneHeader: {
+    textAlign: 'center' as const,
+    marginBottom: 'clamp(40px, 6vw, 60px)',
+  },
+  everyoneTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(28px, 5vw, 40px)',
+    color: '#F5E6D3',
+    marginBottom: 'clamp(12px, 2vw, 16px)',
+  },
+  everyoneSubtitle: {
+    fontSize: 'clamp(14px, 1.8vw, 17px)',
+    color: 'rgba(245, 230, 211, 0.8)',
+    maxWidth: '600px',
+    margin: '0 auto',
+    lineHeight: '1.7',
+  },
+  everyoneGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+    gap: 'clamp(20px, 3vw, 32px)',
+  },
+  everyoneCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: 'clamp(16px, 3vw, 24px)',
+    padding: 'clamp(28px, 4vw, 40px)',
+    border: '1px solid rgba(245, 230, 211, 0.1)',
+  },
+  everyoneCardIcon: {
+    fontSize: 'clamp(36px, 5vw, 48px)',
+    marginBottom: 'clamp(16px, 2vw, 20px)',
+  },
+  everyoneCardTitle: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(20px, 3vw, 26px)',
+    color: '#F5E6D3',
+    marginBottom: 'clamp(12px, 2vw, 16px)',
+  },
+  everyoneCardText: {
+    fontSize: 'clamp(13px, 1.6vw, 15px)',
+    color: 'rgba(245, 230, 211, 0.8)',
+    lineHeight: '1.8',
+  },
+
+  // Closing Section
+  closingSection: {
+    backgroundColor: '#F5E6D3',
+    padding: 'clamp(50px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+    textAlign: 'center' as const,
+  },
+  closingContainer: {
+    maxWidth: '700px',
+    margin: '0 auto',
+  },
+  closingText: {
+    fontSize: 'clamp(16px, 2.2vw, 20px)',
+    color: '#3D3D3D',
+    lineHeight: '1.8',
+    marginBottom: 'clamp(20px, 3vw, 28px)',
+  },
+  closingHighlight: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(22px, 3.5vw, 32px)',
+    color: '#1B5E20',
+  },
+};
 
 export default function SafetyPage() {
   return (
-    <main className="min-h-screen bg-stone-50">
-      {/* Header */}
-      <div className="bg-[#38761D] text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <Link href="/" className="text-[#8FCE00] hover:underline text-sm mb-4 inline-block">← Back to Home</Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">For Your Safety</h1>
-          <p className="text-white/80 text-lg">Your wellbeing and the animals' safety are our top priorities</p>
+    <div style={styles.page}>
+      {/* Header Section */}
+      <section style={styles.headerSection}>
+        <div style={styles.headerContainer}>
+          <div style={styles.headerIcon}>📝</div>
+          <h1 style={styles.headerTitle}>Rules of the "Reptile Jungle"</h1>
+          <p style={styles.headerSubtitle}>@Mystikcafe</p>
+          <p style={styles.headerIntro}>
+            To keep things magical (and safe), our team gently enforces a few simple rules. 
+            These help ensure a positive experience for you, our animals, and everyone around you.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto py-16 px-4 space-y-12">
-        
-        {/* Safety Introduction */}
-        <section className="text-center">
-          <p className="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto">
-            At Mystik Cafe, we maintain the highest safety standards to ensure a memorable and secure experience for all guests. Our trained animal ambassadors are always present to guide interactions.
-          </p>
-        </section>
-
-        {/* Animal Interaction Safety */}
-        <section className="bg-white rounded-2xl p-8 shadow-md">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl">🦎</span>
-            <h2 className="text-2xl font-bold text-[#1a3b0e]">Animal Interaction Guidelines</h2>
-          </div>
-          <ul className="space-y-4 text-slate-600">
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Always wait for staff permission before touching any animal</span>
+      {/* Main Two Column Content */}
+      <div style={styles.mainContent}>
+        {/* Please Do NOT Section */}
+        <section style={styles.doNotSection}>
+          <h2 style={styles.doNotTitle}>
+            Please <span style={styles.doNotHighlight}>Do NOT</span>:
+          </h2>
+          <ul style={styles.rulesList}>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Tap on the glass or bang on enclosures</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Use gentle, slow movements around animals</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Pick up or grab animals yourself — all interactions are staff guided</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Support animals properly as instructed by staff</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Shine lights or use flash photography</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Never feed the animals without staff supervision</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Bring food or drinks into the Jungle Lounge</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Keep voices low to avoid startling the animals</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Leave children unsupervised or allow them to run</span>
+            </li>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Make sudden loud noises or scream near the animals</span>
+            </li>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconNo}>🚫</span>
+              <span>Reach into enclosures without permission</span>
             </li>
           </ul>
         </section>
 
-        {/* Hygiene Protocols */}
-        <section className="bg-white rounded-2xl p-8 shadow-md">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl">🧼</span>
-            <h2 className="text-2xl font-bold text-[#1a3b0e]">Hygiene Protocols</h2>
-          </div>
-          <ul className="space-y-4 text-slate-600">
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Hand sanitization stations are available throughout the venue</span>
+        {/* You're Welcome To Section */}
+        <section style={styles.welcomeSection}>
+          <h2 style={styles.welcomeTitle}>You're Welcome To:</h2>
+          <ul style={styles.rulesList}>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Take beautiful, non-flash photos and tag us @Mystikcafe</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Hand washing is required before and after animal interactions</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Join our staff-led reptile experiences</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Animal enclosures are cleaned and sanitized regularly</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Ask questions! We love sharing facts and stories</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-[#38761D] font-bold text-xl">✓</span>
-              <span>Common surfaces are disinfected throughout the day</span>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Explore each zone at your own pace and enjoy the ambiance</span>
+            </li>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Request a closer look at your favorite animal (when available)</span>
+            </li>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Share your experience on social media and spread the wonder</span>
+            </li>
+            <li style={styles.ruleItem}>
+              <span style={styles.ruleIconYes}>✅</span>
+              <span>Bring your curiosity and sense of adventure</span>
             </li>
           </ul>
         </section>
-
-        {/* Health Considerations */}
-        <section className="bg-white rounded-2xl p-8 shadow-md">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl">⚕️</span>
-            <h2 className="text-2xl font-bold text-[#1a3b0e]">Health Considerations</h2>
-          </div>
-          <div className="space-y-4 text-slate-600">
-            <p className="leading-relaxed">
-              <strong className="text-[#1a3b0e]">Allergies:</strong> Please inform staff if you have any known allergies to animals or animal dander before your visit.
-            </p>
-            <p className="leading-relaxed">
-              <strong className="text-[#1a3b0e]">Immune Concerns:</strong> Guests with compromised immune systems should consult their healthcare provider before visiting.
-            </p>
-            <p className="leading-relaxed">
-              <strong className="text-[#1a3b0e]">Pregnancy:</strong> Pregnant guests can enjoy viewing the animals but should avoid direct contact as a precaution.
-            </p>
-            <p className="leading-relaxed">
-              <strong className="text-[#1a3b0e]">First Aid:</strong> A first aid kit is available on-site and staff are trained in basic first aid procedures.
-            </p>
-          </div>
-        </section>
-
-        {/* Emergency Procedures */}
-        <section className="bg-[#1a3b0e] text-white rounded-2xl p-8">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-4xl">🚨</span>
-            <h2 className="text-2xl font-bold">Emergency Procedures</h2>
-          </div>
-          <p className="text-white/80 mb-6 leading-relaxed">
-            In case of emergency, please follow staff instructions immediately. Emergency exits are clearly marked throughout the venue. Staff members are trained in emergency protocols and will guide you to safety.
-          </p>
-          <p className="text-white/80">
-            <strong className="text-[#8FCE00]">Emergency Contact:</strong> If you experience any issues during your visit, please alert a staff member immediately or call our front desk.
-          </p>
-        </section>
-
       </div>
-    </main>
+
+      {/* Jungle Banner */}
+      <div style={styles.jungleBanner} />
+
+      {/* Just Remember Section */}
+      <section style={styles.rememberSection}>
+        <div style={styles.rememberContainer}>
+          <div style={styles.rememberHeader}>
+            <span style={styles.rememberIcon}>💡</span>
+            <h2 style={styles.rememberTitle}>Just Remember:</h2>
+          </div>
+          <div style={styles.rememberContent}>
+            <div>
+              <p style={styles.rememberIntro}>
+                Mystik is not a zoo. It is a sanctuary of design, discovery, and respect — for animals 
+                and humans alike. Thanks for being part of the magic. <span style={styles.rememberEmoji}>💚</span>
+              </p>
+            </div>
+            <ul style={styles.rememberList}>
+              <li style={styles.rememberListItem}>
+                Reptiles can be shy — if they walk away or hide, that is their way of saying "not right now"
+              </li>
+              <li style={styles.rememberListItem}>
+                Touch only when invited by staff, and always with gentle hands
+              </li>
+              <li style={styles.rememberListItem}>
+                This is a calm, immersive space — let us keep noise low and vibes high
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* For Everyone Section */}
+      <section style={styles.everyoneSection}>
+        <div style={styles.everyoneContainer}>
+          <div style={styles.everyoneHeader}>
+            <h2 style={styles.everyoneTitle}>Safety Tips for Everyone</h2>
+            <p style={styles.everyoneSubtitle}>
+              Whether you are 5 or 95, these friendly reminders help us all have the best experience together.
+            </p>
+          </div>
+          <div style={styles.everyoneGrid}>
+            {/* For Kids */}
+            <div style={styles.everyoneCard}>
+              <div style={styles.everyoneCardIcon}>👧</div>
+              <h3 style={styles.everyoneCardTitle}>For Our Little Explorers</h3>
+              <p style={styles.everyoneCardText}>
+                Stay close to your grown-ups at all times. Use your "inside voice" so you do not startle our 
+                animal friends. Walking feet only, please! If you want to see an animal up close, just ask 
+                a staff member — we love showing off our scaly friends. Remember, gentle touches only, and 
+                always wash your hands after saying hello to our reptiles.
+              </p>
+            </div>
+
+            {/* For Adults */}
+            <div style={styles.everyoneCard}>
+              <div style={styles.everyoneCardIcon}>👨‍👩‍👧</div>
+              <h3 style={styles.everyoneCardTitle}>For Parents & Guardians</h3>
+              <p style={styles.everyoneCardText}>
+                Please keep children within arm's reach at all times. Help your little ones understand that 
+                our animals are living creatures who need space and quiet. Model calm behavior — kids follow 
+                your lead! If your child is nervous, that is okay. Watching from a distance is always an option. 
+                Let us know if you have any concerns and we will make sure everyone feels comfortable.
+              </p>
+            </div>
+
+            {/* For Accessibility */}
+            <div style={styles.everyoneCard}>
+              <div style={styles.everyoneCardIcon}>♿</div>
+              <h3 style={styles.everyoneCardTitle}>For Guests with Disabilities</h3>
+              <p style={styles.everyoneCardText}>
+                Our space is wheelchair accessible and we are happy to accommodate any needs. If you require 
+                extra time, a quieter experience, or any other assistance, please let us know. Our staff can 
+                bring animals to you if mobility is a concern. Sensory-sensitive guests are welcome to request 
+                quieter times or a more gradual introduction to our space. Your comfort matters to us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing Section */}
+      <section style={styles.closingSection}>
+        <div style={styles.closingContainer}>
+          <p style={styles.closingText}>
+            These rules exist because we care — about you, about our animals, and about creating a 
+            space where wonder can happen safely. When everyone follows these simple guidelines, 
+            magic happens.
+          </p>
+          <p style={styles.closingHighlight}>
+            Thank you for respecting the wild. 🦎
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }
