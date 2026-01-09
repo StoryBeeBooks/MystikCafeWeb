@@ -273,8 +273,8 @@ export default function AboutPage() {
               Mystik Café was born from a simple yet powerful idea: <strong>What if a coffee shop could be a portal to the wild?</strong>
             </p>
             <p style={styles.storyText}>
-              We didn't just want to serve coffee. We wanted to spark curiosity. We believed that in a busy world, 
-              people needed a place to pause, breathe, and reconnect—not just with each other, but with the 
+              We did not just want to serve coffee. We wanted to spark curiosity. We believed that in a busy world, 
+              people needed a place to pause, breathe, and reconnect, not just with each other, but with the 
               fascinating creatures we share this planet with.
             </p>
             <p style={styles.storyText}>
@@ -310,7 +310,7 @@ export default function AboutPage() {
                 To inspire curiosity, compassion, and a deeper connection to the natural world.
               </p>
               <p style={styles.mvText}>
-                We are more than a café—we are a living classroom. We exist to bridge the gap between 
+                We are more than a café. We are a living classroom. We exist to bridge the gap between 
                 humans and nature, proving that understanding leads to caring, and caring leads to conservation.
               </p>
               <span style={styles.mvHighlight}>
@@ -326,7 +326,7 @@ export default function AboutPage() {
                 A world where every creature is viewed with wonder and respect.
               </p>
               <p style={styles.mvText}>
-                We envision a community that dares to look closer—where an afternoon coffee break becomes 
+                We envision a community that dares to look closer, where an afternoon coffee break becomes 
                 a moment of discovery, and where fear of the unknown is replaced by fascination. We strive 
                 to be a hub where artists, families, and explorers come together to celebrate the wild beauty of life.
               </p>
@@ -369,7 +369,7 @@ export default function AboutPage() {
                 <p style={styles.pillarCardText}>
                   Our animals are family. We uphold the highest standards of ethical care and enrichment, 
                   ensuring every resident thrives. From the smallest gecko to the oldest tortoise, every 
-                  creature lives in a habitat designed for their wellbeing—not just for display.
+                  creature lives in a habitat designed for their wellbeing, not just for display.
                 </p>
               </div>
             </div>
@@ -395,8 +395,8 @@ export default function AboutPage() {
                 <div style={styles.pillarNumber}>2</div>
                 <h4 style={styles.pillarCardTitle}>Community & Connection</h4>
                 <p style={styles.pillarCardText}>
-                  Mystik is a home for the curious—a space where local staff, passionate educators, and 
-                  visitors connect. Whether you're an artist sketching a lizard or a student learning 
+                  Mystik is a home for the curious, a space where local staff, passionate educators, and 
+                  visitors connect. Whether you are an artist sketching a lizard or a student learning 
                   about ecosystems, you belong here.
                 </p>
               </div>
@@ -424,7 +424,7 @@ export default function AboutPage() {
                 <h4 style={styles.pillarCardTitle}>Craft & Indulgence</h4>
                 <p style={styles.pillarCardText}>
                   We take our food as seriously as our fauna. From bold, locally roasted coffee to our 
-                  signature nature-inspired desserts and premium ice creams, every menu item is crafted 
+                  signature desserts inspired by nature and premium ice creams, every menu item is crafted 
                   to surprise and delight. We believe a great experience tastes as good as it feels.
                 </p>
               </div>
