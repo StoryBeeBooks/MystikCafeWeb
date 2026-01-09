@@ -20,14 +20,34 @@ html {
   font-size: 64px;
 }
 
+/* Desktop: 2 lines - "Unforgettable Adventure" / "Awaits" */
+.hero-break-mobile {
+  display: none;
+}
+.hero-break-always {
+  display: block;
+  content: '';
+}
+.hero-space {
+  display: inline;
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 42px;
   }
 }
 
+/* Mobile: 3 lines - each word on its own line */
 @media (max-width: 480px) {
   .hero-title {
     font-size: 32px;
+  }
+  .hero-break-mobile {
+    display: block;
+    content: '';
+  }
+  .hero-space {
+    display: none;
   }
 }

@@ -265,8 +265,11 @@ export default function Home() {
             lineHeight: '1.2',
             margin: 0,
           }}>
-            <span style={{ color: '#FF91A4' }}>Unforgettable</span>{' '}
-            <span style={{ color: '#A8D8EA' }}>Adventure</span>{' '}
+            <span style={{ color: '#FF91A4' }}>Unforgettable</span>
+            <br className="hero-break-mobile" />
+            <span className="hero-space">{' '}</span>
+            <span style={{ color: '#A8D8EA' }}>Adventure</span>
+            <br className="hero-break-always" />
             <span style={{ color: '#FFD4A3' }}>Awaits</span>
           </h1>
         </div>
