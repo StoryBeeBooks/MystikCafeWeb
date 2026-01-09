@@ -18,7 +18,7 @@ export default function Footer() {
         
         {/* Join Us text */}
         <p 
-          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-16 md:mb-20"
+          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-24 md:mb-32"
           style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
         >
           JOIN US
@@ -27,10 +27,10 @@ export default function Footer() {
         {/* Main CTA Button */}
         <Link href="/book">
           <button 
-            className="text-white text-5xl font-bold tracking-wider px-12 md:px-20 py-6 md:py-8 bg-transparent border-4 border-white rounded-3xl hover:bg-black active:bg-black transition-all duration-300"
+            className="text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider px-16 md:px-24 py-8 md:py-10 leading-tight bg-transparent border-4 border-white rounded-3xl hover:bg-black active:bg-black transition-all duration-300"
             style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
           >
-            Explorers of the Wild
+            Explorers<br />of the Wild
           </button>
         </Link>
         
