@@ -253,7 +253,7 @@ export default function Home() {
         {/* Hero Title */}
         <div style={{
           position: 'absolute',
-          top: '10%',
+          top: '7%',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 20,
