@@ -62,6 +62,7 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '48px',
+    textAlign: 'center' as const,
   },
   columnTitle: {
     color: 'white',
@@ -69,6 +70,7 @@ const styles = {
     fontFamily: 'Rubik Distressed, sans-serif',
     letterSpacing: '0.1em',
     marginBottom: '20px',
+    textAlign: 'center' as const,
   },
   linksList: {
     listStyle: 'none',
@@ -88,6 +90,7 @@ const styles = {
   socialIcons: {
     display: 'flex',
     gap: '16px',
+    justifyContent: 'center',
   },
   socialLink: {
     color: 'rgba(255, 255, 255, 0.8)',
