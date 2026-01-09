@@ -18,7 +18,7 @@ export default function Footer() {
         
         {/* Join Us text */}
         <p 
-          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-32 md:mb-48"
+          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-40 md:mb-56"
           style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
         >
           JOIN US
@@ -31,7 +31,7 @@ export default function Footer() {
             style={{ 
               fontFamily: 'Rubik Distressed, sans-serif',
               lineHeight: '1.8',
-              padding: '80px 160px',
+              padding: '40px 80px',
               cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
             }}
           >
