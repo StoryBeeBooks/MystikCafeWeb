@@ -107,6 +107,22 @@ const styles = {
     fontSize: 'clamp(11px, 1.6vw, 14px)',
     lineHeight: '1.8',
   },
+  schedule: {
+    position: 'relative' as const,
+    zIndex: 10,
+    textAlign: 'center' as const,
+    padding: 'clamp(16px, 3vw, 24px) clamp(16px, 3vw, 24px) 0',
+  },
+  scheduleText: {
+    color: 'rgba(255, 255, 255, 0.85)',
+    fontSize: 'clamp(12px, 1.8vw, 15px)',
+    fontWeight: '500',
+    marginBottom: '4px',
+  },
+  scheduleSubtext: {
+    color: 'rgba(255, 255, 255, 0.6)',
+    fontSize: 'clamp(10px, 1.5vw, 13px)',
+  },
   copyright: {
     position: 'relative' as const,
     zIndex: 10,
@@ -280,6 +296,12 @@ export default function Footer() {
             </div>
 
           </div>
+        </div>
+
+        {/* Schedule */}
+        <div style={styles.schedule}>
+          <p style={styles.scheduleText}>Open Daily 11AM – 6:30PM</p>
+          <p style={styles.scheduleSubtext}>Last Admission 6PM · Closed Wednesdays</p>
         </div>
 
         {/* Copyright */}
