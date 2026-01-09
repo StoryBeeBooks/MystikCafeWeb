@@ -36,13 +36,14 @@ html {
   display: inline;
 }
 
+/* Tablet portrait */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 42px;
   }
 }
 
-/* Mobile: 3 lines - each word on its own line */
+/* Mobile portrait: 3 lines - each word on its own line */
 @media (max-width: 480px) {
   .hero-title {
     font-size: 32px;
@@ -53,5 +54,34 @@ html {
   }
   .hero-space {
     display: none;
+  }
+}
+
+/* Landscape mobile - reduce title size and adjust position */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-title {
+    font-size: clamp(20px, 5vh, 32px);
+  }
+  .hero-break-mobile {
+    display: none;
+  }
+  .hero-break-always {
+    display: inline;
+  }
+  .hero-space {
+    display: inline;
+  }
+  .hero-title-container {
+    top: 3% !important;
+  }
+}
+
+/* Very small landscape screens */
+@media (max-height: 400px) and (orientation: landscape) {
+  .hero-title {
+    font-size: clamp(16px, 4vh, 24px);
+  }
+  .hero-title-container {
+    top: 2% !important;
   }
 }

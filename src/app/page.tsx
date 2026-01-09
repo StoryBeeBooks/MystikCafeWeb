@@ -24,7 +24,7 @@ function LoadingScreen({ progress }: { progress: number }) {
   
   const loadingStyles = {
     container: {
-      position: 'absolute' as const,
+      position: 'fixed' as const,
       top: 0,
       left: 0,
       right: 0,
@@ -35,7 +35,7 @@ function LoadingScreen({ progress }: { progress: number }) {
       justifyContent: 'center',
       backgroundColor: '#0D2818',
       padding: '24px',
-      zIndex: 100,
+      zIndex: 9999,
     },
     emojiRow: {
       display: 'flex',
@@ -139,7 +139,7 @@ const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.or
 const experienceStyles = {
   section: {
     backgroundColor: '#0D2818',
-    padding: '80px 24px',
+    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
   },
   container: {
     maxWidth: '1200px',
@@ -147,16 +147,16 @@ const experienceStyles = {
   },
   header: {
     textAlign: 'center' as const,
-    marginBottom: '60px',
+    marginBottom: 'clamp(30px, 6vw, 60px)',
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: '48px',
+    fontSize: 'clamp(28px, 5vw, 48px)',
     color: '#F5E6D3',
-    marginBottom: '16px',
+    marginBottom: 'clamp(8px, 2vw, 16px)',
   },
   subtitle: {
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2vw, 18px)',
     color: 'rgba(245, 230, 211, 0.8)',
     maxWidth: '600px',
     margin: '0 auto',
@@ -164,8 +164,8 @@ const experienceStyles = {
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '40px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+    gap: 'clamp(20px, 4vw, 40px)',
   },
   card: {
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -185,16 +185,16 @@ const experienceStyles = {
     objectFit: 'cover' as const,
   },
   cardContent: {
-    padding: '24px',
+    padding: 'clamp(16px, 3vw, 24px)',
   },
   cardTitle: {
     fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: '28px',
+    fontSize: 'clamp(20px, 3vw, 28px)',
     color: '#F5E6D3',
-    marginBottom: '12px',
+    marginBottom: 'clamp(8px, 1.5vw, 12px)',
   },
   cardText: {
-    fontSize: '16px',
+    fontSize: 'clamp(14px, 1.8vw, 16px)',
     color: 'rgba(245, 230, 211, 0.75)',
     lineHeight: '1.7',
   },
@@ -203,7 +203,7 @@ const experienceStyles = {
 const testimonialStyles = {
   section: {
     backgroundColor: '#F5E6D3',
-    padding: '80px 24px',
+    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
   },
   container: {
     maxWidth: '1200px',
@@ -211,44 +211,44 @@ const testimonialStyles = {
   },
   header: {
     textAlign: 'center' as const,
-    marginBottom: '60px',
+    marginBottom: 'clamp(30px, 6vw, 60px)',
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: '42px',
+    fontSize: 'clamp(28px, 5vw, 42px)',
     color: '#0D2818',
-    marginBottom: '16px',
+    marginBottom: 'clamp(8px, 2vw, 16px)',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '30px',
-    marginBottom: '60px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+    gap: 'clamp(16px, 3vw, 30px)',
+    marginBottom: 'clamp(30px, 6vw, 60px)',
   },
   card: {
     backgroundColor: 'white',
-    borderRadius: '20px',
-    padding: '30px',
+    borderRadius: 'clamp(12px, 2vw, 20px)',
+    padding: 'clamp(20px, 3vw, 30px)',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     position: 'relative' as const,
     display: 'flex',
     flexDirection: 'column' as const,
-    minHeight: '320px',
+    minHeight: 'clamp(260px, 30vw, 320px)',
   },
   quote: {
     position: 'absolute' as const,
-    top: '15px',
-    left: '20px',
-    fontSize: '60px',
+    top: 'clamp(10px, 2vw, 15px)',
+    left: 'clamp(12px, 2vw, 20px)',
+    fontSize: 'clamp(40px, 6vw, 60px)',
     color: 'rgba(13, 40, 24, 0.1)',
     fontFamily: 'Georgia, serif',
     lineHeight: '1',
   },
   text: {
-    fontSize: '15px',
+    fontSize: 'clamp(13px, 1.8vw, 15px)',
     color: '#4A4A4A',
     lineHeight: '1.7',
-    marginBottom: '20px',
+    marginBottom: 'clamp(12px, 2vw, 20px)',
     position: 'relative' as const,
     zIndex: 1,
     flex: '1',
@@ -256,11 +256,11 @@ const testimonialStyles = {
   author: {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: 'clamp(8px, 1.5vw, 12px)',
   },
   avatar: {
-    width: '45px',
-    height: '45px',
+    width: 'clamp(36px, 5vw, 45px)',
+    height: 'clamp(36px, 5vw, 45px)',
     borderRadius: '50%',
     backgroundColor: '#1B5E20',
     display: 'flex',
@@ -268,28 +268,28 @@ const testimonialStyles = {
     justifyContent: 'center',
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2vw, 18px)',
   },
   authorName: {
     fontWeight: 'bold',
     color: '#0D2818',
-    fontSize: '16px',
+    fontSize: 'clamp(14px, 1.8vw, 16px)',
   },
   authorLocation: {
     color: '#888',
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 1.6vw, 14px)',
   },
   stars: {
     color: '#FFB800',
-    marginBottom: '15px',
-    fontSize: '18px',
+    marginBottom: 'clamp(10px, 1.5vw, 15px)',
+    fontSize: 'clamp(14px, 2vw, 18px)',
   },
 };
 
 const visitStyles = {
   section: {
     backgroundColor: '#0D2818',
-    padding: '80px 24px',
+    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
     textAlign: 'center' as const,
   },
   container: {
@@ -298,44 +298,44 @@ const visitStyles = {
   },
   tagline: {
     fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: '24px',
+    fontSize: 'clamp(16px, 3vw, 24px)',
     color: '#1B5E20',
-    marginBottom: '20px',
+    marginBottom: 'clamp(12px, 2vw, 20px)',
     letterSpacing: '0.2em',
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: '42px',
+    fontSize: 'clamp(28px, 5vw, 42px)',
     color: '#F5E6D3',
-    marginBottom: '8px',
+    marginBottom: 'clamp(4px, 1vw, 8px)',
   },
   location: {
-    fontSize: '20px',
+    fontSize: 'clamp(14px, 2.5vw, 20px)',
     color: '#1B5E20',
-    marginBottom: '30px',
+    marginBottom: 'clamp(16px, 3vw, 30px)',
     fontWeight: 'bold',
   },
   description: {
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2vw, 18px)',
     color: 'rgba(245, 230, 211, 0.85)',
     lineHeight: '1.8',
-    marginBottom: '40px',
+    marginBottom: 'clamp(24px, 4vw, 40px)',
   },
   note: {
-    fontSize: '14px',
+    fontSize: 'clamp(12px, 1.6vw, 14px)',
     color: 'rgba(245, 230, 211, 0.6)',
-    marginBottom: '40px',
+    marginBottom: 'clamp(24px, 4vw, 40px)',
     fontStyle: 'italic',
   },
   ctaButton: {
     display: 'inline-block',
     backgroundColor: '#F5E6D3',
     color: '#0D2818',
-    padding: '18px 50px',
+    padding: 'clamp(12px, 2vw, 18px) clamp(30px, 5vw, 50px)',
     borderRadius: '40px',
     textDecoration: 'none',
     fontWeight: 'normal',
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2vw, 18px)',
     fontFamily: 'Rubik Distressed, sans-serif',
     cursor: lizardCursor,
     transition: 'all 0.3s ease',
@@ -403,7 +403,7 @@ export default function Home() {
         />
         
         {/* Hero Title */}
-        <div style={{
+        <div className="hero-title-container" style={{
           position: 'absolute',
           top: '7%',
           left: '50%',
