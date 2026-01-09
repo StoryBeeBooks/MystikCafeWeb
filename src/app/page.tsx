@@ -75,21 +75,165 @@ const experienceStyles = {
     fontSize: '16px',
     color: 'rgba(245, 230, 211, 0.75)',
     lineHeight: '1.7',
+  },
+};
+
+const testimonialStyles = {
+  section: {
+    backgroundColor: '#F5E6D3',
+    padding: '80px 24px',
+  },
+  container: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  header: {
+    textAlign: 'center' as const,
+    marginBottom: '60px',
+  },
+  title: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: '42px',
+    color: '#0D2818',
+    marginBottom: '16px',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '30px',
+    marginBottom: '60px',
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: '20px',
+    padding: '30px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    position: 'relative' as const,
+  },
+  quote: {
+    position: 'absolute' as const,
+    top: '15px',
+    left: '20px',
+    fontSize: '60px',
+    color: 'rgba(13, 40, 24, 0.1)',
+    fontFamily: 'Georgia, serif',
+    lineHeight: '1',
+  },
+  text: {
+    fontSize: '15px',
+    color: '#4A4A4A',
+    lineHeight: '1.7',
     marginBottom: '20px',
+    position: 'relative' as const,
+    zIndex: 1,
+  },
+  author: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  avatar: {
+    width: '45px',
+    height: '45px',
+    borderRadius: '50%',
+    backgroundColor: '#1B5E20',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '18px',
+  },
+  authorName: {
+    fontWeight: 'bold',
+    color: '#0D2818',
+    fontSize: '16px',
+  },
+  authorLocation: {
+    color: '#888',
+    fontSize: '14px',
+  },
+  stars: {
+    color: '#FFB800',
+    marginBottom: '15px',
+    fontSize: '18px',
+  },
+};
+
+const visitStyles = {
+  section: {
+    backgroundColor: '#0D2818',
+    padding: '80px 24px',
+    textAlign: 'center' as const,
+  },
+  container: {
+    maxWidth: '800px',
+    margin: '0 auto',
+  },
+  tagline: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: '24px',
+    color: '#1B5E20',
+    marginBottom: '20px',
+    letterSpacing: '0.2em',
+  },
+  title: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: '42px',
+    color: '#F5E6D3',
+    marginBottom: '8px',
+  },
+  location: {
+    fontSize: '20px',
+    color: '#1B5E20',
+    marginBottom: '30px',
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: '18px',
+    color: 'rgba(245, 230, 211, 0.85)',
+    lineHeight: '1.8',
+    marginBottom: '40px',
+  },
+  note: {
+    fontSize: '14px',
+    color: 'rgba(245, 230, 211, 0.6)',
+    marginBottom: '40px',
+    fontStyle: 'italic',
   },
   ctaButton: {
     display: 'inline-block',
-    backgroundColor: '#1B5E20',
-    color: '#F5E6D3',
-    padding: '12px 28px',
-    borderRadius: '30px',
+    backgroundColor: '#F5E6D3',
+    color: '#0D2818',
+    padding: '18px 50px',
+    borderRadius: '40px',
     textDecoration: 'none',
     fontWeight: 'bold',
-    fontSize: '14px',
+    fontSize: '18px',
+    fontFamily: 'Rubik Distressed, sans-serif',
     cursor: lizardCursor,
-    transition: 'background-color 0.3s ease, transform 0.3s ease',
+    transition: 'all 0.3s ease',
+    border: '2px solid #F5E6D3',
   },
 };
+
+const testimonials = [
+  {
+    name: "Grace",
+    location: "Toronto",
+    text: "I've visited twice now and both experiences were amazing! The staff are very kind, accommodating, knowledgeable, and are passionate about providing high quality care to their reptile friends. Perfect for any occasion (solo hangout, dates, friend groups, families with young kids)",
+  },
+  {
+    name: "Anna",
+    location: "Sydney, AU",
+    text: "I'm still buzzing from this place! North America's first reptile café, and it's hands-down one of the coolest experiences ever. Getting up close with these amazing little reptiles, guided by passionate animal ambassadors, was unreal. Add surprisingly good coffee to the mix and I'm obsessed. Already planning my next visit! Amazing staff, amazing vibes, amazing experience. 10/10. ❤️😍",
+  },
+  {
+    name: "Bruce",
+    location: "New York, NY",
+    text: "A very Unique experience at Mystik Cafe! These ancient creatures had roamed around earth for millions of years and now you got a chance to interact with them. A M A Z I N G! You can also tell the employees are extremely passionate about what they are doing, it's great seeing a local Canadian business providing jobs for local enthusiasts!",
+  },
+];
 
 export default function Home() {
   return (
@@ -157,20 +301,6 @@ export default function Home() {
                   nature's most stunning colors. These tiny amphibians are living proof that 
                   the most beautiful things often come in small packages.
                 </p>
-                <Link 
-                  href="/book"
-                  style={experienceStyles.ctaButton}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#2E7D32';
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#1B5E20';
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                >
-                  Book Your Visit →
-                </Link>
               </div>
             </div>
 
@@ -204,20 +334,6 @@ export default function Home() {
                   colors before your eyes. With their swiveling eyes and lightning-fast tongues, 
                   these ancient reptiles are nature's ultimate shape-shifters.
                 </p>
-                <Link 
-                  href="/book"
-                  style={experienceStyles.ctaButton}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#2E7D32';
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#1B5E20';
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                >
-                  Book Your Visit →
-                </Link>
               </div>
             </div>
           </div>
@@ -230,6 +346,71 @@ export default function Home() {
             }
           }
         `}</style>
+      </section>
+
+      {/* Testimonials Section */}
+      <section style={testimonialStyles.section}>
+        <div style={testimonialStyles.container}>
+          <div style={testimonialStyles.header}>
+            <h2 style={testimonialStyles.title}>What Our Guests Say</h2>
+          </div>
+
+          <div style={testimonialStyles.grid}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} style={testimonialStyles.card}>
+                <span style={testimonialStyles.quote}>"</span>
+                <div style={testimonialStyles.stars}>★★★★★</div>
+                <p style={testimonialStyles.text}>"{testimonial.text}"</p>
+                <div style={testimonialStyles.author}>
+                  <div style={testimonialStyles.avatar}>{testimonial.name[0]}</div>
+                  <div>
+                    <div style={testimonialStyles.authorName}>{testimonial.name}</div>
+                    <div style={testimonialStyles.authorLocation}>{testimonial.location}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <style jsx>{`
+          @media (max-width: 900px) {
+            section > div > div:nth-child(2) {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
+      </section>
+
+      {/* Visit Us Section */}
+      <section style={visitStyles.section}>
+        <div style={visitStyles.container}>
+          <p style={visitStyles.tagline}>Sip. Explore. Connect.</p>
+          <h2 style={visitStyles.title}>Visit Us in Person</h2>
+          <p style={visitStyles.location}>at Kensington Market</p>
+          <p style={visitStyles.description}>
+            Where jungle thrills and ocean vibes collide.<br /><br />
+            Sip, snack, and connect in a dreamy world of glowing exotic fishes, 
+            curious reptiles, and wild surprises. Mystik is your escape into the unexpected.
+          </p>
+          <p style={visitStyles.note}>
+            Reservations recommended for "Reptile Jungle". Walk-ins not guaranteed.
+          </p>
+          <Link 
+            href="/book"
+            style={visitStyles.ctaButton}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#0D2818';
+              e.currentTarget.style.color = '#F5E6D3';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#F5E6D3';
+              e.currentTarget.style.color = '#0D2818';
+            }}
+          >
+            Book Your Visit
+          </Link>
+        </div>
       </section>
     </>
   );
