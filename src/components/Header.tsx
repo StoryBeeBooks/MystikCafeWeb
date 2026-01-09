@@ -107,6 +107,7 @@ const styles = {
     alignItems: 'center',
     gap: '20px',
     borderBottom: '1px solid rgba(139, 69, 69, 0.1)',
+    zIndex: 1001,
   },
   mobileLink: {
     color: '#6B2D2D',
