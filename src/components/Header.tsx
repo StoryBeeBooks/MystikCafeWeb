@@ -126,7 +126,9 @@ const styles = {
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [bookingHover, setBookingHover] = useState(false);
+  const [petsHover, setPetsHover] = useState(false);
   const [signInHover, setSignInHover] = useState(false);
+  const [phoneHover, setPhoneHover] = useState(false);
 
   return (
     <>
@@ -149,6 +151,46 @@ export default function Header() {
 
           {/* Right Section - Desktop */}
           <div style={styles.rightSection} className="desktop-nav">
+            {/* Phone Link */}
+            <a 
+              href="tel:647-560-6524"
+              style={styles.iconLink}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#0D3D0D';
+                setPhoneHover(true);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#1B5E20';
+                setPhoneHover(false);
+              }}
+            >
+              <svg style={styles.icon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span style={{...styles.tooltip, opacity: phoneHover ? 1 : 0}}>647-560-6524</span>
+            </a>
+
+            {/* Pets Link */}
+            <Link 
+              href="/pets"
+              style={styles.iconLink}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#0D3D0D';
+                setPetsHover(true);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#1B5E20';
+                setPetsHover(false);
+              }}
+            >
+              <svg style={styles.icon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19c-4 0-7-2-7-5 0-2 1.5-3.5 3-4.5.5-3 2-5.5 4-5.5s3.5 2.5 4 5.5c1.5 1 3 2.5 3 4.5 0 3-3 5-7 5z" />
+                <circle cx="9" cy="10" r="1" fill="currentColor" />
+                <circle cx="15" cy="10" r="1" fill="currentColor" />
+              </svg>
+              <span style={{...styles.tooltip, opacity: petsHover ? 1 : 0}}>Pets</span>
+            </Link>
+
             {/* Booking Link */}
             <Link 
               href="/book"
@@ -226,6 +268,20 @@ export default function Header() {
             <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
             <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
           </div>
+          <a 
+            href="tel:647-560-6524" 
+            style={styles.mobileLink}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            📞 647-560-6524
+          </a>
+          <Link 
+            href="/pets" 
+            style={styles.mobileLink}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            🦎 Pets
+          </Link>
           <Link 
             href="/book" 
             style={styles.mobileLink}
