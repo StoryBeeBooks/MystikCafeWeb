@@ -217,6 +217,16 @@ export default function Footer() {
                     Partners
                   </Link>
                 </li>
+                <li style={styles.linkItem}>
+                  <Link 
+                    href="/events" 
+                    style={styles.link}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)'}
+                  >
+                    Events
+                  </Link>
+                </li>
               </ul>
             </div>
 

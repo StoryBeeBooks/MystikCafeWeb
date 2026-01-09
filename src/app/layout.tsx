@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rubik_Dirt, Rubik_Distressed, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const rubikDirt = Rubik_Dirt({
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${rubikDirt.variable} ${rubikDistressed.variable} ${inter.variable}`}>
       <body className="font-[var(--font-inter)] antialiased min-h-screen w-full overflow-x-hidden">
+        <Header />
         <main className="w-full">
           {children}
         </main>
