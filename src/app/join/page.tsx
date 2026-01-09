@@ -99,7 +99,7 @@ const styles = {
     marginBottom: 'clamp(12px, 2vw, 20px)',
   },
   cultureCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(18px, 2.5vw, 22px)',
     color: '#0D2818',
     marginBottom: 'clamp(8px, 1.5vw, 12px)',
@@ -161,7 +161,7 @@ const styles = {
     flex: 1,
   },
   principleTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(18px, 2.5vw, 22px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(8px, 1vw, 12px)',
@@ -201,7 +201,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 20px)',
   },
   conductCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 26px)',
     marginBottom: 'clamp(12px, 2vw, 16px)',
   },
@@ -291,7 +291,7 @@ const styles = {
     marginBottom: 'clamp(12px, 2vw, 16px)',
   },
   roleTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 26px)',
     color: '#F5E6D3',
   },

@@ -5,7 +5,7 @@ export default function EventsPage() {
     <main style={{
       minHeight: '100vh',
       backgroundColor: '#0D2818',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
+      fontFamily: '"Questrial", sans-serif',
     }}>
       {/* Hero Section with Image */}
       <section style={{

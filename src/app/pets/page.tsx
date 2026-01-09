@@ -65,7 +65,7 @@ export default function PetsPage() {
     <main style={{
       minHeight: '100vh',
       backgroundColor: '#0D2818',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
+      fontFamily: '"Questrial", sans-serif',
     }}>
       {/* Hero Section */}
       <section style={{

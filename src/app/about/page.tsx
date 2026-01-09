@@ -121,7 +121,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 24px)',
   },
   mvTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(24px, 4vw, 32px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(16px, 2vw, 20px)',
@@ -199,7 +199,7 @@ const styles = {
     marginBottom: 'clamp(12px, 2vw, 16px)',
   },
   pillarCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 26px)',
     color: '#0D2818',
     marginBottom: 'clamp(12px, 2vw, 16px)',

@@ -129,7 +129,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 20px)',
   },
   impactCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(18px, 2.5vw, 24px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(12px, 2vw, 16px)',
@@ -227,7 +227,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 24px)',
   },
   levelName: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(22px, 3vw, 28px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(12px, 2vw, 16px)',
@@ -249,7 +249,7 @@ const styles = {
     textAlign: 'center' as const,
   },
   gratitudeTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(28px, 5vw, 42px)',
     color: '#0D2818',
     marginBottom: 'clamp(24px, 4vw, 40px)',

@@ -67,7 +67,7 @@ const styles = {
   columnTitle: {
     color: 'white',
     fontSize: 'clamp(14px, 2vw, 18px)',
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     letterSpacing: '0.1em',
     marginBottom: 'clamp(12px, 2vw, 20px)',
     textAlign: 'center' as const,

@@ -147,7 +147,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 20px)',
   },
   whyCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(18px, 2.5vw, 24px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(12px, 2vw, 16px)',
@@ -340,7 +340,7 @@ const styles = {
     textAlign: 'center' as const,
   },
   destinationTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(28px, 5vw, 42px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(24px, 4vw, 40px)',

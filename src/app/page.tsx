@@ -188,7 +188,7 @@ const experienceStyles = {
     padding: 'clamp(16px, 3vw, 24px)',
   },
   cardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 28px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(8px, 1.5vw, 12px)',

@@ -203,7 +203,7 @@ const styles = {
     marginBottom: 'clamp(16px, 2vw, 20px)',
   },
   everyoneCardTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 26px)',
     color: '#F5E6D3',
     marginBottom: 'clamp(12px, 2vw, 16px)',

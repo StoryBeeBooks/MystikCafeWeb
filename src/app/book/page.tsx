@@ -387,6 +387,7 @@ export default function BookPage() {
                     }}>
                       <div>
                         <h3 style={{
+                          fontFamily: '"Antonio", sans-serif',
                           fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                           color: '#4ade80',
                           fontWeight: '700',
