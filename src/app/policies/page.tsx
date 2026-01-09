@@ -612,6 +612,360 @@ export default function PoliciesPage() {
                 <li>Gift cards are not replaceable if lost or stolen</li>
               </ul>
             </div>
+
+            {/* III. Adult Waiver and Release of Liability */}
+            <div style={{
+              backgroundColor: 'rgba(245, 230, 211, 0.03)',
+              borderRadius: '20px',
+              padding: 'clamp(25px, 5vw, 40px)',
+              marginBottom: '32px',
+              border: '1px solid rgba(245, 230, 211, 0.08)',
+            }}>
+              <h3 style={{
+                fontSize: 'clamp(1.3rem, 3vw, 1.6rem)',
+                color: '#F5E6D3',
+                marginBottom: '16px',
+                fontWeight: '700',
+              }}>
+                III. Adult Waiver and Release of Liability and Indemnification Agreement
+              </h3>
+
+              <div style={{
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                borderRadius: '12px',
+                padding: '20px',
+                marginBottom: '24px',
+                borderLeft: '3px solid #ff6b6b',
+              }}>
+                <p style={{ color: '#F5E6D3', fontWeight: '700', fontSize: '1rem', marginBottom: '8px' }}>
+                  PLEASE READ CAREFULLY. THIS IS A LEGALLY BINDING DOCUMENT. BY ENTERING MYSTIK CAFÉ OR PARTICIPATING IN ITS ACTIVITIES, YOU ARE WAIVING CERTAIN LEGAL RIGHTS.
+                </p>
+              </div>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I hereby certify that I am over eighteen (18) years of age, of sound mind, and legally competent to execute this Waiver and Release of Liability and Indemnification Agreement (hereinafter "Release"). I acknowledge and agree to the following terms as a condition of my entry into and participation in any activities at Mystik Café. I further certify that I am not pregnant at the time of participation, I am under the age of 65, and I understand that interactive reptile experiences are not available to individuals who are pregnant and over the age of 65 for safety reasons.
+              </p>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                Mystik Café is an immersive experience offering interactive encounters with live reptiles, amphibians, and aquatic animals (collectively, the "Animals") under staff supervision. For safety reasons, interactive reptile experiences are not available to guests who are pregnant. Observation and non-contact participation remain welcome. My participation is voluntary, and Mystik Café has agreed to permit me to participate in such activities only upon the condition that I execute this Release and agree to be bound by its terms.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                A. Assumption of Inherent Risks
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                I am fully aware of and understand that interacting with, observing, or being in the proximity of live Animals involves inherent and unavoidable risks, including but not limited to:
+              </p>
+
+              <ul style={{ color: '#F5E6D3', paddingLeft: '20px', marginBottom: '16px', lineHeight: '1.9' }}>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Physical harm:</strong> Bites, scratches, allergic reactions, illness, disease transmission, and other forms of bodily injury (including serious injury, disability, or death).</li>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Emotional distress:</strong> Reactions such as fright, anxiety, or phobias, potentially exacerbated by an immersive environment (e.g., fog effects, dim lighting, soundscapes).</li>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Property damage:</strong> To my personal property or the property of others.</li>
+              </ul>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                I acknowledge that Animals are highly sensitive to stress, and improper behavior by guests or unforeseen animal reactions can result in animal harm or death, or harm to persons. I understand that while Mystik Café staff will be present to monitor the experience and offer guidance, full-time, moment-to-moment, individualized supervision cannot be guaranteed at all times for every participant. I freely and voluntarily execute this Release with such knowledge, accepting and assuming full and sole responsibility for all risks of death, personal injury, illness, emotional distress, and/or property loss arising from or in any way connected with my presence at Mystik Café and my participation in the activities provided.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                B. Acknowledgment of Medical & Sensory Considerations
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I confirm that I have no medical, physical, mental, or emotional condition (including but not limited to known allergies to animals, asthma, sensory sensitivities, epilepsy, or phobias) that would adversely affect my ability to safely participate, or that would endanger myself, the Animals, or other guests. I understand that the immersive environment, including potential fog effects, dim lighting, and soundscapes, may impact certain medical or sensory conditions, and I assume all risks associated therewith.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                C. No Insurance Coverage
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I acknowledge that Mystik Café does not provide any medical, liability, or accident insurance coverage for guests, and that my participation is at my own risk. I further acknowledge that participants in such activities and other persons involved in these activities may not be covered under any insurance policy maintained by Mystik Café or its affiliates. I hereby expressly waive any right to make a claim against any such insurance policy maintained by Mystik Café or its affiliates for any injury, loss, or damage arising from my participation.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                D. Voluntary Participation & Release of Liability
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I agree to abide by all rules and regulations set forth by Mystik Café, including those communicated by staff, posted signage, or outlined in this Policy and Waiver. I agree to follow all rules and to undertake all activities in a responsible manner. If I am unwilling or unable to follow any rules, Mystik Café reserves the right to terminate my continuation of such activities and remove me from the premises, and I will not be entitled to any refund of my fees. I hereby release and forever discharge, and agree to hold harmless and indemnify Mystik Café, its owners, employees, volunteers, affiliates, agents, contractors, rescue partners, and representatives, and their respective sureties, insurers, successors, assigns, and legal representatives (collectively, the "Released Parties"), from any and all liability, claim, cause of action, demand, and damages for injury, illness, loss, emotional distress, property damage, or death arising from or related to my participation, whether such injury, death, or property damage is caused by the negligence or intentional act or omission on the part of (i) any other customer of Mystik Café, (ii) any employee, agent, owner, rescue partner, or independent contractor of Mystik Café, or (iii) any other person at Mystik Café, excluding only gross negligence or willful misconduct of the Released Parties.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                E. Indemnification and Legal Defense
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                Furthermore, I agree to defend with counsel chosen by the indemnified party, indemnify, and hold harmless the Released Parties from any and all claims, demands, liabilities, damages, losses, and expenses (including, without limitation, all legal fees and costs on a solicitor-client basis) arising from:
+              </p>
+
+              <ul style={{ color: '#F5E6D3', paddingLeft: '20px', marginBottom: '16px', lineHeight: '1.9' }}>
+                <li style={{ marginBottom: '12px' }}>My actions or omissions, including any failure to comply with Mystik Café policies or staff directions;</li>
+                <li style={{ marginBottom: '12px' }}>Any injury or damage caused by me to other guests, Animals, or property within Mystik Café; or</li>
+                <li style={{ marginBottom: '12px' }}>Any claim brought by a third party arising from my conduct or presence at Mystik Café.</li>
+              </ul>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I agree to provide said defense and indemnity regardless of the merit of the claim. I further agree to pay any and all legal fees and costs of the Released Parties if I bring any action, claim, or demand against any of the Released Parties for any reason for which this Release applies.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                F. Termination of Access
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I understand that any failure to follow Mystik Café rules, staff direction, or safe conduct protocols will result in my immediate removal from the premises without refund.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                G. Binding Effect and Governing Law
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I agree to and hereby bind myself, my heirs, executors, administrators, assigns, and all other legal representatives by executing this Release. If any portion of this Release is found or declared to be invalid or unenforceable, such invalidity shall not affect the remainder of this Release not found to be invalid, and the remainder of this Release shall remain in full force and effect. This Agreement shall be governed by and construed in accordance with the laws of the Province of Ontario, Canada (without regard to its conflict of laws principles). Any and all disputes arising from or relating to this Release or my participation at Mystik Café shall be subject to litigation exclusively within the courts of Toronto, Ontario, Canada.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                H. Final Consent
+              </h4>
+
+              <div style={{
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                borderRadius: '12px',
+                padding: '20px',
+                borderLeft: '3px solid #ff6b6b',
+              }}>
+                <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', fontWeight: '600' }}>
+                  BY EXECUTING THIS RELEASE (WHICH MAY INCLUDE ACCEPTANCE VIA ELECTRONIC SIGNATURE, CHECKBOX, OR PHYSICAL SIGNATURE), I ACKNOWLEDGE THAT I HAVE READ THIS RELEASE IN ITS ENTIRETY, FULLY UNDERSTAND THE CONTENTS HEREOF, HAVE BEEN ADVISED AND HAD THE OPPORTUNITY TO SEEK INDEPENDENT LEGAL COUNSEL OF MY CHOICE, AND CERTIFY THAT I HAVE FREELY AND VOLUNTARILY EXECUTED THIS RELEASE. I FURTHER ACKNOWLEDGE THAT, BUT FOR THE EXECUTION OF THIS RELEASE AND MY AGREEMENT TO BE BOUND BY THE TERMS HEREOF, MYSTIK CAFÉ WOULD NOT AUTHORIZE ME TO ENTER OR PARTICIPATE IN ANY ACTIVITIES AT MYSTIK CAFÉ.
+                </p>
+              </div>
+            </div>
+
+            {/* IV. Minor Waiver and Release of Liability */}
+            <div style={{
+              backgroundColor: 'rgba(245, 230, 211, 0.03)',
+              borderRadius: '20px',
+              padding: 'clamp(25px, 5vw, 40px)',
+              marginBottom: '32px',
+              border: '1px solid rgba(245, 230, 211, 0.08)',
+            }}>
+              <h3 style={{
+                fontSize: 'clamp(1.3rem, 3vw, 1.6rem)',
+                color: '#F5E6D3',
+                marginBottom: '16px',
+                fontWeight: '700',
+              }}>
+                IV. Minor Waiver and Release of Liability and Indemnification Agreement
+              </h3>
+
+              <div style={{
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                borderRadius: '12px',
+                padding: '20px',
+                marginBottom: '24px',
+                borderLeft: '3px solid #ff6b6b',
+              }}>
+                <p style={{ color: '#F5E6D3', fontWeight: '700', fontSize: '1rem', marginBottom: '8px' }}>
+                  PLEASE READ CAREFULLY. THIS IS A LEGALLY BINDING DOCUMENT. BY EXECUTING THIS ON BEHALF OF A MINOR, YOU ARE WAIVING CERTAIN LEGAL RIGHTS ON BEHALF OF THE MINOR AND YOURSELF.
+                </p>
+              </div>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I am the parent or legal guardian of the minor named below and I hereby certify that I am legally competent to execute this Waiver and Release of Liability and Indemnification Agreement (hereinafter "Release") on behalf of the minor. I acknowledge and agree to the following terms as a condition of the minor's entry into and participation in any activities at Mystik Café.
+              </p>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                Mystik Café offers interactive encounters involving live reptiles, amphibians, and aquatic animals (collectively, the "Animals"). My child will be participating in activities that carry inherent risks. I acknowledge that the minor named below is at least five (5) years of age. For safety reasons, interactive reptile experiences are not permitted for children under the age of 5. Observation and guided non-contact experiences may still be available. Mystik Café has agreed to permit my child to participate in these experiences only upon the condition that I execute this Release on their behalf and agree to be bound by its terms.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                A. Assumption of Inherent Risks for the Minor
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                I am fully aware of and understand that the minor interacting with, observing, or being in the proximity of live Animals involves inherent and unavoidable risks, including but not limited to:
+              </p>
+
+              <ul style={{ color: '#F5E6D3', paddingLeft: '20px', marginBottom: '16px', lineHeight: '1.9' }}>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Physical harm:</strong> Bites, scratches, allergic reactions, illness, disease transmission, and other forms of bodily injury (including serious injury, disability, or death).</li>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Emotional distress:</strong> Reactions such as fright, anxiety, or phobias, potentially exacerbated by an immersive environment (e.g., fog effects, dim lighting, soundscapes).</li>
+                <li style={{ marginBottom: '12px' }}><strong style={{ color: '#4ade80' }}>Property damage:</strong> To the minor's personal property or the property of others.</li>
+              </ul>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                I acknowledge, on behalf of the minor, that Animals are highly sensitive to stress, and improper behavior by guests or unforeseen animal reactions can result in animal harm or death, or harm to persons. I understand that while Mystik Café staff will be present to monitor the experience and offer guidance, full-time, moment-to-moment, individualized supervision cannot be guaranteed at all times for every participant. On behalf of the minor, I freely and voluntarily execute this Release with such knowledge, accepting and assuming full and sole responsibility for all risks of death, personal injury, illness, emotional distress, and/or property loss arising from or in any way connected with the minor's presence at Mystik Café and their participation in the activities provided.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                B. Acknowledgment of Medical & Sensory Considerations for the Minor
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I confirm that the minor has no medical, physical, mental, or emotional issue(s), including but not limited to known allergies to animals, asthma, sensory sensitivities, epilepsy, or phobias, that would adversely affect their ability to safely participate, or that would endanger themselves, the Animals, or other guests. I understand that the immersive environment, including potential fog effects, dim lighting, and soundscapes, may impact certain medical or sensory conditions, and I assume all risks associated therewith on behalf of the minor.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                C. No Insurance Coverage
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I understand that the minor is not covered under any medical, accident, or liability insurance maintained by Mystik Café, and I, on behalf of the minor, acknowledge that participants in such activities and other persons involved in these activities may not be covered under any insurance policy maintained by Mystik Café or its affiliates. I hereby expressly waive any right to make a claim under any such insurance policy maintained by Mystik Café or its affiliates for any injury, loss, or damage arising from the minor's participation.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                D. Voluntary Participation & Release of Liability (on Behalf of Minor)
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I, on behalf of the minor, agree to abide by all rules and regulations set forth by Mystik Café, including those communicated by staff, posted signage, or outlined in this Policy and Waiver. I, on behalf of the minor, agree to follow all rules and to undertake all activities in a responsible manner. If I or the minor am/are unwilling or unable to follow any rules, Mystik Café reserves the right to terminate my or the minor's continuation of such activities and remove us from the premises, and we will not be entitled to any refund of our fees. I, on behalf of the minor, hereby release and forever discharge, and agree to hold harmless and indemnify Mystik Café and all Released Parties (as defined in the Adult Waiver) from any and all liability, claim, cause of action, demand, and damages for injury, illness, loss, emotional distress, property damage, or death arising from or related to the minor's participation, whether such injury, death, or property damage is caused by the negligence or intentional act or omission on the part of (i) any other customer of Mystik Café, (ii) any employee, agent, owner, rescue partner, or independent contractor of Mystik Café, or (iii) any other person at Mystik Café, excluding only gross negligence or willful misconduct of the Released Parties.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                E. Indemnification and Legal Defense (on Behalf of Minor)
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '16px' }}>
+                Furthermore, I, on behalf of the minor, agree to defend with counsel chosen by the indemnified party, indemnify, and hold harmless Mystik Café and the Released Parties from any and all claims, demands, liabilities, damages, losses, and expenses (including, without limitation, all legal fees and costs on a solicitor-client basis) arising from:
+              </p>
+
+              <ul style={{ color: '#F5E6D3', paddingLeft: '20px', marginBottom: '16px', lineHeight: '1.9' }}>
+                <li style={{ marginBottom: '12px' }}>The minor's actions or omissions, including any failure to comply with Mystik Café policies or staff directions;</li>
+                <li style={{ marginBottom: '12px' }}>Any injury or damage caused by the minor to other guests, Animals, or property within Mystik Café; or</li>
+                <li style={{ marginBottom: '12px' }}>Any claim brought by a third party arising from the minor's conduct or presence at Mystik Café.</li>
+              </ul>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I agree to provide said defense and indemnity regardless of the merit of the claim. I further agree to pay any and all legal fees and costs of the Released Parties if I or the minor bring any action, claim, or demand against any of the Released Parties for any reason for which this Release applies.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                F. Termination of Access
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I understand that failure to follow Mystik Café's rules, instructions, or animal safety policies may result in immediate removal of the minor and myself from the premises without refund.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                G. Binding Effect and Governing Law
+              </h4>
+
+              <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', marginBottom: '24px' }}>
+                I, on behalf of the minor, agree to and hereby bind our respective heirs, executors, administrators, assigns, and all other legal representatives by executing this Release. If any portion of this Release is found or declared to be invalid or unenforceable, such invalidity shall not affect the remainder of this Release not found to be invalid, and the remainder of this Release shall remain in full force and effect. This Agreement shall be governed by and construed in accordance with the laws of the Province of Ontario, Canada (without regard to its conflict of laws principles). Any and all disputes arising from or relating to this Release or the minor's participation at Mystik Café shall be subject to litigation exclusively within the courts of Toronto, Ontario, Canada.
+              </p>
+
+              <h4 style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#4ade80',
+                marginTop: '24px',
+                marginBottom: '16px',
+                fontWeight: '600',
+              }}>
+                H. Final Consent (on Behalf of Minor)
+              </h4>
+
+              <div style={{
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                borderRadius: '12px',
+                padding: '20px',
+                borderLeft: '3px solid #ff6b6b',
+              }}>
+                <p style={{ color: '#F5E6D3', lineHeight: '1.9', fontSize: '0.95rem', fontWeight: '600' }}>
+                  BY EXECUTING THIS RELEASE (WHICH MAY INCLUDE ACCEPTANCE VIA ELECTRONIC SIGNATURE, CHECKBOX, OR PHYSICAL SIGNATURE), I ACKNOWLEDGE THAT I, ON BEHALF OF THE MINOR, HAVE READ THIS RELEASE IN ITS ENTIRETY, FULLY UNDERSTAND THE CONTENTS HEREOF, HAVE BEEN ADVISED AND HAD THE OPPORTUNITY TO SEEK INDEPENDENT LEGAL COUNSEL OF MY CHOICE, AND CERTIFY THAT I HAVE FREELY AND VOLUNTARILY EXECUTED THIS RELEASE ON BEHALF OF THE MINOR. I ACKNOWLEDGE THAT I HAVE THE AUTHORITY TO SIGN THIS RELEASE ON BEHALF OF THE MINOR. I FURTHER ACKNOWLEDGE THAT, BUT FOR THE EXECUTION OF THIS RELEASE AND MY AGREEMENT TO BE BOUND BY THE TERMS HEREOF, MYSTIK CAFÉ WOULD NOT AUTHORIZE THE MINOR TO ENTER OR PARTICIPATE IN ANY ACTIVITIES AT MYSTIK CAFÉ.
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
