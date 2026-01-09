@@ -33,6 +33,14 @@
      - `Rubik Distressed` - Distressed/worn texture for headings
      - `Inter` - Clean body text
 
+7. **Tailwind CSS Spacing (IMPORTANT):**
+   - Tailwind spacing classes like `mb-`, `px-`, `py-` may NOT apply correctly in some cases.
+   - **Solution:** For critical spacing/padding, use inline CSS styles instead:
+     ```jsx
+     style={{ marginBottom: '64px', padding: '20px 40px' }}
+     ```
+   - This ensures the spacing is always applied regardless of Tailwind configuration.
+
 ## Project Goal
 We are building "Mystik Cafe" (Reptile Jungle).
 - **Vibe:** Jungle, Adventure, Educational.

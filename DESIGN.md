@@ -46,6 +46,11 @@ When building UI, use these metaphors to guide your code decisions:
    ```
 > ⚠️ **Note:** Do NOT use `next/font/google` with CSS variables for this project. Static export (`output: 'export'`) breaks the font loading. Always use the CSS `@import` method above.
 
+> ⚠️ **Note (Tailwind Spacing):** Tailwind spacing classes (`mb-`, `px-`, `py-`, etc.) may NOT apply correctly in some cases. For critical spacing/padding, always use inline CSS styles instead:
+> ```jsx
+> style={{ marginBottom: '64px', padding: '20px 40px' }}
+> ```
+
 ## 4. Motion & Interaction (The "Alive" Factor)
 - **Cursor (Lizard on Hover):** All links and buttons must show the lizard emoji cursor on hover:
   ```jsx
