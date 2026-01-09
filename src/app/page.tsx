@@ -109,6 +109,9 @@ const testimonialStyles = {
     padding: '30px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     position: 'relative' as const,
+    display: 'flex',
+    flexDirection: 'column' as const,
+    minHeight: '320px',
   },
   quote: {
     position: 'absolute' as const,
@@ -126,6 +129,7 @@ const testimonialStyles = {
     marginBottom: '20px',
     position: 'relative' as const,
     zIndex: 1,
+    flex: '1',
   },
   author: {
     display: 'flex',
@@ -245,6 +249,27 @@ export default function Home() {
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(https://assets.k12path.com/MystikCafe/10126758_4371323.jpg)' }}
         />
+        
+        {/* Hero Title */}
+        <div style={{
+          position: 'absolute',
+          top: '15%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 20,
+          textAlign: 'center',
+        }}>
+          <h1 style={{
+            fontFamily: 'Rubik Distressed, sans-serif',
+            fontSize: '64px',
+            lineHeight: '1.2',
+            margin: 0,
+          }}>
+            <span style={{ color: '#FFB5BA' }}>Unforgettable</span>
+            <br />
+            <span style={{ color: '#B8E6CF' }}>Adventure</span>
+          </h1>
+        </div>
         
         {/* 3D Scene Overlay */}
         <div className="relative z-10 h-full w-full">
