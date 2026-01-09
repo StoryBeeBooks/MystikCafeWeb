@@ -81,9 +81,11 @@ const styles = {
   },
   cultureGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+    gridTemplateColumns: 'repeat(2, 1fr)',
     gap: 'clamp(20px, 3vw, 32px)',
     marginTop: 'clamp(40px, 6vw, 60px)',
+    maxWidth: '800px',
+    margin: 'clamp(40px, 6vw, 60px) auto 0',
   },
   cultureCard: {
     backgroundColor: 'white',
@@ -698,9 +700,9 @@ export default function JoinPage() {
             If you are passionate about creating extraordinary experiences and believe in our mission, 
             we would love to hear from you. Send your resume and tell us why you belong at Mystik.
           </p>
-          <span style={styles.ctaEmail}>careers@mystikcafe.com</span>
+          <span style={styles.ctaEmail}>info@mystikcafe.ca</span>
           <a 
-            href="mailto:careers@mystikcafe.com?subject=Application for Mystik Café"
+            href="mailto:info@mystikcafe.ca?subject=Application for Mystik Café"
             style={styles.ctaButton}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = '#0D2818';
