@@ -19,6 +19,19 @@
    - Use `<Suspense>` with a fallback loader for all 3D scenes.
 4. **Data Fetching:** Use Supabase Client in `useEffect` for client-side fetching (since this is a static export site).
 5. **Paths:** Be aware of the `basePath` if deploying to a project subfolder (though custom domain avoids this).
+6. **Google Fonts (IMPORTANT for Static Export):**
+   - `next/font/google` CSS variables do NOT work reliably with `output: 'export'` (static sites).
+   - **Solution:** Import fonts directly via CSS in `globals.css`:
+     ```css
+     @import url('https://fonts.googleapis.com/css2?family=Font+Name&display=swap');
+     ```
+   - Then use inline style in components:
+     ```jsx
+     style={{ fontFamily: 'Font Name, sans-serif' }}
+     ```
+   - **Current fonts loaded:**
+     - `Rubik Distressed` - Distressed/worn texture for headings
+     - `Inter` - Clean body text
 
 ## Project Goal
 We are building "Mystik Cafe" (Reptile Jungle).

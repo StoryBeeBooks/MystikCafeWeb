@@ -25,8 +25,26 @@ When building UI, use these metaphors to guide your code decisions:
 - **Colors:** Use "Poison Frog Orange" or "Sunlight Yellow" for calls-to-action to slice through the green.
 
 ## 3. Typography Personality
-- **Headings:** Must feel **Hand-Carved**. Imagine a wooden signpost on a safari trail. Use fonts that have slightly imperfect, rounded edges (e.g., *Bubblegum Sans, Balsamiq, or rounded sans*).
+- **Headings:** Must feel **Hand-Carved**. Imagine a wooden signpost on a safari trail. Use fonts that have slightly imperfect, rounded edges.
 - **Body Text:** Clean and legible, like a field guide or a naturalist's journal.
+
+### Current Font Stack
+| Font | Use Case | CSS |
+|------|----------|-----|
+| **Rubik Distressed** | Headlines, CTAs, buttons | `fontFamily: 'Rubik Distressed, sans-serif'` |
+| **Inter** | Body text, paragraphs | `font-[var(--font-inter)]` |
+
+### Adding New Google Fonts
+1. Go to [fonts.google.com](https://fonts.google.com) and find the font
+2. Add the import to `src/app/globals.css`:
+   ```css
+   @import url('https://fonts.googleapis.com/css2?family=Your+Font+Name&display=swap');
+   ```
+3. Use in components via inline style:
+   ```jsx
+   style={{ fontFamily: 'Your Font Name, sans-serif' }}
+   ```
+> ⚠️ **Note:** Do NOT use `next/font/google` with CSS variables for this project. Static export (`output: 'export'`) breaks the font loading. Always use the CSS `@import` method above.
 
 ## 4. Motion & Interaction (The "Alive" Factor)
 - **Hover States:** Leaves rustle when touched. Buttons should have a "bouncy" spring physics animation on hover, not a linear fade.
