@@ -111,28 +111,28 @@ const styles = {
     position: 'relative' as const,
     zIndex: 10,
     textAlign: 'center' as const,
-    padding: 'clamp(16px, 3vw, 24px) clamp(16px, 3vw, 24px) 0',
+    padding: 'clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(12px, 2vw, 16px)',
   },
   scheduleText: {
-    color: 'rgba(255, 255, 255, 0.85)',
-    fontSize: 'clamp(12px, 1.8vw, 15px)',
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 'clamp(13px, 2vw, 16px)',
     fontWeight: '500',
-    marginBottom: '4px',
+    marginBottom: 'clamp(4px, 0.8vw, 8px)',
+    letterSpacing: '0.02em',
   },
   scheduleSubtext: {
     color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: 'clamp(10px, 1.5vw, 13px)',
+    fontSize: 'clamp(11px, 1.6vw, 14px)',
   },
   copyright: {
     position: 'relative' as const,
     zIndex: 10,
     textAlign: 'center' as const,
-    padding: 'clamp(16px, 3vw, 24px)',
-    borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    padding: 'clamp(12px, 2vw, 20px) clamp(16px, 3vw, 24px) clamp(20px, 3vw, 32px)',
   },
   copyrightText: {
-    color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: 'clamp(11px, 1.6vw, 14px)',
+    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: 'clamp(10px, 1.4vw, 13px)',
   },
 };
 

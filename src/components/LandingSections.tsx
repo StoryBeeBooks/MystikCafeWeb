@@ -416,6 +416,85 @@ export function Membership() {
 }
 
 // Gallery Section - Magazine-style editorial layout
+const galleryStyles = {
+  section: {
+    backgroundColor: '#0D2818',
+    padding: 'clamp(60px, 8vw, 96px) clamp(16px, 3vw, 24px)',
+    overflow: 'hidden',
+  },
+  container: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+  header: {
+    textAlign: 'center' as const,
+    marginBottom: 'clamp(40px, 6vw, 64px)',
+    position: 'relative' as const,
+  },
+  tagline: {
+    display: 'block',
+    color: '#1B5E20',
+    fontSize: 'clamp(11px, 1.5vw, 14px)',
+    letterSpacing: '0.4em',
+    textTransform: 'uppercase' as const,
+    marginBottom: 'clamp(12px, 2vw, 16px)',
+    fontWeight: '300',
+  },
+  title: {
+    fontFamily: 'Rubik Distressed, sans-serif',
+    fontSize: 'clamp(36px, 6vw, 64px)',
+    color: '#F5E6D3',
+    marginBottom: 'clamp(16px, 2vw, 24px)',
+    letterSpacing: '-0.02em',
+  },
+  titleAccent: {
+    color: '#1B5E20',
+  },
+  subtitle: {
+    color: 'rgba(245, 230, 211, 0.7)',
+    fontSize: 'clamp(14px, 2vw, 18px)',
+    maxWidth: '560px',
+    margin: '0 auto',
+    lineHeight: '1.6',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gap: 'clamp(12px, 2vw, 24px)',
+    gridAutoRows: 'clamp(160px, 20vw, 250px)',
+  },
+  imageContainer: {
+    position: 'relative' as const,
+    overflow: 'hidden',
+    borderRadius: 'clamp(12px, 2vw, 24px)',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover' as const,
+    transition: 'transform 0.7s ease',
+  },
+  imageOverlay: {
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+    transition: 'background-color 0.5s ease',
+  },
+  bottomTagline: {
+    textAlign: 'center' as const,
+    marginTop: 'clamp(40px, 6vw, 64px)',
+  },
+  bottomText: {
+    color: 'rgba(245, 230, 211, 0.5)',
+    fontSize: 'clamp(11px, 1.5vw, 14px)',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase' as const,
+  },
+};
+
 export function Gallery() {
   const galleryImages = [
     { src: 'https://assets.k12path.com/MystikCafe/IMG_2994.JPG', alt: 'Mystik Cafe Experience 1' },
@@ -428,123 +507,85 @@ export function Gallery() {
     { src: 'https://assets.k12path.com/MystikCafe/A93D4A6D-BA0D-4E84-BE52-FDE3B1CFCFD2.jpg', alt: 'Mystik Cafe Experience 8' },
   ];
 
+  // Grid position configurations
+  const gridPositions = [
+    { gridColumn: 'span 7', gridRow: 'span 2' },  // Large featured
+    { gridColumn: 'span 5', gridRow: 'span 1' },  // Top right 1
+    { gridColumn: 'span 5', gridRow: 'span 1' },  // Top right 2
+    { gridColumn: 'span 4', gridRow: 'span 1' },  // Middle 1
+    { gridColumn: 'span 4', gridRow: 'span 1' },  // Middle 2
+    { gridColumn: 'span 4', gridRow: 'span 1' },  // Middle 3
+    { gridColumn: 'span 8', gridRow: 'span 1' },  // Bottom wide
+    { gridColumn: 'span 4', gridRow: 'span 1' },  // Bottom right
+  ];
+
   return (
-    <section className="bg-stone-950 py-24 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Header with editorial styling */}
-        <div className="text-center mb-16 relative">
-          <span className="block text-emerald-400 text-sm tracking-[0.4em] uppercase mb-4 font-light">
-            The Experience
-          </span>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-            Moments at <span className="text-emerald-400">Mystik</span>
+    <section style={galleryStyles.section}>
+      <div style={galleryStyles.container}>
+        {/* Header */}
+        <div style={galleryStyles.header}>
+          <span style={galleryStyles.tagline}>The Experience</span>
+          <h2 style={galleryStyles.title}>
+            Moments at <span style={galleryStyles.titleAccent}>Mystik</span>
           </h2>
-          <p className="text-stone-400 text-lg max-w-xl mx-auto">
+          <p style={galleryStyles.subtitle}>
             Wild connections. Unforgettable memories. Real moments captured by our guests.
           </p>
-          {/* Decorative line */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mt-8" />
         </div>
         
-        {/* Magazine-style asymmetric grid */}
-        <div className="grid grid-cols-12 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
-          {/* Large featured image - top left */}
-          <div className="col-span-12 md:col-span-7 row-span-2 group relative overflow-hidden rounded-3xl">
-            <img 
-              src={galleryImages[0].src}
-              alt={galleryImages[0].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-              <span className="inline-block px-3 py-1 bg-emerald-500 text-white text-xs rounded-full mb-2">Featured</span>
-              <p className="text-white text-lg font-medium">Wild encounters await</p>
+        {/* Magazine-style grid */}
+        <div style={galleryStyles.grid}>
+          {galleryImages.map((image, index) => (
+            <div 
+              key={index}
+              style={{
+                ...galleryStyles.imageContainer,
+                gridColumn: gridPositions[index].gridColumn,
+                gridRow: gridPositions[index].gridRow,
+              }}
+              onMouseEnter={(e) => {
+                const img = e.currentTarget.querySelector('img') as HTMLImageElement;
+                const overlay = e.currentTarget.querySelector('div') as HTMLDivElement;
+                if (img) img.style.transform = 'scale(1.08)';
+                if (overlay) overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+              }}
+              onMouseLeave={(e) => {
+                const img = e.currentTarget.querySelector('img') as HTMLImageElement;
+                const overlay = e.currentTarget.querySelector('div') as HTMLDivElement;
+                if (img) img.style.transform = 'scale(1)';
+                if (overlay) overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.15)';
+              }}
+            >
+              <img 
+                src={image.src}
+                alt={image.alt}
+                style={galleryStyles.image}
+              />
+              <div style={galleryStyles.imageOverlay} />
             </div>
-            {/* Corner accent */}
-            <div className="absolute top-4 left-4 w-12 h-12 border-l-2 border-t-2 border-emerald-400/50" />
-          </div>
-
-          {/* Vertical stack - right side */}
-          <div className="col-span-6 md:col-span-5 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[1].src}
-              alt={galleryImages[1].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-          </div>
-
-          <div className="col-span-6 md:col-span-5 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[2].src}
-              alt={galleryImages[2].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-          </div>
-
-          {/* Middle row - 3 images */}
-          <div className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[3].src}
-              alt={galleryImages[3].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
-          </div>
-
-          <div className="col-span-6 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[4].src}
-              alt={galleryImages[4].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
-          </div>
-
-          <div className="col-span-12 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[5].src}
-              alt={galleryImages[5].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-colors duration-500 rounded-2xl" />
-          </div>
-
-          {/* Bottom row - panoramic and square */}
-          <div className="col-span-12 md:col-span-8 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[6].src}
-              alt={galleryImages[6].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            {/* Magazine-style text overlay */}
-            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <p className="text-white/80 text-sm tracking-wider uppercase">Discover</p>
-              <p className="text-white text-xl md:text-2xl font-light">The Magic Within</p>
-            </div>
-          </div>
-
-          <div className="col-span-12 md:col-span-4 row-span-1 group relative overflow-hidden rounded-2xl">
-            <img 
-              src={galleryImages[7].src}
-              alt={galleryImages[7].alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-emerald-900/0 group-hover:bg-emerald-900/20 transition-colors duration-500" />
-            {/* Corner accent */}
-            <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-emerald-400/50" />
-          </div>
+          ))}
         </div>
 
         {/* Bottom tagline */}
-        <div className="text-center mt-16">
-          <p className="text-stone-500 text-sm tracking-widest uppercase">
+        <div style={galleryStyles.bottomTagline}>
+          <p style={galleryStyles.bottomText}>
             Share your experience • Tag us @mystikcafe
           </p>
         </div>
       </div>
+
+      {/* Responsive styles */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          div[style*="gridColumn: span 7"],
+          div[style*="gridColumn: span 5"],
+          div[style*="gridColumn: span 4"],
+          div[style*="gridColumn: span 8"] {
+            grid-column: span 6 !important;
+            grid-row: span 1 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
