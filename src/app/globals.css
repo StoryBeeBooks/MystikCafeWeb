@@ -18,6 +18,10 @@ html {
 /* Hero title responsive sizing */
 .hero-title {
   font-size: 64px;
+  text-shadow: 
+    0 4px 8px rgba(13, 40, 24, 0.6),
+    0 8px 16px rgba(13, 40, 24, 0.4),
+    0 16px 32px rgba(13, 40, 24, 0.3);
 }
 
 /* Desktop: 2 lines - "Unforgettable Adventure" / "Awaits" */
