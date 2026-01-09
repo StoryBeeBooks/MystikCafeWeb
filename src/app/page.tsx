@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Gallery } from '@/components/LandingSections';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 // Loading component with progress bar
 function LoadingScreen({ progress }: { progress: number }) {
@@ -380,6 +380,38 @@ export default function Home() {
     return () => clearInterval(progressInterval);
   }, []);
 
+  // WeChat video autoplay initialization
+  useEffect(() => {
+    const playVideosInWeChat = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        video.play().catch(() => {});
+      });
+    };
+
+    // Check if running in WeChat browser
+    const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+    
+    if (isWeChat) {
+      // Use WeixinJSBridge if available (WeChat's JS API)
+      if (typeof (window as any).WeixinJSBridge !== 'undefined') {
+        playVideosInWeChat();
+      } else {
+        // Wait for WeixinJSBridge to be ready
+        document.addEventListener('WeixinJSBridgeReady', playVideosInWeChat, false);
+      }
+      
+      // Also try on first touch/click for WeChat
+      const handleFirstInteraction = () => {
+        playVideosInWeChat();
+        document.removeEventListener('touchstart', handleFirstInteraction);
+        document.removeEventListener('click', handleFirstInteraction);
+      };
+      document.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+      document.addEventListener('click', handleFirstInteraction);
+    }
+  }, []);
+
   const handleSceneLoaded = useCallback(() => {
     // Complete the progress bar
     setLoadingProgress(100);
@@ -475,6 +507,15 @@ export default function Home() {
                   loop 
                   muted 
                   playsInline
+                  webkit-playsinline="true"
+                  x5-playsinline="true"
+                  x5-video-player-type="h5"
+                  x5-video-player-fullscreen="false"
+                  poster="https://assets.k12path.com/MystikCafe/Plan1.jpg"
+                  onCanPlay={(e) => {
+                    const video = e.currentTarget;
+                    video.play().catch(() => {});
+                  }}
                 >
                   <source src="https://assets.k12path.com/MystikCafe/Frog.mp4" type="video/mp4" />
                 </video>
@@ -508,6 +549,15 @@ export default function Home() {
                   loop 
                   muted 
                   playsInline
+                  webkit-playsinline="true"
+                  x5-playsinline="true"
+                  x5-video-player-type="h5"
+                  x5-video-player-fullscreen="false"
+                  poster="https://assets.k12path.com/MystikCafe/Plan2.jpg"
+                  onCanPlay={(e) => {
+                    const video = e.currentTarget;
+                    video.play().catch(() => {});
+                  }}
                 >
                   <source src="https://assets.k12path.com/MystikCafe/Chamelon%20Video.mp4" type="video/mp4" />
                 </video>
