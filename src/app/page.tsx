@@ -3,14 +3,142 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Gallery } from '@/components/LandingSections';
+import { useState, useEffect } from 'react';
+
+// Loading component with progress bar
+function LoadingScreen() {
+  const [progress, setProgress] = useState(0);
+  const [currentEmoji, setCurrentEmoji] = useState(0);
+  
+  const emojis = ['🦎', '🐢', '🦜', '🐍', '🐊', '🦖', '🌿', '🌴'];
+  
+  useEffect(() => {
+    // Simulate progress
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 90) return prev;
+        return prev + Math.random() * 15;
+      });
+    }, 200);
+    
+    // Rotate emojis
+    const emojiInterval = setInterval(() => {
+      setCurrentEmoji(prev => (prev + 1) % emojis.length);
+    }, 400);
+    
+    return () => {
+      clearInterval(progressInterval);
+      clearInterval(emojiInterval);
+    };
+  }, []);
+  
+  const loadingStyles = {
+    container: {
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column' as const,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#0D2818',
+      padding: '24px',
+    },
+    emojiRow: {
+      display: 'flex',
+      gap: '16px',
+      marginBottom: '32px',
+      fontSize: 'clamp(32px, 6vw, 48px)',
+    },
+    emoji: {
+      animation: 'bounce 0.6s ease-in-out infinite',
+    },
+    summoningText: {
+      fontFamily: 'Rubik Distressed, sans-serif',
+      fontSize: 'clamp(18px, 3vw, 28px)',
+      marginBottom: '24px',
+      textAlign: 'center' as const,
+      background: 'linear-gradient(90deg, #4ade80, #facc15, #f97316, #4ade80)',
+      backgroundSize: '200% auto',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      animation: 'shimmer 2s linear infinite',
+    },
+    progressContainer: {
+      width: '100%',
+      maxWidth: '320px',
+      height: '8px',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      marginBottom: '16px',
+    },
+    progressBar: {
+      height: '100%',
+      background: 'linear-gradient(90deg, #4ade80, #22c55e)',
+      borderRadius: '8px',
+      transition: 'width 0.3s ease',
+      width: `${Math.min(progress, 100)}%`,
+    },
+    hint: {
+      color: 'rgba(255, 255, 255, 0.4)',
+      fontSize: 'clamp(11px, 1.5vw, 13px)',
+      textAlign: 'center' as const,
+    },
+  };
+  
+  return (
+    <div style={loadingStyles.container}>
+      <style>{`
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes shimmer {
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+      `}</style>
+      
+      {/* Bouncing emojis */}
+      <div style={loadingStyles.emojiRow}>
+        {emojis.slice(0, 5).map((emoji, index) => (
+          <span 
+            key={index} 
+            style={{
+              ...loadingStyles.emoji,
+              animationDelay: `${index * 0.1}s`,
+              opacity: currentEmoji === index ? 1 : 0.6,
+              transform: currentEmoji === index ? 'scale(1.2)' : 'scale(1)',
+              transition: 'opacity 0.3s, transform 0.3s',
+            }}
+          >
+            {emoji}
+          </span>
+        ))}
+      </div>
+      
+      {/* Summoning text */}
+      <p style={loadingStyles.summoningText}>
+        Summoning the chameleons, turtles, lizards...
+      </p>
+      
+      {/* Progress bar */}
+      <div style={loadingStyles.progressContainer}>
+        <div style={loadingStyles.progressBar} />
+      </div>
+      
+      {/* Hint text */}
+      <p style={loadingStyles.hint}>
+        This may take a moment on slower connections.
+      </p>
+    </div>
+  );
+}
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), {
   ssr: false,
-  loading: () => (
-    <div className="h-full w-full flex items-center justify-center bg-white">
-      <div className="text-gray-400">Loading 3D Scene...</div>
-    </div>
-  ),
+  loading: () => <LoadingScreen />,
 });
 
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
