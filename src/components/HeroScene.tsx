@@ -32,40 +32,53 @@ function Loader() {
 function ScrollStripe() {
   return (
     <>
-      {/* Right side scroll stripe */}
+      {/* Right side scroll stripe - touchable area for scrolling */}
       <div 
         style={{
           position: 'absolute',
           right: 0,
           top: 0,
           bottom: 0,
-          width: '60px',
-          background: 'linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent)',
+          width: '70px',
+          background: 'linear-gradient(to left, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05), transparent)',
           zIndex: 25,
-          pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          touchAction: 'pan-y',
         }}
       >
-        {/* Scroll down icon */}
-        <svg 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ opacity: 0.6 }}
-        >
-          <path 
-            d="M12 5v14M5 12l7 7 7-7" 
-            stroke="#1B5E20" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
-        </svg>
+        {/* Scroll down icon with animation */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '8px',
+          animation: 'bounce 2s infinite',
+        }}>
+          <svg 
+            width="28" 
+            height="28" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d="M12 5v14M5 12l7 7 7-7" 
+              stroke="#1B5E20" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
+      <style>{`
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(10px); }
+        }
+      `}</style>
     </>
   );
 }
