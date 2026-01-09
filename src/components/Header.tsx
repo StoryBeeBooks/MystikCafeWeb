@@ -12,9 +12,9 @@ const styles = {
     left: 0,
     right: 0,
     zIndex: 1000,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: '#FDF8F4',
     backdropFilter: 'blur(10px)',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    borderBottom: '1px solid rgba(139, 69, 69, 0.1)',
   },
   container: {
     maxWidth: '1400px',
@@ -37,16 +37,16 @@ const styles = {
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
-    color: 'rgba(255, 255, 255, 0.9)',
+    color: '#8B4545',
     fontSize: '13px',
     lineHeight: '1.4',
   },
   scheduleMain: {
     fontWeight: 'bold',
-    color: 'white',
+    color: '#6B2D2D',
   },
   scheduleSub: {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: '#8B4545',
     fontSize: '12px',
   },
   rightSection: {
@@ -58,7 +58,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: '#1B5E20',
     cursor: lizardCursor,
     transition: 'color 0.3s ease',
     position: 'relative' as const,
@@ -72,7 +72,7 @@ const styles = {
     bottom: '-35px',
     left: '50%',
     transform: 'translateX(-50%)',
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: '#1B5E20',
     color: 'white',
     padding: '6px 12px',
     borderRadius: '6px',
@@ -92,7 +92,7 @@ const styles = {
   hamburgerLine: {
     width: '24px',
     height: '2px',
-    backgroundColor: 'white',
+    backgroundColor: '#6B2D2D',
     transition: 'all 0.3s ease',
   },
   mobileMenu: {
@@ -100,16 +100,16 @@ const styles = {
     top: '74px',
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    backgroundColor: '#FDF8F4',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
     gap: '20px',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    borderBottom: '1px solid rgba(139, 69, 69, 0.1)',
   },
   mobileLink: {
-    color: 'white',
+    color: '#6B2D2D',
     textDecoration: 'none',
     fontSize: '16px',
     padding: '12px 24px',
@@ -153,11 +153,11 @@ export default function Header() {
               href="/book"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.color = '#0D3D0D';
                 setBookingHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
+                e.currentTarget.style.color = '#1B5E20';
                 setBookingHover(false);
               }}
             >
@@ -172,11 +172,11 @@ export default function Header() {
               href="/signin"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.color = '#0D3D0D';
                 setSignInHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
+                e.currentTarget.style.color = '#1B5E20';
                 setSignInHover(false);
               }}
             >
