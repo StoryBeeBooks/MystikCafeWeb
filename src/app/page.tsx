@@ -253,7 +253,7 @@ export default function Home() {
         {/* Hero Title */}
         <div style={{
           position: 'absolute',
-          top: '15%',
+          top: '10%',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 20,
@@ -265,9 +265,9 @@ export default function Home() {
             lineHeight: '1.2',
             margin: 0,
           }}>
-            <span style={{ color: '#FFB5BA' }}>Unforgettable</span>
-            <br />
-            <span style={{ color: '#B8E6CF' }}>Adventure</span>
+            <span style={{ color: '#FF91A4' }}>Unforgettable</span>{' '}
+            <span style={{ color: '#A8D8EA' }}>Adventure</span>{' '}
+            <span style={{ color: '#FFD4A3' }}>Awaits</span>
           </h1>
         </div>
         
