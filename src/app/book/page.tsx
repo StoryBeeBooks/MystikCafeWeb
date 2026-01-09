@@ -30,7 +30,7 @@ export default function BookPage() {
       description: 'Step inside Mystik Café\'s Reptile Jungle for a quick 15-minute glimpse into our hidden world. Meet a few of our animal ambassadors, enjoy the ambiance, and capture a moment of wonder before you decide to stay longer.',
       includes: [
         '🌿 Access to the Reptile Jungle',
-        '🦎 Meet a few animal ambassadors',
+        '🦎 Meet some animal residents',
         '📸 Photo opportunities',
       ],
       extensions: [
@@ -95,8 +95,8 @@ export default function BookPage() {
     },
   ];
 
-  // Time slots: 11 AM to 6 PM (last admission)
-  const timeSlots = ['11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM'];
+  // Time slots: 11 AM to 5 PM (last admission)
+  const timeSlots = ['11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
   
   // Experience options
   const experiences = {
@@ -135,13 +135,6 @@ export default function BookPage() {
 
   const formatShortDate = (date: Date) => {
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  };
-
-  // Simulated availability (in production, this would come from a database)
-  const getAvailability = (date: Date, time: string) => {
-    // Simulate some slots being partially booked
-    const seed = date.getDate() + time.length;
-    return Math.max(0, 16 - (seed % 8));
   };
 
   const addToCart = () => {
@@ -747,7 +740,6 @@ export default function BookPage() {
                       marginBottom: '24px',
                     }}>
                       {timeSlots.map(time => {
-                        const available = getAvailability(selectedDate, time);
                         const isSelectedTime = selectedSlot?.time === time;
                         
                         return (
@@ -758,29 +750,19 @@ export default function BookPage() {
                               experience: prev?.experience || 'sips', 
                               quantity: prev?.quantity || 1 
                             }))}
-                            disabled={available === 0}
                             style={{
-                              padding: '12px 8px',
+                              padding: '14px 8px',
                               borderRadius: '12px',
                               border: isSelectedTime ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.2)',
-                              backgroundColor: isSelectedTime ? 'rgba(74, 222, 128, 0.2)' : 
-                                              available === 0 ? 'rgba(255, 107, 107, 0.1)' : 
-                                              'rgba(245, 230, 211, 0.05)',
-                              color: available === 0 ? 'rgba(255, 107, 107, 0.5)' : '#F5E6D3',
-                              cursor: available === 0 ? 'not-allowed' : 'pointer',
-                              fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
+                              backgroundColor: isSelectedTime ? 'rgba(74, 222, 128, 0.2)' : 'rgba(245, 230, 211, 0.05)',
+                              color: '#F5E6D3',
+                              cursor: 'pointer',
+                              fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)',
                               fontWeight: isSelectedTime ? '700' : '500',
                               transition: 'all 0.2s ease',
                             }}
                           >
                             {time}
-                            <br />
-                            <span style={{ 
-                              fontSize: '0.7rem', 
-                              color: available <= 4 ? '#ffc107' : 'rgba(245, 230, 211, 0.5)',
-                            }}>
-                              {available} spots
-                            </span>
                           </button>
                         );
                       })}
@@ -862,8 +844,7 @@ export default function BookPage() {
                             <button
                               onClick={() => setSelectedSlot(prev => {
                                 if (!prev) return prev;
-                                const maxAvailable = getAvailability(selectedDate, selectedSlot.time);
-                                return prev.quantity < maxAvailable ? { ...prev, quantity: prev.quantity + 1 } : prev;
+                                return prev.quantity < 16 ? { ...prev, quantity: prev.quantity + 1 } : prev;
                               })}
                               style={{
                                 width: '36px',
