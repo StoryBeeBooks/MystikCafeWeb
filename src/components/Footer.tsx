@@ -18,7 +18,7 @@ export default function Footer() {
         
         {/* Join Us text */}
         <p 
-          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-24 md:mb-32"
+          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-32 md:mb-48"
           style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
         >
           JOIN US
@@ -27,7 +27,7 @@ export default function Footer() {
         {/* Main CTA Button */}
         <Link href="/book">
           <button 
-            className="text-white text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider px-20 md:px-28 py-10 md:py-12 leading-tight bg-transparent border-4 border-white rounded-3xl hover:bg-black hover:cursor-pointer active:bg-black transition-all duration-300"
+            className="text-white text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider px-24 md:px-36 py-12 md:py-16 leading-tight bg-transparent border-2 border-white rounded-3xl hover:bg-black hover:cursor-pointer active:bg-black transition-all duration-300"
             style={{ 
               fontFamily: 'Rubik Distressed, sans-serif',
               cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
