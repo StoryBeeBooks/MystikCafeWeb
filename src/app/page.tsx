@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { Gallery } from '@/components/LandingSections';
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), {
   ssr: false,
@@ -409,6 +410,9 @@ export default function Home() {
           }
         `}</style>
       </section>
+
+      {/* Gallery Section */}
+      <Gallery />
 
       {/* Visit Us Section */}
       <section style={visitStyles.section}>
