@@ -279,12 +279,30 @@ const styles = {
   },
   growthSteps: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-    gap: 'clamp(24px, 4vw, 40px)',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: 'clamp(40px, 6vw, 60px) clamp(60px, 10vw, 100px)',
+    maxWidth: '900px',
+    margin: '0 auto',
+    position: 'relative' as const,
   },
   growthStep: {
     textAlign: 'center' as const,
     position: 'relative' as const,
+  },
+  arrowRight: {
+    position: 'absolute' as const,
+    top: '32px',
+    right: '-50px',
+    fontSize: 'clamp(24px, 4vw, 36px)',
+    color: '#0D2818',
+  },
+  arrowDown: {
+    position: 'absolute' as const,
+    bottom: '-40px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    fontSize: 'clamp(24px, 4vw, 36px)',
+    color: '#0D2818',
   },
   stepNumber: {
     display: 'inline-flex',
@@ -429,10 +447,6 @@ export default function PartnersPage() {
             <span style={styles.highlight}>When you grow, we grow. When we grow, you grow.</span> That is the foundation 
             of every partnership we build.
           </p>
-          <div style={styles.goalBadge}>
-            <span style={styles.goalNumber}>300+</span>
-            <span style={styles.goalText}>Business Partners Goal</span>
-          </div>
         </div>
       </section>
 
@@ -575,6 +589,8 @@ export default function PartnersPage() {
                 Reach out and let us know about your business. We will schedule a visit so you can experience 
                 Mystik firsthand and see the magic we create.
               </p>
+              <span style={styles.arrowRight}>→</span>
+              <span style={styles.arrowDown}>↓</span>
             </div>
             <div style={styles.growthStep}>
               <div style={styles.stepNumber}>2</div>
@@ -583,6 +599,7 @@ export default function PartnersPage() {
                 We will discuss how our audiences overlap, identify opportunities for mutual benefit, and 
                 design a partnership that works for both of us.
               </p>
+              <span style={styles.arrowDown}>↓</span>
             </div>
             <div style={styles.growthStep}>
               <div style={styles.stepNumber}>3</div>
@@ -591,6 +608,7 @@ export default function PartnersPage() {
                 Start referring, start collaborating, start growing. We will provide you with materials, 
                 talking points, and everything you need to succeed.
               </p>
+              <span style={styles.arrowRight}>→</span>
             </div>
             <div style={styles.growthStep}>
               <div style={styles.stepNumber}>4</div>
