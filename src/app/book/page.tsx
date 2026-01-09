@@ -432,29 +432,6 @@ export default function BookPage() {
                         ⚠️ {ticket.note}
                       </p>
                     )}
-
-                    {/* Book Button */}
-                    {ticket.bookable && (
-                      <a
-                        href="https://www.mystikcafe.ca/book-online"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: 'inline-block',
-                          padding: '14px 32px',
-                          backgroundColor: '#4ade80',
-                          color: '#0D2818',
-                          fontWeight: '700',
-                          fontSize: '1rem',
-                          borderRadius: '30px',
-                          textDecoration: 'none',
-                          transition: 'all 0.3s ease',
-                          boxShadow: '0 4px 15px rgba(74, 222, 128, 0.3)',
-                        }}
-                      >
-                        Book Now →
-                      </a>
-                    )}
                   </div>
                 </div>
               ))}
