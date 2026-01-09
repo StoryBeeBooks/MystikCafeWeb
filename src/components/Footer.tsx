@@ -18,8 +18,11 @@ export default function Footer() {
         
         {/* Join Us text */}
         <p 
-          className="text-white text-xl md:text-2xl tracking-[0.3em] mb-40 md:mb-56"
-          style={{ fontFamily: 'Rubik Distressed, sans-serif' }}
+          className="text-white text-xl md:text-2xl tracking-[0.3em]"
+          style={{ 
+            fontFamily: 'Rubik Distressed, sans-serif',
+            marginBottom: '160px'
+          }}
         >
           JOIN US
         </p>
