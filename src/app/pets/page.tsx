@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 // Pet data - images and audio will be added later
 interface Pet {
@@ -10,6 +11,10 @@ interface Pet {
   audio?: string;
   species?: string;
   origin?: string;
+  habitat?: string;
+  size?: string;
+  temperature?: string;
+  humidity?: string;
   diet?: string;
   lifespan?: string;
   funFact?: string;
@@ -17,34 +22,34 @@ interface Pet {
 }
 
 const pets: Pet[] = [
-  { id: 1, name: 'Bearded Dragon', image: '', species: 'Pogona vitticeps', origin: 'Australia', diet: 'Omnivore - insects, vegetables, fruits', lifespan: '10-15 years', funFact: 'They wave their arms to communicate!', description: 'Known for their calm demeanor and distinctive "beard" that puffs up when threatened or excited.' },
-  { id: 2, name: 'Jesus Lizard', image: '', species: 'Basiliscus basiliscus', origin: 'Central America', diet: 'Omnivore - insects, small vertebrates, plants', lifespan: '7-10 years', funFact: 'Can run on water at speeds up to 5 mph!', description: 'Named for their miraculous ability to run across water surfaces using their specially adapted feet.' },
-  { id: 3, name: 'Malagasy Three-Eyed Lizard', image: '', species: 'Chalarodon madagascariensis', origin: 'Madagascar', diet: 'Insectivore', lifespan: '5-8 years', funFact: 'Has a "third eye" on top of its head that detects light!', description: 'A unique species with a photosensitive pineal eye used to regulate circadian rhythms.' },
-  { id: 4, name: 'Green Iguana', image: '', species: 'Iguana iguana', origin: 'Central & South America', diet: 'Herbivore - leaves, flowers, fruits', lifespan: '15-20 years', funFact: 'Can drop from 40 feet and land unharmed!', description: 'One of the largest lizards in the Americas, known for their impressive size and vibrant green color.' },
-  { id: 5, name: 'Green, Red, Lime Iguana', image: '', species: 'Iguana iguana (color morphs)', origin: 'Central & South America', diet: 'Herbivore - leaves, flowers, fruits', lifespan: '15-20 years', funFact: 'Color morphs are selectively bred for unique appearances!', description: 'Beautiful color variations of the classic green iguana, showcasing nature\'s diversity.' },
-  { id: 6, name: 'Uromastyx', image: '', species: 'Uromastyx sp.', origin: 'North Africa & Middle East', diet: 'Herbivore - seeds, vegetables, flowers', lifespan: '15-20 years', funFact: 'Their spiky tail is used as a defensive weapon!', description: 'Also called spiny-tailed lizards, they thrive in desert environments and love basking in heat.' },
-  { id: 7, name: 'Emerald Swift', image: '', species: 'Sceloporus malachiticus', origin: 'Central America', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Males display brilliant emerald colors to attract mates!', description: 'A stunningly beautiful lizard with iridescent green-blue scales that shimmer in the light.' },
-  { id: 8, name: 'Leopard Gecko', image: '', species: 'Eublepharis macularius', origin: 'Pakistan, India, Afghanistan', diet: 'Insectivore', lifespan: '15-20 years', funFact: 'They can vocalize and make chirping sounds!', description: 'One of the most popular pet reptiles, known for their spotted pattern and friendly nature.' },
-  { id: 9, name: 'Crested Gecko', image: '', species: 'Correlophus ciliatus', origin: 'New Caledonia', diet: 'Omnivore - fruit, nectar, insects', lifespan: '15-20 years', funFact: 'Once thought extinct until rediscovered in 1994!', description: 'Famous for their "eyelash" crests and ability to climb smooth surfaces with specialized toe pads.' },
-  { id: 10, name: 'Gargoyle Gecko', image: '', species: 'Rhacodactylus auriculatus', origin: 'New Caledonia', diet: 'Omnivore - fruit, nectar, insects', lifespan: '15-20 years', funFact: 'Named for the horn-like bumps on their head!', description: 'A chunky, docile gecko with unique cranial bumps resembling gargoyle sculptures.' },
-  { id: 11, name: 'Panther Chameleon', image: '', species: 'Furcifer pardalis', origin: 'Madagascar', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Can move each eye independently 360 degrees!', description: 'One of the most colorful reptiles on Earth, with males displaying incredible rainbow patterns.' },
-  { id: 12, name: 'Nosy Be Panther Chameleon', image: '', species: 'Furcifer pardalis', origin: 'Nosy Be Island, Madagascar', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Named after the island they originate from!', description: 'A stunning locale of panther chameleon known for their vibrant blue and green coloration.' },
-  { id: 13, name: 'Veiled Chameleon', image: '', species: 'Chamaeleo calyptratus', origin: 'Yemen, Saudi Arabia', diet: 'Insectivore - also eats some plants', lifespan: '5-8 years', funFact: 'Their tongue can be twice their body length!', description: 'Named for the tall casque (helmet-like structure) on their head that collects morning dew.' },
-  { id: 14, name: 'Veiled Chameleon', image: '', species: 'Chamaeleo calyptratus', origin: 'Yemen, Saudi Arabia', diet: 'Insectivore - also eats some plants', lifespan: '5-8 years', funFact: 'Can change color based on mood and temperature!', description: 'Our second veiled chameleon - each one has a unique personality and color pattern!' },
-  { id: 15, name: 'White-Eyed Crocodile Skink', image: '', species: 'Tribolonotus gracilis', origin: 'New Guinea', diet: 'Insectivore', lifespan: '10-12 years', funFact: 'They can vocalize when stressed - one of few lizards that do!', description: 'A dragon-like skink with armored scales and distinctive white rings around their eyes.' },
-  { id: 16, name: 'Northern Blue-Tongued Skink', image: '', species: 'Tiliqua scincoides intermedia', origin: 'Australia', diet: 'Omnivore - snails, insects, fruits, vegetables', lifespan: '15-20 years', funFact: 'Their blue tongue is used to scare predators!', description: 'A friendly, robust lizard known for flashing their bright blue tongue as a defense mechanism.' },
-  { id: 17, name: 'Clown Ball Python', image: '', species: 'Python regius', origin: 'West Africa', diet: 'Carnivore - rodents', lifespan: '20-30 years', funFact: 'Called "ball" python because they curl into a ball when scared!', description: 'A beautiful morph of ball python with reduced pattern and golden coloration.' },
-  { id: 18, name: 'Mexican Black Kingsnake', image: '', species: 'Lampropeltis getula nigrita', origin: 'Mexico', diet: 'Carnivore - rodents, other snakes', lifespan: '15-20 years', funFact: 'Immune to rattlesnake venom and eats other snakes!', description: 'A stunning jet-black snake with an iridescent sheen, known for their docile nature.' },
-  { id: 19, name: 'Yellow Quince Monitor', image: '', species: 'Varanus melinus', origin: 'Indonesia', diet: 'Carnivore - insects, eggs, small animals', lifespan: '15-20 years', funFact: 'One of the most beautifully colored monitor lizards!', description: 'A striking yellow and black monitor known for their intelligence and curious personality.' },
-  { id: 20, name: 'Mangrove Monitor', image: '', species: 'Varanus indicus', origin: 'Australia, Southeast Asia', diet: 'Carnivore - fish, crabs, small mammals', lifespan: '15-20 years', funFact: 'Excellent swimmers that hunt in water!', description: 'A semi-aquatic monitor lizard that thrives in coastal mangrove habitats.' },
-  { id: 21, name: 'Elongated Tortoise', image: '', species: 'Indotestudo elongata', origin: 'Southeast Asia', diet: 'Herbivore - leafy greens, fruits, flowers', lifespan: '40-50 years', funFact: 'Males have pink coloring around their nose during breeding season!', description: 'A beautiful tortoise with an elongated shell and yellow-brown coloring.' },
-  { id: 22, name: 'Sulcata Tortoise', image: '', species: 'Centrochelys sulcata', origin: 'Sahara Desert, Africa', diet: 'Herbivore - grasses, hay, leafy greens', lifespan: '70+ years', funFact: 'Third largest tortoise species in the world!', description: 'Also called African spurred tortoise, they can grow over 100 pounds!' },
-  { id: 23, name: 'Leopard Tortoise', image: '', species: 'Stigmochelys pardalis', origin: 'Eastern & Southern Africa', diet: 'Herbivore - grasses, succulents, fruits', lifespan: '50-100 years', funFact: 'Named for their beautiful spotted shell pattern!', description: 'One of the most attractive tortoises with distinctive black and yellow markings.' },
-  { id: 24, name: 'Dumpy White Tree Frog', image: '', species: 'Litoria caerulea', origin: 'Australia, New Guinea', diet: 'Insectivore', lifespan: '15-20 years', funFact: 'Also called "smiling frog" due to their expression!', description: 'A chunky, adorable frog with a perpetual smile and waxy skin coating.' },
-  { id: 25, name: 'Milk Frog', image: '', species: 'Trachycephalus resinifictrix', origin: 'Amazon Rainforest', diet: 'Insectivore', lifespan: '8-10 years', funFact: 'Secretes a milky substance when stressed - hence the name!', description: 'A striking frog with beautiful blue and brown banded pattern.' },
-  { id: 26, name: 'Axolotl', image: '', species: 'Ambystoma mexicanum', origin: 'Lake Xochimilco, Mexico', diet: 'Carnivore - worms, small fish, insects', lifespan: '10-15 years', funFact: 'Can regenerate entire limbs, heart, and even parts of their brain!', description: 'The "walking fish" that\'s actually a salamander - critically endangered in the wild.' },
-  { id: 27, name: 'Ocellated Skink', image: '', species: 'Chalcides ocellatus', origin: 'Mediterranean, North Africa', diet: 'Insectivore', lifespan: '10-15 years', funFact: 'Their legs are so small they move like snakes!', description: 'A fascinating skink with tiny legs and eye-like spots (ocelli) along their body.' },
-  { id: 28, name: 'White-Spotted Gecko', image: '', species: 'Tarentola annularis', origin: 'North Africa', diet: 'Insectivore', lifespan: '8-10 years', funFact: 'Known as "crocodile gecko" due to their bumpy skin texture!', description: 'A robust gecko with distinctive white spots and prehistoric-looking scales.' },
+  { id: 1, name: 'Bearded Dragon', image: '', species: 'Pogona vitticeps', origin: 'Australia', habitat: 'Arid woodlands, scrublands, deserts', size: '18-24 inches', temperature: '75-85°F (basking: 100-110°F)', humidity: '30-40%', diet: 'Omnivore - insects, vegetables, fruits', lifespan: '10-15 years', funFact: 'They wave their arms to communicate!', description: 'Known for their calm demeanor and distinctive "beard" that puffs up when threatened or excited.' },
+  { id: 2, name: 'Jesus Lizard', image: '', species: 'Basiliscus basiliscus', origin: 'Central America', habitat: 'Tropical rainforests near water', size: '24-30 inches', temperature: '80-88°F (basking: 95°F)', humidity: '70-80%', diet: 'Omnivore - insects, small vertebrates, plants', lifespan: '7-10 years', funFact: 'Can run on water at speeds up to 5 mph!', description: 'Named for their miraculous ability to run across water surfaces using their specially adapted feet.' },
+  { id: 3, name: 'Malagasy Three-Eyed Lizard', image: '', species: 'Chalarodon madagascariensis', origin: 'Madagascar', habitat: 'Sandy coastal areas, dry forests', size: '6-8 inches', temperature: '75-85°F (basking: 95°F)', humidity: '40-60%', diet: 'Insectivore', lifespan: '5-8 years', funFact: 'Has a "third eye" on top of its head that detects light!', description: 'A unique species with a photosensitive pineal eye used to regulate circadian rhythms.' },
+  { id: 4, name: 'Green Iguana', image: '', species: 'Iguana iguana', origin: 'Central & South America', habitat: 'Tropical rainforests, near water sources', size: '4-6 feet', temperature: '75-85°F (basking: 95-100°F)', humidity: '65-75%', diet: 'Herbivore - leaves, flowers, fruits', lifespan: '15-20 years', funFact: 'Can drop from 40 feet and land unharmed!', description: 'One of the largest lizards in the Americas, known for their impressive size and vibrant green color.' },
+  { id: 5, name: 'Green, Red, Lime Iguana', image: '', species: 'Iguana iguana (color morphs)', origin: 'Central & South America', habitat: 'Tropical rainforests, near water sources', size: '4-6 feet', temperature: '75-85°F (basking: 95-100°F)', humidity: '65-75%', diet: 'Herbivore - leaves, flowers, fruits', lifespan: '15-20 years', funFact: 'Color morphs are selectively bred for unique appearances!', description: 'Beautiful color variations of the classic green iguana, showcasing nature\'s diversity.' },
+  { id: 6, name: 'Uromastyx', image: '', species: 'Uromastyx sp.', origin: 'North Africa & Middle East', habitat: 'Rocky deserts, arid scrublands', size: '10-18 inches', temperature: '80-90°F (basking: 120-130°F)', humidity: '10-25%', diet: 'Herbivore - seeds, vegetables, flowers', lifespan: '15-20 years', funFact: 'Their spiky tail is used as a defensive weapon!', description: 'Also called spiny-tailed lizards, they thrive in desert environments and love basking in heat.' },
+  { id: 7, name: 'Emerald Swift', image: '', species: 'Sceloporus malachiticus', origin: 'Central America', habitat: 'Mountain cloud forests, rocky areas', size: '6-8 inches', temperature: '75-82°F (basking: 90°F)', humidity: '60-80%', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Males display brilliant emerald colors to attract mates!', description: 'A stunningly beautiful lizard with iridescent green-blue scales that shimmer in the light.' },
+  { id: 8, name: 'Leopard Gecko', image: '', species: 'Eublepharis macularius', origin: 'Pakistan, India, Afghanistan', habitat: 'Rocky grasslands, desert edges', size: '7-10 inches', temperature: '75-85°F (basking: 90°F)', humidity: '30-40%', diet: 'Insectivore', lifespan: '15-20 years', funFact: 'They can vocalize and make chirping sounds!', description: 'One of the most popular pet reptiles, known for their spotted pattern and friendly nature.' },
+  { id: 9, name: 'Crested Gecko', image: '', species: 'Correlophus ciliatus', origin: 'New Caledonia', habitat: 'Tropical rainforests, on trees', size: '6-10 inches', temperature: '72-78°F', humidity: '60-80%', diet: 'Omnivore - fruit, nectar, insects', lifespan: '15-20 years', funFact: 'Once thought extinct until rediscovered in 1994!', description: 'Famous for their "eyelash" crests and ability to climb smooth surfaces with specialized toe pads.' },
+  { id: 10, name: 'Gargoyle Gecko', image: '', species: 'Rhacodactylus auriculatus', origin: 'New Caledonia', habitat: 'Tropical forests, shrublands', size: '7-9 inches', temperature: '72-78°F', humidity: '60-70%', diet: 'Omnivore - fruit, nectar, insects', lifespan: '15-20 years', funFact: 'Named for the horn-like bumps on their head!', description: 'A chunky, docile gecko with unique cranial bumps resembling gargoyle sculptures.' },
+  { id: 11, name: 'Panther Chameleon', image: '', species: 'Furcifer pardalis', origin: 'Madagascar', habitat: 'Tropical forests, coastal lowlands', size: '12-20 inches', temperature: '72-80°F (basking: 85-90°F)', humidity: '50-70%', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Can move each eye independently 360 degrees!', description: 'One of the most colorful reptiles on Earth, with males displaying incredible rainbow patterns.' },
+  { id: 12, name: 'Nosy Be Panther Chameleon', image: '', species: 'Furcifer pardalis', origin: 'Nosy Be Island, Madagascar', habitat: 'Tropical island forests', size: '12-18 inches', temperature: '72-80°F (basking: 85-90°F)', humidity: '50-70%', diet: 'Insectivore', lifespan: '5-7 years', funFact: 'Named after the island they originate from!', description: 'A stunning locale of panther chameleon known for their vibrant blue and green coloration.' },
+  { id: 13, name: 'Veiled Chameleon', image: '', species: 'Chamaeleo calyptratus', origin: 'Yemen, Saudi Arabia', habitat: 'Mountain valleys, plateaus with vegetation', size: '14-24 inches', temperature: '72-80°F (basking: 85-95°F)', humidity: '50-70%', diet: 'Insectivore - also eats some plants', lifespan: '5-8 years', funFact: 'Their tongue can be twice their body length!', description: 'Named for the tall casque (helmet-like structure) on their head that collects morning dew.' },
+  { id: 14, name: 'Veiled Chameleon', image: '', species: 'Chamaeleo calyptratus', origin: 'Yemen, Saudi Arabia', habitat: 'Mountain valleys, plateaus with vegetation', size: '14-24 inches', temperature: '72-80°F (basking: 85-95°F)', humidity: '50-70%', diet: 'Insectivore - also eats some plants', lifespan: '5-8 years', funFact: 'Can change color based on mood and temperature!', description: 'Our second veiled chameleon - each one has a unique personality and color pattern!' },
+  { id: 15, name: 'White-Eyed Crocodile Skink', image: '', species: 'Tribolonotus gracilis', origin: 'New Guinea', habitat: 'Tropical rainforests, near streams', size: '8-10 inches', temperature: '72-78°F', humidity: '70-90%', diet: 'Insectivore', lifespan: '10-12 years', funFact: 'They can vocalize when stressed - one of few lizards that do!', description: 'A dragon-like skink with armored scales and distinctive white rings around their eyes.' },
+  { id: 16, name: 'Northern Blue-Tongued Skink', image: '', species: 'Tiliqua scincoides intermedia', origin: 'Australia', habitat: 'Grasslands, woodlands, semi-arid areas', size: '18-24 inches', temperature: '75-85°F (basking: 95-100°F)', humidity: '40-60%', diet: 'Omnivore - snails, insects, fruits, vegetables', lifespan: '15-20 years', funFact: 'Their blue tongue is used to scare predators!', description: 'A friendly, robust lizard known for flashing their bright blue tongue as a defense mechanism.' },
+  { id: 17, name: 'Clown Ball Python', image: '', species: 'Python regius', origin: 'West Africa', habitat: 'Grasslands, open forests, agricultural areas', size: '3-5 feet', temperature: '78-80°F (basking: 88-92°F)', humidity: '50-60%', diet: 'Carnivore - rodents', lifespan: '20-30 years', funFact: 'Called "ball" python because they curl into a ball when scared!', description: 'A beautiful morph of ball python with reduced pattern and golden coloration.' },
+  { id: 18, name: 'Mexican Black Kingsnake', image: '', species: 'Lampropeltis getula nigrita', origin: 'Mexico', habitat: 'Desert scrublands, rocky hillsides', size: '3-4 feet', temperature: '75-85°F (basking: 88°F)', humidity: '40-60%', diet: 'Carnivore - rodents, other snakes', lifespan: '15-20 years', funFact: 'Immune to rattlesnake venom and eats other snakes!', description: 'A stunning jet-black snake with an iridescent sheen, known for their docile nature.' },
+  { id: 19, name: 'Yellow Quince Monitor', image: '', species: 'Varanus melinus', origin: 'Indonesia', habitat: 'Tropical forests, mangroves', size: '3-4 feet', temperature: '80-85°F (basking: 95-100°F)', humidity: '70-80%', diet: 'Carnivore - insects, eggs, small animals', lifespan: '15-20 years', funFact: 'One of the most beautifully colored monitor lizards!', description: 'A striking yellow and black monitor known for their intelligence and curious personality.' },
+  { id: 20, name: 'Mangrove Monitor', image: '', species: 'Varanus indicus', origin: 'Australia, Southeast Asia', habitat: 'Coastal mangroves, swamps, rivers', size: '3-4 feet', temperature: '80-88°F (basking: 95-100°F)', humidity: '70-90%', diet: 'Carnivore - fish, crabs, small mammals', lifespan: '15-20 years', funFact: 'Excellent swimmers that hunt in water!', description: 'A semi-aquatic monitor lizard that thrives in coastal mangrove habitats.' },
+  { id: 21, name: 'Elongated Tortoise', image: '', species: 'Indotestudo elongata', origin: 'Southeast Asia', habitat: 'Tropical forests, bamboo groves', size: '10-12 inches', temperature: '75-85°F (basking: 90°F)', humidity: '60-80%', diet: 'Herbivore - leafy greens, fruits, flowers', lifespan: '40-50 years', funFact: 'Males have pink coloring around their nose during breeding season!', description: 'A beautiful tortoise with an elongated shell and yellow-brown coloring.' },
+  { id: 22, name: 'Sulcata Tortoise', image: '', species: 'Centrochelys sulcata', origin: 'Sahara Desert, Africa', habitat: 'Semi-arid grasslands, desert edges', size: '24-36 inches (up to 100+ lbs)', temperature: '80-90°F (basking: 100°F)', humidity: '40-55%', diet: 'Herbivore - grasses, hay, leafy greens', lifespan: '70+ years', funFact: 'Third largest tortoise species in the world!', description: 'Also called African spurred tortoise, they can grow over 100 pounds!' },
+  { id: 23, name: 'Leopard Tortoise', image: '', species: 'Stigmochelys pardalis', origin: 'Eastern & Southern Africa', habitat: 'Savannas, grasslands, thorn scrub', size: '16-28 inches', temperature: '75-90°F (basking: 95°F)', humidity: '40-60%', diet: 'Herbivore - grasses, succulents, fruits', lifespan: '50-100 years', funFact: 'Named for their beautiful spotted shell pattern!', description: 'One of the most attractive tortoises with distinctive black and yellow markings.' },
+  { id: 24, name: 'Dumpy White Tree Frog', image: '', species: 'Litoria caerulea', origin: 'Australia, New Guinea', habitat: 'Tropical rainforests, woodland areas', size: '3-5 inches', temperature: '75-82°F', humidity: '50-70%', diet: 'Insectivore', lifespan: '15-20 years', funFact: 'Also called "smiling frog" due to their expression!', description: 'A chunky, adorable frog with a perpetual smile and waxy skin coating.' },
+  { id: 25, name: 'Milk Frog', image: '', species: 'Trachycephalus resinifictrix', origin: 'Amazon Rainforest', habitat: 'Tropical rainforest canopy, near water', size: '2.5-4 inches', temperature: '75-82°F', humidity: '70-80%', diet: 'Insectivore', lifespan: '8-10 years', funFact: 'Secretes a milky substance when stressed - hence the name!', description: 'A striking frog with beautiful blue and brown banded pattern.' },
+  { id: 26, name: 'Axolotl', image: '', species: 'Ambystoma mexicanum', origin: 'Lake Xochimilco, Mexico', habitat: 'Freshwater lakes, canals (aquatic)', size: '9-12 inches', temperature: '60-68°F (cool water)', humidity: 'N/A (fully aquatic)', diet: 'Carnivore - worms, small fish, insects', lifespan: '10-15 years', funFact: 'Can regenerate entire limbs, heart, and even parts of their brain!', description: 'The "walking fish" that\'s actually a salamander - critically endangered in the wild.' },
+  { id: 27, name: 'Ocellated Skink', image: '', species: 'Chalcides ocellatus', origin: 'Mediterranean, North Africa', habitat: 'Sandy areas, dry grasslands, gardens', size: '10-12 inches', temperature: '75-85°F (basking: 95°F)', humidity: '30-50%', diet: 'Insectivore', lifespan: '10-15 years', funFact: 'Their legs are so small they move like snakes!', description: 'A fascinating skink with tiny legs and eye-like spots (ocelli) along their body.' },
+  { id: 28, name: 'White-Spotted Gecko', image: '', species: 'Tarentola annularis', origin: 'North Africa', habitat: 'Rocky deserts, buildings, ruins', size: '5-7 inches', temperature: '75-85°F (basking: 90°F)', humidity: '40-60%', diet: 'Insectivore', lifespan: '8-10 years', funFact: 'Known as "crocodile gecko" due to their bumpy skin texture!', description: 'A robust gecko with distinctive white spots and prehistoric-looking scales.' },
 ];
 
 export default function PetsPage() {
@@ -164,6 +169,60 @@ export default function PetsPage() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div style={{
+          marginTop: 'clamp(60px, 8vw, 100px)',
+          textAlign: 'center',
+          padding: 'clamp(40px, 6vw, 60px)',
+          background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.08) 0%, rgba(74, 222, 128, 0.02) 100%)',
+          borderRadius: '24px',
+          border: '1px solid rgba(74, 222, 128, 0.15)',
+        }}>
+          <p style={{
+            fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+            color: '#F5E6D3',
+            marginBottom: '12px',
+            fontWeight: '600',
+            lineHeight: '1.4',
+          }}>
+            There are a lot more Mystik pet residents waiting to meet you!
+          </p>
+          <p style={{
+            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            color: 'rgba(245, 230, 211, 0.7)',
+            marginBottom: 'clamp(24px, 4vw, 36px)',
+          }}>
+            Come and meet them in person
+          </p>
+          <Link 
+            href="/book"
+            style={{
+              display: 'inline-block',
+              padding: 'clamp(14px, 2vw, 18px) clamp(32px, 5vw, 48px)',
+              backgroundColor: '#4ade80',
+              color: '#0D2818',
+              fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+              fontWeight: '700',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 8px 32px rgba(74, 222, 128, 0.3)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#22c55e';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 12px 40px rgba(74, 222, 128, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#4ade80';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 8px 32px rgba(74, 222, 128, 0.3)';
+            }}
+          >
+            Book Your Visit 🦎
+          </Link>
         </div>
       </section>
 
@@ -365,56 +424,103 @@ export default function PetsPage() {
                   </p>
                 )}
 
-                {/* Info Cards - Horizontal elegant style */}
+                {/* Info Cards - Grid layout */}
                 <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '16px',
-                  marginBottom: 'clamp(28px, 4vw, 40px)',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '12px',
+                  marginBottom: 'clamp(20px, 3vw, 28px)',
                 }}>
                   {selectedPet.origin && (
                     <div style={{
-                      padding: '16px 24px',
+                      padding: '14px 18px',
                       backgroundColor: 'rgba(245, 230, 211, 0.03)',
                       border: '1px solid rgba(245, 230, 211, 0.1)',
-                      borderRadius: '16px',
-                      flex: '1 1 140px',
+                      borderRadius: '12px',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Origin</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem', fontWeight: '500' }}>{selectedPet.origin}</p>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌍 Origin</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.origin}</p>
                     </div>
                   )}
                   {selectedPet.lifespan && (
                     <div style={{
-                      padding: '16px 24px',
+                      padding: '14px 18px',
                       backgroundColor: 'rgba(245, 230, 211, 0.03)',
                       border: '1px solid rgba(245, 230, 211, 0.1)',
-                      borderRadius: '16px',
-                      flex: '1 1 140px',
+                      borderRadius: '12px',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Lifespan</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>⏳ Lifespan</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
+                    </div>
+                  )}
+                  {selectedPet.size && (
+                    <div style={{
+                      padding: '14px 18px',
+                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      borderRadius: '12px',
+                    }}>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>📏 Size</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.size}</p>
+                    </div>
+                  )}
+                  {selectedPet.diet && (
+                    <div style={{
+                      padding: '14px 18px',
+                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      borderRadius: '12px',
+                    }}>
+                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🍽️ Diet</p>
+                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.diet}</p>
                     </div>
                   )}
                 </div>
 
-                {/* Diet with icon */}
-                {selectedPet.diet && (
+                {/* Habitat Section */}
+                {selectedPet.habitat && (
                   <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: 'clamp(28px, 4vw, 40px)',
-                    padding: '16px 20px',
+                    padding: '14px 18px',
                     backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                    border: '1px solid rgba(245, 230, 211, 0.1)',
                     borderRadius: '12px',
-                    border: '1px solid rgba(245, 230, 211, 0.08)',
+                    marginBottom: '12px',
                   }}>
-                    <span style={{ fontSize: '1.5rem' }}>🍽️</span>
-                    <div>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>Diet</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.95rem' }}>{selectedPet.diet}</p>
-                    </div>
+                    <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🏠 Habitat</p>
+                    <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.habitat}</p>
+                  </div>
+                )}
+
+                {/* Environmental Requirements */}
+                {(selectedPet.temperature || selectedPet.humidity) && (
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gap: '12px',
+                    marginBottom: 'clamp(20px, 3vw, 28px)',
+                  }}>
+                    {selectedPet.temperature && (
+                      <div style={{
+                        padding: '14px 18px',
+                        backgroundColor: 'rgba(74, 222, 128, 0.05)',
+                        border: '1px solid rgba(74, 222, 128, 0.15)',
+                        borderRadius: '12px',
+                      }}>
+                        <p style={{ color: 'rgba(74, 222, 128, 0.7)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌡️ Temperature</p>
+                        <p style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.temperature}</p>
+                      </div>
+                    )}
+                    {selectedPet.humidity && (
+                      <div style={{
+                        padding: '14px 18px',
+                        backgroundColor: 'rgba(74, 222, 128, 0.05)',
+                        border: '1px solid rgba(74, 222, 128, 0.15)',
+                        borderRadius: '12px',
+                      }}>
+                        <p style={{ color: 'rgba(74, 222, 128, 0.7)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>💧 Humidity</p>
+                        <p style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.humidity}</p>
+                      </div>
+                    )}
                   </div>
                 )}
 
