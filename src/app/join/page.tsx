@@ -81,7 +81,7 @@ const styles = {
   },
   cultureGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
     gap: 'clamp(20px, 3vw, 32px)',
     marginTop: 'clamp(40px, 6vw, 60px)',
     maxWidth: '800px',

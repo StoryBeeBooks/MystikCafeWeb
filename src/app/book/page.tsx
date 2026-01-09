@@ -203,15 +203,6 @@ export default function BookPage() {
               }}>
                 Choose Your Adventure
               </h2>
-              <p style={{
-                color: '#F5E6D3',
-                fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-                maxWidth: '700px',
-                margin: '0 auto',
-                lineHeight: '1.8',
-              }}>
-                From quick glimpses to ultimate experiences, we have the perfect journey waiting for you
-              </p>
             </div>
 
             {/* Ticket Cards */}
@@ -222,22 +213,69 @@ export default function BookPage() {
               {tickets.map((ticket, index) => (
                 <div
                   key={index}
+                  className="ticket-card"
                   style={{
                     backgroundColor: 'rgba(245, 230, 211, 0.03)',
                     borderRadius: '24px',
                     overflow: 'hidden',
                     border: '1px solid rgba(245, 230, 211, 0.1)',
-                    display: 'grid',
-                    gridTemplateColumns: 'clamp(200px, 30%, 350px) 1fr',
                   }}
                 >
-                  {/* Image */}
-                  <div style={{
-                    backgroundImage: `url(${ticket.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    minHeight: '300px',
-                  }} />
+                  {/* Image - Desktop Only (side panel) */}
+                  <div 
+                    className="ticket-image-desktop"
+                    style={{
+                      backgroundImage: `url(${ticket.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      minHeight: '300px',
+                    }} 
+                  />
+                  
+                  {/* Image - Mobile Only (compact header) */}
+                  <div 
+                    className="ticket-image-mobile"
+                    style={{
+                      backgroundImage: `url(${ticket.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center top',
+                      height: '180px',
+                      position: 'relative',
+                    }}
+                  >
+                    {/* Gradient overlay for text readability */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '80px',
+                      background: 'linear-gradient(to top, rgba(13, 40, 24, 0.95), transparent)',
+                    }} />
+                    {/* Price badge on mobile image */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '12px',
+                      right: '12px',
+                      backgroundColor: 'rgba(13, 40, 24, 0.9)',
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      backdropFilter: 'blur(10px)',
+                    }}>
+                      <span style={{ color: '#4ade80', fontWeight: '700', fontSize: '1.1rem' }}>{ticket.price}</span>
+                    </div>
+                    {/* Duration badge */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '12px',
+                      left: '12px',
+                      backgroundColor: '#4ade80',
+                      padding: '6px 14px',
+                      borderRadius: '15px',
+                    }}>
+                      <span style={{ color: '#0D2818', fontWeight: '700', fontSize: '0.85rem' }}>⏱️ {ticket.duration}</span>
+                    </div>
+                  </div>
 
                   {/* Content */}
                   <div style={{ padding: 'clamp(24px, 4vw, 40px)' }}>
@@ -266,7 +304,7 @@ export default function BookPage() {
                           {ticket.tagline}
                         </p>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
+                      <div className="price-desktop" style={{ textAlign: 'right' }}>
                         <p style={{
                           fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                           color: '#F5E6D3',
@@ -650,9 +688,31 @@ export default function BookPage() {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .ticket-card {
+          display: grid;
+          grid-template-columns: clamp(200px, 30%, 350px) 1fr;
+        }
+        .ticket-image-desktop {
+          display: block;
+        }
+        .ticket-image-mobile {
+          display: none;
+        }
+        .price-desktop {
+          display: block;
+        }
         @media (max-width: 768px) {
-          div[style*="gridTemplateColumns: 'clamp(200px, 30%, 350px) 1fr'"] {
+          .ticket-card {
             grid-template-columns: 1fr !important;
+          }
+          .ticket-image-desktop {
+            display: none !important;
+          }
+          .ticket-image-mobile {
+            display: block !important;
+          }
+          .price-desktop {
+            display: none !important;
           }
         }
       `}</style>

@@ -44,7 +44,7 @@ const styles = {
   // Main Content Grid
   mainContent: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
     maxWidth: '1100px',
     margin: '0 auto',
     padding: '0 clamp(16px, 4vw, 24px)',

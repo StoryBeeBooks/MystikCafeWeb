@@ -130,7 +130,7 @@ const styles = {
   },
   whyGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
     gap: 'clamp(20px, 3vw, 32px)',
     maxWidth: '900px',
     margin: '0 auto',
@@ -279,8 +279,8 @@ const styles = {
   },
   growthSteps: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: 'clamp(40px, 6vw, 60px) clamp(60px, 10vw, 100px)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+    gap: 'clamp(40px, 6vw, 60px) clamp(40px, 6vw, 60px)',
     maxWidth: '900px',
     margin: '0 auto',
     position: 'relative' as const,

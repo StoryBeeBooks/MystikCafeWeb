@@ -112,7 +112,7 @@ const styles = {
   },
   impactGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
     gap: 'clamp(20px, 3vw, 32px)',
     maxWidth: '900px',
     margin: '0 auto',
@@ -210,7 +210,7 @@ const styles = {
   },
   levelsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
     gap: 'clamp(20px, 3vw, 32px)',
     maxWidth: '800px',
     margin: '0 auto',
