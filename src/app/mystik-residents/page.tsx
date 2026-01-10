@@ -93,7 +93,7 @@ export default function PetsPage() {
     }}>
       {/* Header Section */}
       <section style={{
-        backgroundColor: '#F5F5F0',
+        backgroundColor: '#FFFFFF',
         padding: 'clamp(60px, 8vw, 100px) clamp(16px, 5vw, 40px) clamp(40px, 6vw, 60px)',
         textAlign: 'center',
       }}>

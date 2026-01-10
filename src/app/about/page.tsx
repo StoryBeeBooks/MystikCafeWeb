@@ -10,30 +10,53 @@ export default function AboutPage() {
       backgroundColor: '#FFFFFF',
       fontFamily: '"Questrial", sans-serif',
     }}>
-      {/* Header Section */}
+      {/* Hero Section */}
       <section style={{
-        backgroundColor: '#F5F5F0',
-        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 5vw, 40px) clamp(40px, 6vw, 60px)',
-        textAlign: 'center',
+        position: 'relative',
+        width: '100%',
+        minHeight: 'clamp(400px, 60vh, 600px)',
+        backgroundImage: 'url(https://assets.k12path.com/MystikCafe/jungle-landscape-cartoon.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
-        <h1 style={{
-          fontFamily: '"Rubik Distressed", cursive',
-          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-          color: '#1A1A1A',
-          marginBottom: '12px',
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.75)',
+        }} />
+        <div style={{
+          position: 'relative',
+          zIndex: 10,
+          textAlign: 'center',
+          padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+          maxWidth: '900px',
         }}>
-          About Mystik Café
-        </h1>
-        <p style={{
-          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-          color: '#4A4A4A',
-          maxWidth: '700px',
-          margin: '0 auto',
-          lineHeight: '1.7',
-        }}>
-          Where the aroma of ethically sourced coffee blends with the quiet wonder of nature. 
-          A sanctuary for the curious, a haven for the wild at heart.
-        </p>
+          <h1 style={{
+            fontFamily: '"Rubik Distressed", cursive',
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            color: '#1A1A1A',
+            marginBottom: '16px',
+          }}>
+            About Mystik Café
+          </h1>
+          <p style={{
+            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+            color: '#4A4A4A',
+            maxWidth: '700px',
+            margin: '0 auto',
+            lineHeight: '1.7',
+          }}>
+            Where the aroma of ethically sourced coffee blends with the quiet wonder of nature. 
+            A sanctuary for the curious, a haven for the wild at heart.
+          </p>
+        </div>
       </section>
 
       {/* Our Story Section */}
@@ -120,7 +143,7 @@ export default function AboutPage() {
 
       {/* Mission & Vision Section */}
       <section style={{
-        backgroundColor: '#F5F5F0',
+        backgroundColor: '#FFFFFF',
         padding: 'clamp(60px, 8vw, 100px) clamp(16px, 4vw, 32px)',
       }}>
         <div style={{
@@ -137,7 +160,7 @@ export default function AboutPage() {
               backgroundColor: '#FFFFFF',
               borderRadius: '24px',
               padding: 'clamp(30px, 5vw, 50px)',
-              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
+              border: '1px solid #F5F5F0',
             }}>
               <p style={{
                 fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
@@ -183,7 +206,7 @@ export default function AboutPage() {
               backgroundColor: '#FFFFFF',
               borderRadius: '24px',
               padding: 'clamp(30px, 5vw, 50px)',
-              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
+              border: '1px solid #F5F5F0',
             }}>
               <p style={{
                 fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
