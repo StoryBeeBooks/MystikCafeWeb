@@ -887,15 +887,15 @@ export default function BookPage() {
                             onClick={addToCart}
                             style={{
                               padding: '14px 28px',
-                              backgroundColor: '#4ade80',
+                              backgroundColor: '#F5F5F0',
                               color: '#0D2818',
                               fontWeight: '700',
                               fontSize: '1rem',
                               borderRadius: '30px',
-                              border: 'none',
+                              border: '2px solid #D0D0C8',
                               cursor: 'pointer',
                               transition: 'all 0.3s ease',
-                              boxShadow: '0 4px 15px rgba(74, 222, 128, 0.3)',
+                              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                             }}
                           >
                             Add to Cart 🛒
@@ -909,16 +909,16 @@ export default function BookPage() {
                 {/* Shopping Cart */}
                 {cart.length > 0 && (
                   <div style={{
-                    backgroundColor: 'rgba(74, 222, 128, 0.05)',
+                    backgroundColor: '#F5F5F0',
                     borderRadius: '24px',
                     padding: 'clamp(20px, 4vw, 32px)',
-                    border: '2px solid #4ade80',
+                    border: '2px solid #D0D0C8',
                     animation: 'fadeIn 0.3s ease',
                   }}>
                     <h3 style={{
                       fontFamily: '"Rubik Distressed", cursive',
                       fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
-                      color: '#4ade80',
+                      color: '#2C2C2C',
                       marginBottom: '20px',
                       display: 'flex',
                       alignItems: 'center',
@@ -935,24 +935,25 @@ export default function BookPage() {
                           justifyContent: 'space-between',
                           alignItems: 'center',
                           padding: '16px',
-                          backgroundColor: 'rgba(245, 230, 211, 0.05)',
+                          backgroundColor: '#FFFFFF',
                           borderRadius: '12px',
                           flexWrap: 'wrap',
                           gap: '12px',
+                          border: '1px solid #E0E0D8',
                         }}>
                           <div style={{ flex: 1, minWidth: '200px' }}>
-                            <p style={{ color: '#F5E6D3', fontWeight: '600', marginBottom: '4px' }}>
+                            <p style={{ color: '#2C2C2C', fontWeight: '600', marginBottom: '4px' }}>
                               {experiences[item.experience].emoji} {experiences[item.experience].name}
                             </p>
-                            <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.85rem' }}>
+                            <p style={{ color: '#5A5A5A', fontSize: '0.85rem' }}>
                               {item.date} at {item.time}
                             </p>
-                            <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.8rem' }}>
+                            <p style={{ color: '#7A7A7A', fontSize: '0.8rem' }}>
                               {item.quantity} guest{item.quantity > 1 ? 's' : ''}
                             </p>
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                            <span style={{ color: '#4ade80', fontWeight: '700' }}>${item.price.toFixed(2)}</span>
+                            <span style={{ color: '#0D2818', fontWeight: '700' }}>${item.price.toFixed(2)}</span>
                             <button
                               onClick={() => removeFromCart(item.id)}
                               style={{
@@ -979,14 +980,14 @@ export default function BookPage() {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       padding: '20px',
-                      backgroundColor: 'rgba(74, 222, 128, 0.15)',
+                      backgroundColor: '#E8E8E0',
                       borderRadius: '16px',
                       flexWrap: 'wrap',
                       gap: '16px',
                     }}>
                       <div>
-                        <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.9rem', marginBottom: '4px' }}>Total</p>
-                        <p style={{ color: '#F5E6D3', fontSize: '2rem', fontWeight: '700' }}>
+                        <p style={{ color: '#5A5A5A', fontSize: '0.9rem', marginBottom: '4px' }}>Total</p>
+                        <p style={{ color: '#0D2818', fontSize: '2rem', fontWeight: '700' }}>
                           ${getCartTotal().toFixed(2)}
                         </p>
                       </div>
@@ -1000,15 +1001,15 @@ export default function BookPage() {
                         }}
                         style={{
                           padding: '16px 40px',
-                          backgroundColor: '#4ade80',
+                          backgroundColor: '#F5F5F0',
                           color: '#0D2818',
                           fontWeight: '700',
                           fontSize: '1.1rem',
                           borderRadius: '30px',
-                          border: 'none',
+                          border: '2px solid #D0D0C8',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease',
-                          boxShadow: '0 4px 20px rgba(74, 222, 128, 0.4)',
+                          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                         }}
                       >
                         Proceed to Checkout →
@@ -1016,7 +1017,7 @@ export default function BookPage() {
                     </div>
 
                     <p style={{
-                      color: 'rgba(245, 230, 211, 0.5)',
+                      color: '#7A7A7A',
                       fontSize: '0.8rem',
                       textAlign: 'center',
                       marginTop: '16px',
