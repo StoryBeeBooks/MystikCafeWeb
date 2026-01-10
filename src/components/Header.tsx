@@ -13,9 +13,9 @@ const styles = {
     left: 0,
     right: 0,
     zIndex: 1000,
-    backgroundColor: '#FDF8F4',
+    backgroundColor: '#FFFFFF',
     backdropFilter: 'blur(10px)',
-    borderBottom: '1px solid rgba(139, 69, 69, 0.1)',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
   },
   container: {
     maxWidth: '1400px',
@@ -38,16 +38,16 @@ const styles = {
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
-    color: '#8B4545',
+    color: '#1A1A1A',
     fontSize: '13px',
     lineHeight: '1.4',
   },
   scheduleMain: {
     fontWeight: 'bold',
-    color: '#6B2D2D',
+    color: '#1A1A1A',
   },
   scheduleSub: {
-    color: '#8B4545',
+    color: '#1A1A1A',
     fontSize: '12px',
   },
   rightSection: {
@@ -59,7 +59,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#1B5E20',
+    color: '#1A1A1A',
     cursor: lizardCursor,
     transition: 'color 0.3s ease',
     position: 'relative' as const,
@@ -157,11 +157,11 @@ export default function Header() {
               href="tel:647-560-6524"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#0D3D0D';
+                e.currentTarget.style.color = '#4A4A4A';
                 setPhoneHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#1B5E20';
+                e.currentTarget.style.color = '#1A1A1A';
                 setPhoneHover(false);
               }}
             >
@@ -176,11 +176,11 @@ export default function Header() {
               href="/pets"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#0D3D0D';
+                e.currentTarget.style.color = '#4A4A4A';
                 setPetsHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#1B5E20';
+                e.currentTarget.style.color = '#1A1A1A';
                 setPetsHover(false);
               }}
             >
@@ -197,11 +197,11 @@ export default function Header() {
               href="/book"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#0D3D0D';
+                e.currentTarget.style.color = '#4A4A4A';
                 setBookingHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#1B5E20';
+                e.currentTarget.style.color = '#1A1A1A';
                 setBookingHover(false);
               }}
             >
@@ -216,11 +216,11 @@ export default function Header() {
               href="/signin"
               style={styles.iconLink}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#0D3D0D';
+                e.currentTarget.style.color = '#4A4A4A';
                 setSignInHover(true);
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#1B5E20';
+                e.currentTarget.style.color = '#1A1A1A';
                 setSignInHover(false);
               }}
             >

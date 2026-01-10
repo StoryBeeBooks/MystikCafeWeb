@@ -111,7 +111,7 @@ const styles = {
     position: 'relative' as const,
     zIndex: 10,
     textAlign: 'center' as const,
-    padding: 'clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(12px, 2vw, 16px)',
+    padding: 'clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(4px, 0.8vw, 6px)',
   },
   scheduleText: {
     color: 'rgba(255, 255, 255, 0.9)',
@@ -142,21 +142,6 @@ export default function Footer() {
       {/* Dark overlay */}
       <div style={styles.overlay} />
       
-      {/* CTA Section */}
-      <div style={styles.ctaSection}>
-        <p style={styles.joinUsText}>JOIN US</p>
-        
-        <Link href="/book">
-          <button 
-            style={styles.ctaButton}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            Explorers<br />of the Wild
-          </button>
-        </Link>
-      </div>
-
       {/* Footer Links Section */}
       <div style={styles.linksSection}>
         <div style={styles.linksContainer}>
