@@ -71,7 +71,7 @@ export default function EventsPage() {
             Mystik Café offers a range of private event experiences tailored for celebrations and special moments. Whether you're planning a birthday, anniversary, engagement party, or a corporate team-building session, our space transforms into an immersive reptile-and-ocean themed venue designed to spark connection and curiosity.
           </p>
           <p style={{
-            color: '#4ade80',
+            color: '#F5E6D3',
             fontSize: 'clamp(1.1rem, 2.2vw, 1.3rem)',
             lineHeight: '1.8',
             fontWeight: '600',
@@ -98,7 +98,7 @@ export default function EventsPage() {
           <h2 style={{
             fontFamily: '"Rubik Distressed", cursive',
             fontSize: 'clamp(2rem, 4vw, 2.8rem)',
-            color: '#4ade80',
+            color: '#F5E6D3',
             marginBottom: '24px',
             textAlign: 'center',
           }}>
@@ -142,10 +142,10 @@ export default function EventsPage() {
         }}>
           {/* Birthday Parties */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -155,7 +155,7 @@ export default function EventsPage() {
             }}>🎂</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -163,7 +163,7 @@ export default function EventsPage() {
               Birthday Parties
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -174,10 +174,10 @@ export default function EventsPage() {
 
           {/* Corporate Events */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -187,7 +187,7 @@ export default function EventsPage() {
             }}>💼</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -195,7 +195,7 @@ export default function EventsPage() {
               Corporate Events
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -206,10 +206,10 @@ export default function EventsPage() {
 
           {/* Team Building */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -219,7 +219,7 @@ export default function EventsPage() {
             }}>🤝</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -227,7 +227,7 @@ export default function EventsPage() {
               Team Building
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -238,10 +238,10 @@ export default function EventsPage() {
 
           {/* Anniversaries */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -251,7 +251,7 @@ export default function EventsPage() {
             }}>💍</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -259,7 +259,7 @@ export default function EventsPage() {
               Anniversaries & Engagements
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -270,10 +270,10 @@ export default function EventsPage() {
 
           {/* Educational Groups */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -283,7 +283,7 @@ export default function EventsPage() {
             }}>📚</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -291,7 +291,7 @@ export default function EventsPage() {
               Educational Groups
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -302,10 +302,10 @@ export default function EventsPage() {
 
           {/* Social Gatherings */}
           <div style={{
-            backgroundColor: 'rgba(74, 222, 128, 0.08)',
+            backgroundColor: 'rgba(245, 245, 240, 0.08)',
             borderRadius: '20px',
             padding: '32px',
-            border: '1px solid rgba(74, 222, 128, 0.2)',
+            border: '1px solid rgba(245, 245, 240, 0.2)',
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}>
             <div style={{
@@ -315,7 +315,7 @@ export default function EventsPage() {
             }}>🎉</div>
             <h3 style={{
               fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-              color: '#4ade80',
+              color: '#F5E6D3',
               marginBottom: '12px',
               fontWeight: '700',
               textAlign: 'center',
@@ -323,7 +323,7 @@ export default function EventsPage() {
               Social Gatherings
             </h3>
             <p style={{
-              color: '#F5E6D3',
+              color: 'rgba(245, 230, 211, 0.85)',
               lineHeight: '1.8',
               fontSize: '0.95rem',
               textAlign: 'center',
@@ -335,22 +335,22 @@ export default function EventsPage() {
 
         {/* Contact CTA */}
         <div style={{
-          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+          backgroundColor: 'rgba(245, 245, 240, 0.1)',
           borderRadius: '24px',
           padding: 'clamp(40px, 6vw, 60px)',
           textAlign: 'center',
-          border: '2px solid #4ade80',
+          border: '2px solid rgba(245, 245, 240, 0.3)',
         }}>
           <h2 style={{
             fontFamily: '"Rubik Distressed", cursive',
             fontSize: 'clamp(2rem, 4vw, 2.8rem)',
-            color: '#4ade80',
+            color: '#F5E6D3',
             marginBottom: '20px',
           }}>
             Ready to Book Your Event?
           </h2>
           <p style={{
-            color: '#F5E6D3',
+            color: 'rgba(245, 230, 211, 0.85)',
             fontSize: 'clamp(1rem, 2vw, 1.2rem)',
             lineHeight: '1.8',
             marginBottom: '32px',
@@ -364,14 +364,15 @@ export default function EventsPage() {
             style={{
               display: 'inline-block',
               padding: '16px 40px',
-              backgroundColor: '#4ade80',
+              backgroundColor: '#F5F5F0',
               color: '#0D2818',
               fontSize: 'clamp(1rem, 2vw, 1.1rem)',
               fontWeight: '700',
               borderRadius: '50px',
               textDecoration: 'none',
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 15px rgba(74, 222, 128, 0.3)',
+              border: '2px solid #D0D0C8',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)',
             }}
           >
             📧 info@mystikcafe.ca

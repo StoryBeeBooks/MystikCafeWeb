@@ -168,9 +168,9 @@ export default function PetsPage() {
           marginTop: 'clamp(60px, 8vw, 100px)',
           textAlign: 'center',
           padding: 'clamp(40px, 6vw, 60px)',
-          background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.08) 0%, rgba(74, 222, 128, 0.02) 100%)',
+          background: 'linear-gradient(135deg, rgba(245, 245, 240, 0.08) 0%, rgba(245, 245, 240, 0.02) 100%)',
           borderRadius: '24px',
-          border: '1px solid rgba(74, 222, 128, 0.15)',
+          border: '1px solid rgba(245, 245, 240, 0.15)',
         }}>
           <p style={{
             fontSize: 'clamp(1.5rem, 3vw, 2rem)',
@@ -193,24 +193,25 @@ export default function PetsPage() {
             style={{
               display: 'inline-block',
               padding: 'clamp(14px, 2vw, 18px) clamp(32px, 5vw, 48px)',
-              backgroundColor: '#4ade80',
+              backgroundColor: '#F5F5F0',
               color: '#0D2818',
               fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
               fontWeight: '700',
               borderRadius: '50px',
               textDecoration: 'none',
               transition: 'all 0.3s ease',
-              boxShadow: '0 8px 32px rgba(74, 222, 128, 0.3)',
+              border: '2px solid #D0D0C8',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#22c55e';
+              e.currentTarget.style.backgroundColor = '#FFFFFF';
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 12px 40px rgba(74, 222, 128, 0.4)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.2)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#4ade80';
+              e.currentTarget.style.backgroundColor = '#F5F5F0';
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(74, 222, 128, 0.3)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.15)';
             }}
           >
             Book Your Visit 🦎

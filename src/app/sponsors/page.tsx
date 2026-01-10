@@ -477,7 +477,7 @@ export default function SponsorsPage() {
               style={styles.levelCard}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = '#4ade80';
+                e.currentTarget.style.borderColor = '#F5F5F0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -494,7 +494,7 @@ export default function SponsorsPage() {
               style={styles.levelCard}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = '#4ade80';
+                e.currentTarget.style.borderColor = '#F5F5F0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -511,7 +511,7 @@ export default function SponsorsPage() {
               style={styles.levelCard}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = '#4ade80';
+                e.currentTarget.style.borderColor = '#F5F5F0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -528,7 +528,7 @@ export default function SponsorsPage() {
               style={styles.levelCard}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.borderColor = '#4ade80';
+                e.currentTarget.style.borderColor = '#F5F5F0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';

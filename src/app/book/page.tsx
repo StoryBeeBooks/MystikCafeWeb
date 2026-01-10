@@ -247,8 +247,8 @@ export default function BookPage() {
             style={{
               padding: '12px 32px',
               borderRadius: '30px',
-              border: 'none',
-              backgroundColor: activeTab === 'tickets' ? '#4ade80' : 'transparent',
+              border: activeTab === 'tickets' ? '2px solid #D0D0C8' : '1px solid transparent',
+              backgroundColor: activeTab === 'tickets' ? '#F5F5F0' : 'transparent',
               color: activeTab === 'tickets' ? '#0D2818' : '#F5E6D3',
               fontWeight: activeTab === 'tickets' ? '700' : '500',
               fontSize: 'clamp(0.9rem, 2vw, 1rem)',
@@ -263,8 +263,8 @@ export default function BookPage() {
             style={{
               padding: '12px 32px',
               borderRadius: '30px',
-              border: 'none',
-              backgroundColor: activeTab === 'policies' ? '#4ade80' : 'transparent',
+              border: activeTab === 'policies' ? '2px solid #D0D0C8' : '1px solid transparent',
+              backgroundColor: activeTab === 'policies' ? '#F5F5F0' : 'transparent',
               color: activeTab === 'policies' ? '#0D2818' : '#F5E6D3',
               fontWeight: activeTab === 'policies' ? '700' : '500',
               fontSize: 'clamp(0.9rem, 2vw, 1rem)',
@@ -1212,16 +1212,16 @@ export default function BookPage() {
 
             {/* Contact Information */}
             <div style={{
-              backgroundColor: 'rgba(245, 230, 211, 0.05)',
+              backgroundColor: 'rgba(245, 245, 240, 0.05)',
               borderRadius: '24px',
               padding: 'clamp(30px, 5vw, 50px)',
               textAlign: 'center',
-              border: '2px solid #4ade80',
+              border: '2px solid rgba(245, 245, 240, 0.3)',
             }}>
               <h3 style={{
                 fontFamily: '"Rubik Distressed", cursive',
                 fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                color: '#4ade80',
+                color: '#F5E6D3',
                 marginBottom: '24px',
               }}>
                 Contact Us
@@ -1243,7 +1243,7 @@ export default function BookPage() {
                 </div>
                 <div>
                   <p style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.85rem', marginBottom: '4px' }}>Email</p>
-                  <a href="mailto:bookings@mystikcafe.ca" style={{ color: '#4ade80', fontWeight: '600', textDecoration: 'none' }}>bookings@mystikcafe.ca</a>
+                  <a href="mailto:bookings@mystikcafe.ca" style={{ color: '#F5E6D3', fontWeight: '600', textDecoration: 'none' }}>bookings@mystikcafe.ca</a>
                 </div>
               </div>
             </div>
