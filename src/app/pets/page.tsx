@@ -364,34 +364,78 @@ export default function PetsPage() {
                     <span style={{ fontSize: 'clamp(6rem, 15vw, 10rem)', opacity: 0.5 }}>🦎</span>
                   )}
                   
-                  {/* Audio Button - Floating on image */}
-                  <button
-                    onClick={toggleAudio}
-                    style={{
-                      position: 'absolute',
-                      bottom: '20px',
-                      right: '20px',
-                      width: '60px',
-                      height: '60px',
-                      borderRadius: '50%',
-                      border: 'none',
-                      backgroundColor: isPlaying ? '#4ade80' : 'rgba(13, 40, 24, 0.85)',
-                      backdropFilter: 'blur(10px)',
-                      color: isPlaying ? '#0D2818' : '#4ade80',
-                      fontSize: '24px',
-                      cursor: selectedPet.audio ? 'pointer' : 'default',
-                      opacity: selectedPet.audio ? 1 : 0.4,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
-                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                    }}
-                    title={selectedPet.audio ? 'Play sound' : 'Audio coming soon'}
-                    disabled={!selectedPet.audio}
-                  >
-                    {isPlaying ? '⏸' : '🔊'}
-                  </button>
+                  {/* Audio Controls - Floating on image */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    right: '20px',
+                    display: 'flex',
+                    gap: '12px',
+                  }}>
+                    {/* Play/Pause Button */}
+                    <button
+                      onClick={toggleAudio}
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '50%',
+                        border: 'none',
+                        backgroundColor: isPlaying ? '#4ade80' : 'rgba(13, 40, 24, 0.85)',
+                        backdropFilter: 'blur(10px)',
+                        color: isPlaying ? '#0D2818' : '#4ade80',
+                        fontSize: '24px',
+                        cursor: selectedPet.audio ? 'pointer' : 'default',
+                        opacity: selectedPet.audio ? 1 : 0.4,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                      }}
+                      title={selectedPet.audio ? 'Play/Pause sound' : 'Audio coming soon'}
+                      disabled={!selectedPet.audio}
+                    >
+                      {isPlaying ? '⏸' : '🔊'}
+                    </button>
+
+                    {/* Reset Button */}
+                    {selectedPet.audio && (
+                      <button
+                        onClick={() => {
+                          if (audioRef.current) {
+                            audioRef.current.currentTime = 0;
+                            audioRef.current.play();
+                            setIsPlaying(true);
+                          }
+                        }}
+                        style={{
+                          width: '60px',
+                          height: '60px',
+                          borderRadius: '50%',
+                          border: 'none',
+                          backgroundColor: 'rgba(13, 40, 24, 0.85)',
+                          backdropFilter: 'blur(10px)',
+                          color: '#4ade80',
+                          fontSize: '24px',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          transition: 'all 0.3s ease',
+                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                        }}
+                        title="Restart sound"
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(74, 222, 128, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(13, 40, 24, 0.85)';
+                        }}
+                      >
+                        ↻
+                      </button>
+                    )}
+                  </div>
 
                   {/* Hidden audio element */}
                   {selectedPet.audio && (
