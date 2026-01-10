@@ -711,22 +711,22 @@ export default function BookPage() {
                 {/* Time Slots & Experience Selection */}
                 {selectedDate && (
                   <div style={{
-                    backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                    backgroundColor: '#F5F5F0',
                     borderRadius: '24px',
                     padding: 'clamp(20px, 4vw, 32px)',
-                    border: '1px solid rgba(245, 230, 211, 0.1)',
+                    border: '1px solid #E0E0D8',
                     animation: 'fadeIn 0.3s ease',
                   }}>
                     <h3 style={{
                       fontFamily: '"Rubik Distressed", cursive',
                       fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
-                      color: '#4ade80',
+                      color: '#0D2818',
                       marginBottom: '8px',
                     }}>
                       {formatDate(selectedDate)}
                     </h3>
                     <p style={{
-                      color: 'rgba(245, 230, 211, 0.7)',
+                      color: '#5A5A5A',
                       fontSize: '0.9rem',
                       marginBottom: '24px',
                     }}>
@@ -754,9 +754,9 @@ export default function BookPage() {
                             style={{
                               padding: '14px 8px',
                               borderRadius: '12px',
-                              border: isSelectedTime ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.2)',
-                              backgroundColor: isSelectedTime ? 'rgba(74, 222, 128, 0.2)' : 'rgba(245, 230, 211, 0.05)',
-                              color: '#F5E6D3',
+                              border: isSelectedTime ? '3px solid #0D2818' : '1px solid #D0D0C8',
+                              backgroundColor: isSelectedTime ? '#0D2818' : '#FFFFFF',
+                              color: isSelectedTime ? '#F5E6D3' : '#2C2C2C',
                               cursor: 'pointer',
                               fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)',
                               fontWeight: isSelectedTime ? '700' : '500',
@@ -773,7 +773,7 @@ export default function BookPage() {
                     {selectedSlot && (
                       <div style={{ animation: 'fadeIn 0.3s ease' }}>
                         <p style={{
-                          color: '#F5E6D3',
+                          color: '#2C2C2C',
                           fontSize: '0.95rem',
                           fontWeight: '600',
                           marginBottom: '12px',
@@ -793,9 +793,9 @@ export default function BookPage() {
                               style={{
                                 padding: '16px',
                                 borderRadius: '16px',
-                                border: selectedSlot.experience === key ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.2)',
-                                backgroundColor: selectedSlot.experience === key ? 'rgba(74, 222, 128, 0.2)' : 'rgba(245, 230, 211, 0.05)',
-                                color: '#F5E6D3',
+                                border: selectedSlot.experience === key ? '3px solid #0D2818' : '1px solid #D0D0C8',
+                                backgroundColor: selectedSlot.experience === key ? '#0D2818' : '#FFFFFF',
+                                color: selectedSlot.experience === key ? '#F5E6D3' : '#2C2C2C',
                                 cursor: 'pointer',
                                 textAlign: 'left',
                                 transition: 'all 0.2s ease',
@@ -803,7 +803,7 @@ export default function BookPage() {
                             >
                               <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{exp.emoji}</div>
                               <div style={{ fontWeight: '600', marginBottom: '4px' }}>{exp.name}</div>
-                              <div style={{ color: '#4ade80', fontWeight: '700' }}>${exp.price.toFixed(2)}/person</div>
+                              <div style={{ color: selectedSlot.experience === key ? '#4ade80' : '#0D2818', fontWeight: '700' }}>${exp.price.toFixed(2)}/person</div>
                             </button>
                           ))}
                         </div>
@@ -816,7 +816,7 @@ export default function BookPage() {
                           marginBottom: '24px',
                           flexWrap: 'wrap',
                         }}>
-                          <span style={{ color: '#F5E6D3', fontWeight: '600' }}>Number of Guests:</span>
+                          <span style={{ color: '#2C2C2C', fontWeight: '600' }}>Number of Guests:</span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                             <button
                               onClick={() => setSelectedSlot(prev => prev && prev.quantity > 1 ? { ...prev, quantity: prev.quantity - 1 } : prev)}
@@ -824,9 +824,9 @@ export default function BookPage() {
                                 width: '36px',
                                 height: '36px',
                                 borderRadius: '50%',
-                                border: '1px solid rgba(245, 230, 211, 0.3)',
-                                backgroundColor: 'rgba(245, 230, 211, 0.1)',
-                                color: '#F5E6D3',
+                                border: '1px solid #D0D0C8',
+                                backgroundColor: '#FFFFFF',
+                                color: '#2C2C2C',
                                 fontSize: '1.2rem',
                                 cursor: 'pointer',
                               }}
@@ -834,7 +834,7 @@ export default function BookPage() {
                               −
                             </button>
                             <span style={{ 
-                              color: '#4ade80', 
+                              color: '#0D2818', 
                               fontSize: '1.3rem', 
                               fontWeight: '700',
                               minWidth: '30px',
@@ -851,9 +851,9 @@ export default function BookPage() {
                                 width: '36px',
                                 height: '36px',
                                 borderRadius: '50%',
-                                border: '1px solid rgba(245, 230, 211, 0.3)',
-                                backgroundColor: 'rgba(245, 230, 211, 0.1)',
-                                color: '#F5E6D3',
+                                border: '1px solid #D0D0C8',
+                                backgroundColor: '#FFFFFF',
+                                color: '#2C2C2C',
                                 fontSize: '1.2rem',
                                 cursor: 'pointer',
                               }}
@@ -861,7 +861,7 @@ export default function BookPage() {
                               +
                             </button>
                           </div>
-                          <span style={{ color: 'rgba(245, 230, 211, 0.6)', fontSize: '0.85rem' }}>
+                          <span style={{ color: '#5A5A5A', fontSize: '0.85rem' }}>
                             (Max 16 per slot)
                           </span>
                         </div>
@@ -872,14 +872,14 @@ export default function BookPage() {
                           justifyContent: 'space-between',
                           alignItems: 'center',
                           padding: '20px',
-                          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                          backgroundColor: '#E8E8E0',
                           borderRadius: '16px',
                           flexWrap: 'wrap',
                           gap: '16px',
                         }}>
                           <div>
-                            <p style={{ color: 'rgba(245, 230, 211, 0.7)', fontSize: '0.85rem', marginBottom: '4px' }}>Subtotal</p>
-                            <p style={{ color: '#4ade80', fontSize: '1.5rem', fontWeight: '700' }}>
+                            <p style={{ color: '#5A5A5A', fontSize: '0.85rem', marginBottom: '4px' }}>Subtotal</p>
+                            <p style={{ color: '#0D2818', fontSize: '1.5rem', fontWeight: '700' }}>
                               ${(experiences[selectedSlot.experience].price * selectedSlot.quantity).toFixed(2)}
                             </p>
                           </div>
