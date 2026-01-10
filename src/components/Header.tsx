@@ -24,6 +24,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    position: 'relative' as const,
   },
   logoSection: {
     display: 'flex',
@@ -35,6 +36,10 @@ const styles = {
     width: 'auto',
   },
   scheduleSection: {
+    position: 'absolute' as const,
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
