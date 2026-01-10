@@ -119,7 +119,6 @@ function LoadingScreen({ progress }: { progress: number }) {
           >
             {icon}
           </div>
-          </span>
         ))}
       </div>
       
