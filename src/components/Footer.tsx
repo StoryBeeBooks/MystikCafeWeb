@@ -163,12 +163,12 @@ export default function Footer() {
                 </li>
                 <li style={styles.linkItem}>
                   <Link 
-                    href="/pets" 
+                    href="/mystik-residents" 
                     style={styles.link}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
                     onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)'}
                   >
-                    Mystik Pet Residents
+                    Mystik Residents
                   </Link>
                 </li>
                 <li style={styles.linkItem}>

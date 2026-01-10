@@ -171,9 +171,9 @@ export default function Header() {
               <span style={{...styles.tooltip, opacity: phoneHover ? 1 : 0}}>647-560-6524</span>
             </a>
 
-            {/* Pets Link */}
+            {/* Mystik Residents Link */}
             <Link 
-              href="/pets"
+              href="/mystik-residents"
               style={styles.iconLink}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = '#4A4A4A';
@@ -189,7 +189,7 @@ export default function Header() {
                 <circle cx="9" cy="10" r="1" fill="currentColor" />
                 <circle cx="15" cy="10" r="1" fill="currentColor" />
               </svg>
-              <span style={{...styles.tooltip, opacity: petsHover ? 1 : 0}}>Pets</span>
+              <span style={{...styles.tooltip, opacity: petsHover ? 1 : 0}}>Mystik Residents</span>
             </Link>
 
             {/* Booking Link */}
@@ -277,12 +277,12 @@ export default function Header() {
             📞 647-560-6524
           </a>
           <Link 
-            href="/pets" 
+            href="/mystik-residents" 
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <LizardIcon size={20} color="#F5E6D3" /> Pets
+              <LizardIcon size={20} color="#1A1A1A" /> Mystik Residents
             </span>
           </Link>
           <Link 

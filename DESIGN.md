@@ -19,42 +19,56 @@ The user should feel like they are entering a **premium, modern sanctuary** for 
 ### Background Hierarchy (Light to Dark)
 | Level | Color | Hex | Usage |
 |-------|-------|-----|-------|
-| **Primary** | Pure White | `#FFFFFF` | Main content areas, cards |
-| **Secondary** | Milky White | `#F5F5F0` | Alternate sections, subtle backgrounds |
-| **Tertiary** | Light Grey | `#F8F9FA` | Subtle dividers, input backgrounds |
-| **Accent** | Dark Green | `#0D2818` | Header, footer, special sections (sparingly) |
+| **Primary** | Pure White | `#FFFFFF` | Header, main content areas, cards, landing sections |
+| **Secondary** | Milky White | `#F5F5F0` | Alternate sections (Experience, Gallery, Visit Us) |
+| **Tertiary** | Light Grey | `#F8F9FA` | Testimonial cards, subtle dividers |
+| **Accent** | Dark Green | `#0D2818` | Footer background, CTA buttons (sparingly) |
 
 ### Text Color Hierarchy (Dark to Light)
 | Level | Color | Hex | Usage |
 |-------|-------|-----|-------|
-| **Primary** | Black | `#1A1A1A` | Main headings, important text |
-| **Secondary** | Dark Grey | `#4A4A4A` | Subheadings, body text |
-| **Tertiary** | Grey | `#6B7280` | Captions, secondary info |
-| **Accent** | Navy Blue | `#1E3A5F` | Links, special highlights |
-| **Brand** | Dark Green | `#0D2818` | Brand elements, CTAs |
+| **Primary** | Black | `#1A1A1A` | Main headings, header text, section titles |
+| **Secondary** | Dark Grey | `#4A4A4A` | Subheadings, body text, descriptions |
+| **Tertiary** | Grey | `#6B7280` | Captions, secondary info, subtle text |
+| **Accent** | Navy Blue | `#1E3A5F` | Links (if needed) |
+| **Brand** | Dark Green | `#0D2818` | CTA buttons, brand highlights |
+
+### Social Media Brand Colors
+| Platform | Color | Hex | Usage |
+|----------|-------|-----|-------|
+| **Instagram** | Pink | `#E4405F` | Instagram icon |
+| **TikTok** | Black | `#000000` | TikTok icon |
+| **Facebook** | Blue | `#1877F2` | Facebook icon |
 
 ### Accent Colors (Use Sparingly)
 | Color | Hex | Usage |
 |-------|-----|-------|
-| **Emerald** | `#4ade80` | Success states, eco messaging |
-| **Warm Cream** | `#F5E6D3` | Warm accents on dark backgrounds |
+| **Emerald** | `#4ade80` | Success states (if needed) |
+| **Warm Cream** | `#F5E6D3` | Only on dark backgrounds in footer |
 
 ## 4. Visual Language & Metaphors (Refined)
 
 ### "Clean Canopy" (Navigation & Headers)
 - **Concept:** Light, airy, and unobtrusive.
-- **Execution:** Simple, clean navigation. White or light backgrounds. No heavy borders.
+- **Execution:** 
+  - White background (`#FFFFFF`)
+  - Black text and thin-line icons (`#1A1A1A`, `strokeWidth={1}`)
+  - Minimal border (`1px solid rgba(0, 0, 0, 0.1)`)
+  - Icon hover: Dark grey (`#4A4A4A`)
+  - Fixed position with backdrop blur
 
 ### "Open Space" (Content Areas)
 - **Concept:** Gallery-like presentation. Content should feel curated.
-- **Backgrounds:** White or milky white. Clean and bright.
-- **Depth:** Subtle shadows only (`box-shadow: 0 2px 8px rgba(0,0,0,0.08)`). No heavy drop shadows.
-- **Cards:** No visible borders. Use subtle shadows and background color differences.
+- **Backgrounds:** Alternate between white (`#FFFFFF`) and milky white (`#F5F5F0`)
+- **Depth:** Subtle shadows only (`box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04)`)
+- **Cards:** No visible borders. Use subtle shadows and background color differences
+- **Hover effects:** Gentle lift (`translateY(-8px)`) with increased shadow
 
 ### "Nature Touches" (Accents)
 - **Concept:** Hints of nature, not overwhelming jungle.
-- **Icons:** Clean SVG icons in dark green or grey.
-- **Images:** High-quality photography as the nature element, not green backgrounds.
+- **Icons:** Clean SVG icons in dark colors (black or dark green)
+- **Images:** High-quality photography as the nature element
+- **Footer:** Dark background with image overlay for contrast
 
 ## 5. Typography Personality
 - **Headings:** Bold and confident. Clean lines, professional feel.
@@ -86,21 +100,47 @@ The user should feel like they are entering a **premium, modern sanctuary** for 
 
 ## 6. UI Element Guidelines
 
+### Header (Navigation)
+- **Background:** Pure white (`#FFFFFF`)
+- **Text:** Black (`#1A1A1A`)
+- **Icons:** Thin-line style (`strokeWidth={1}`), black color
+- **Hover:** Icons change to dark grey (`#4A4A4A`)
+- **Border:** `1px solid rgba(0, 0, 0, 0.1)`
+- **Logo height:** 50px
+- **Schedule text:** Black, bold for main hours, regular for sub-text
+
 ### Buttons
-- **Primary:** Dark green background (`#0D2818`), white text
-- **Secondary:** White background, dark green border and text
-- **Tertiary:** Text only with underline on hover
+- **Primary CTA:** Dark green background (`#0D2818`), white text
+- **Hover:** Slightly lighter green (`#1A3A2A`), subtle lift (`translateY(-2px)`)
+- **Style:** Rounded (`borderRadius: 40px`), no borders, medium weight (500)
+- **Font:** Questrial for body buttons, Rubik Distressed for hero CTAs
 
 ### Cards
+- **Background:** White (`#FFFFFF`) on milky white sections
 - **NO visible borders**
-- White background with subtle shadow
-- Generous padding (24px-32px)
-- Rounded corners (16px-24px)
+- **Shadow:** Subtle `0 2px 20px rgba(0, 0, 0, 0.04)`
+- **Hover shadow:** `0 12px 40px rgba(0, 0, 0, 0.08)`
+- **Padding:** Generous `clamp(20px, 4vw, 32px)`
+- **Border radius:** `16px` for modern cards
 
 ### Sections
-- Alternate between white and milky white backgrounds
-- Use generous vertical spacing (80px-120px between sections)
-- No frame/border containers
+- **Pattern:** Alternate white and milky white backgrounds
+  - Hero: White with image background
+  - Experience: Milky white (`#F5F5F0`)
+  - Testimonials: Pure white (`#FFFFFF`)
+  - Gallery: Milky white (`#F5F5F0`)
+  - Visit Us: Milky white (`#F5F5F0`)
+  - Footer: Dark with background image
+- **Spacing:** Generous vertical padding `clamp(60px, 10vw, 100px)` top/bottom
+- **Visit Us bottom spacing:** Increased by 60% `clamp(96px, 16vw, 160px)` for footer separation
+- **No frame/border containers:** Use whitespace for separation
+
+### Footer
+- **Background:** Dark image with overlay (`rgba(0, 0, 0, 0.4)`)
+- **Text:** White/cream colors for contrast
+- **Layout:** Removed JOIN US section, starts directly with links
+- **Spacing:** Reduced gap between schedule and copyright
+- **Social icons:** White with hover effects
 
 ### Forms & Inputs
 - Clean, borderless inputs with subtle bottom border or light grey background
@@ -111,15 +151,61 @@ The user should feel like they are entering a **premium, modern sanctuary** for 
   ```jsx
   cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
   ```
-- **Hover States:** Subtle and elegant. Slight scale (1.02) or shadow increase.
-- **Transitions:** Smooth and quick (0.2s-0.3s ease).
+- **Hover States:** 
+  - Cards: Subtle lift `translateY(-8px)` with shadow increase
+  - Buttons: Slight color change and `translateY(-2px)`
+  - Icons: Color change to dark grey (`#4A4A4A`)
+  - Social icons: Scale `1.15` on hover
+- **Transitions:** Smooth and quick (`0.2s-0.3s ease`)
 
-## 8. Tone of Voice
-- **Professional but Warm:** Not overly playful, but approachable.
-- **Educational:** Share knowledge elegantly.
-- **Trustworthy:** Inspire confidence in animal care and visitor experience.
+## 8. Iconography
+- **Style:** Thin-line SVG icons (`strokeWidth={1}`)
+- **Colors:** 
+  - Header icons: Black (`#1A1A1A`), hover dark grey (`#4A4A4A`)
+  - Social media: Use brand colors (Instagram pink, TikTok black, Facebook blue)
+  - Content icons: Dark green (`#0D2818`) or black
+- **Size:** `28px` for header icons, scale appropriately for context
+- **Examples:** Phone, calendar, user, lizard (custom SVG components)
 
-## 9. Responsive Rules (Mobile & Tablet)
+## 9. Tone of Voice
+- **Professional but Warm:** Not overly playful, but approachable and welcoming
+- **Educational:** Share knowledge elegantly about reptiles and experiences
+- **Trustworthy:** Inspire confidence in animal care and visitor safety
+- **Inviting:** Encourage exploration and booking without pressure
+
+## 10. Landing Page Section Examples
+
+### Loading Screen
+- **Background:** Pure white (`#FFFFFF`)
+- **Icons:** Dark green (`#0D2818`), animated bounce
+- **Text:** Dark grey (`#4A4A4A`), Questrial font
+- **Progress bar:** Thin (3px), dark green, minimal style
+
+### Experience Section ("Meet Our Jungle Friends")
+- **Background:** Milky white (`#F5F5F0`)
+- **Cards:** White with subtle shadow, no borders
+- **Titles:** Black (`#1A1A1A`), no icons in titles
+- **Hover:** Lift with increased shadow
+
+### Testimonials ("What Our Guests Say")
+- **Background:** Pure white (`#FFFFFF`)
+- **Cards:** Light grey (`#F8F9FA`), no borders or avatars
+- **Text:** Dark grey, star ratings in gold
+- **Layout:** Minimal, clean, focused on content
+
+### Gallery ("Moments at Mystik")
+- **Background:** Milky white (`#F5F5F0`)
+- **Text:** Black (`#1A1A1A`) for "Share your experience"
+- **Social icons:** Brand colors (Instagram pink, TikTok black, Facebook blue)
+- **No "The Experience" tagline:** Keep it simple
+
+### Visit Us Section
+- **Background:** Milky white (`#F5F5F0`)
+- **Button:** Dark green (`#0D2818`) with white text
+- **Extra spacing:** 60% more padding before footer
+- **Text:** Single paragraph, no line breaks in description
+
+## 11. Responsive Rules (Mobile & Tablet)
 *Principle: "Thumb-Friendly & Clean"*
 
 ### A. Breakpoints (Tailwind Standards)
