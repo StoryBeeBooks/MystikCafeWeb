@@ -47,12 +47,12 @@ const pets: Pet[] = [
 ];
 
 export default function PetsPage() {
-  const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
+  const [selectedPet, setSelectedPet] = useState<Pet>(pets[0]); // Default to Mango
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const closePetModal = () => {
-    setSelectedPet(null);
+  const selectPet = (pet: Pet) => {
+    setSelectedPet(pet);
     setIsPlaying(false);
     if (audioRef.current) {
       audioRef.current.pause();
@@ -78,44 +78,221 @@ export default function PetsPage() {
       backgroundColor: '#0D2818',
       fontFamily: '"Questrial", sans-serif',
     }}>
-      {/* Hero Section */}
+      {/* Header Section */}
       <section style={{
-        position: 'relative',
-        height: 'clamp(350px, 50vh, 500px)',
-        backgroundImage: 'url(https://assets.k12path.com/MystikCafe/Pets.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: '#F5F5F0',
+        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 5vw, 40px) clamp(40px, 6vw, 60px)',
+        textAlign: 'center',
       }}>
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.85)',
-        }} />
-        <div style={{
-          position: 'relative',
-          zIndex: 1,
-          textAlign: 'center',
-          padding: '0 clamp(16px, 5vw, 40px)',
+        <h1 style={{
+          fontFamily: '"Rubik Distressed", cursive',
+          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+          color: '#1A1A1A',
+          marginBottom: '12px',
         }}>
-          <h1 style={{
-            fontFamily: '"Rubik Distressed", cursive',
-            fontSize: 'clamp(3rem, 8vw, 5rem)',
-            color: '#1A1A1A',
-            marginBottom: '16px',
+          Meet Our Residents
+        </h1>
+        <p style={{
+          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+          color: '#4A4A4A',
+          maxWidth: '600px',
+          margin: '0 auto',
+        }}>
+          Come and meet all of our residents in person!
+        </p>
+      </section>
+
+      {/* Pet Detail Section - Above Cards */}
+      <section style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: 'clamp(40px, 6vw, 60px) clamp(16px, 4vw, 32px)',
+        backgroundColor: '#FFFFFF',
+      }}>
+        <div className="detail-layout" style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.2fr',
+          gap: 'clamp(32px, 5vw, 60px)',
+          alignItems: 'center',
+        }}>
+          {/* Left: Image */}
+          <div style={{
+            position: 'relative',
           }}>
-            Meet Our Residents
-          </h1>
-          <p style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-            color: '#4A4A4A',
-            maxWidth: '600px',
-            margin: '0 auto',
-          }}>
-            Come and meet all of our residents in person!
-          </p>
+            <div style={{
+              aspectRatio: '4/5',
+              backgroundColor: '#F8F9FA',
+              backgroundImage: selectedPet.image ? `url(${selectedPet.image})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+            }}>
+              {!selectedPet.image && (
+                <LizardIcon size={120} color="#E0E0E0" />
+              )}
+            </div>
+            
+            {/* Audio Controls */}
+            <div style={{
+              position: 'absolute',
+              bottom: '20px',
+              right: '20px',
+              display: 'flex',
+              gap: '12px',
+            }}>
+              <button
+                onClick={toggleAudio}
+                style={{
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  backgroundColor: isPlaying ? '#0D2818' : 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(10px)',
+                  color: isPlaying ? '#FFFFFF' : '#0D2818',
+                  cursor: selectedPet.audio ? 'pointer' : 'default',
+                  opacity: selectedPet.audio ? 1 : 0.4,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+                }}
+                title={selectedPet.audio ? 'Play/Pause sound' : 'Audio coming soon'}
+                disabled={!selectedPet.audio}
+              >
+                {isPlaying ? <PauseIcon size={24} color="#FFFFFF" /> : <SoundIcon size={24} color={selectedPet.audio ? '#0D2818' : '#0D281866'} />}
+              </button>
+              {selectedPet.audio && (
+                <button
+                  onClick={() => {
+                    if (audioRef.current) {
+                      audioRef.current.currentTime = 0;
+                      audioRef.current.play();
+                      setIsPlaying(true);
+                    }
+                  }}
+                  style={{
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+                  }}
+                  title="Restart sound"
+                >
+                  <ResetIcon size={24} color="#0D2818" />
+                </button>
+              )}
+            </div>
+            
+            {selectedPet.audio && (
+              <audio
+                ref={audioRef}
+                src={selectedPet.audio}
+                onEnded={() => setIsPlaying(false)}
+                onPause={() => setIsPlaying(false)}
+                onPlay={() => setIsPlaying(true)}
+              />
+            )}
+          </div>
+
+          {/* Right: Info */}
+          <div>
+            {selectedPet.species && (
+              <p style={{
+                color: '#0D2818',
+                fontStyle: 'italic',
+                fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
+                marginBottom: '8px',
+                fontWeight: '500',
+              }}>
+                {selectedPet.name} • {selectedPet.species}
+              </p>
+            )}
+            <h2 style={{
+              fontFamily: '"Rubik Distressed", cursive',
+              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              color: '#1A1A1A',
+              lineHeight: '1.1',
+              marginBottom: 'clamp(16px, 2vw, 24px)',
+            }}>
+              {selectedPet.nickname}
+            </h2>
+            <div style={{
+              width: '60px',
+              height: '3px',
+              background: 'linear-gradient(90deg, #0D2818, transparent)',
+              marginBottom: 'clamp(16px, 2vw, 24px)',
+              borderRadius: '2px',
+            }} />
+            {selectedPet.description && (
+              <p style={{
+                color: '#4A4A4A',
+                fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+                lineHeight: '1.7',
+                marginBottom: 'clamp(20px, 3vw, 32px)',
+              }}>
+                {selectedPet.description}
+              </p>
+            )}
+
+            {/* Info Cards */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '10px',
+              marginBottom: '16px',
+            }}>
+              {selectedPet.origin && (
+                <div style={{ padding: '12px 14px', backgroundColor: '#F8F9FA', borderRadius: '10px' }}>
+                  <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌍 Origin</p>
+                  <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.origin}</p>
+                </div>
+              )}
+              {selectedPet.lifespan && (
+                <div style={{ padding: '12px 14px', backgroundColor: '#F8F9FA', borderRadius: '10px' }}>
+                  <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>⏳ Lifespan</p>
+                  <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
+                </div>
+              )}
+              {selectedPet.size && (
+                <div style={{ padding: '12px 14px', backgroundColor: '#F8F9FA', borderRadius: '10px' }}>
+                  <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>📏 Size</p>
+                  <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.size}</p>
+                </div>
+              )}
+              {selectedPet.diet && (
+                <div style={{ padding: '12px 14px', backgroundColor: '#F8F9FA', borderRadius: '10px' }}>
+                  <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🍽️ Diet</p>
+                  <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.diet}</p>
+                </div>
+              )}
+            </div>
+
+            {selectedPet.funFact && (
+              <div style={{
+                padding: '16px 20px',
+                backgroundColor: '#FFF8E1',
+                borderRadius: '12px',
+              }}>
+                <p style={{ color: '#0D2818', fontSize: '0.75rem', fontWeight: '600', marginBottom: '4px', letterSpacing: '0.05em' }}>✨ FUN FACT</p>
+                <p style={{ color: '#1A1A1A', fontSize: '0.9rem', lineHeight: '1.6', fontStyle: 'italic' }}>"{selectedPet.funFact}"</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -123,40 +300,53 @@ export default function PetsPage() {
       <section style={{
         maxWidth: '1400px',
         margin: '0 auto',
-        padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 32px)',
+        padding: '0 clamp(16px, 4vw, 32px) clamp(40px, 8vw, 80px)',
         backgroundColor: '#FFFFFF',
       }}>
+        <h3 style={{
+          fontFamily: 'var(--font-antonio), sans-serif',
+          fontSize: 'clamp(1.2rem, 2vw, 1.5rem)',
+          color: '#1A1A1A',
+          marginBottom: 'clamp(20px, 3vw, 32px)',
+          textAlign: 'center',
+        }}>
+          Click to learn more about each resident
+        </h3>
         <div className="pets-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 'clamp(12px, 2vw, 24px)',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: 'clamp(10px, 1.5vw, 20px)',
         }}>
           {pets.map((pet) => (
             <div
               key={pet.id}
-              onClick={() => setSelectedPet(pet)}
+              onClick={() => selectPet(pet)}
               style={{
                 cursor: 'pointer',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                backgroundColor: '#F8F9FA',
-                borderRadius: 'clamp(12px, 2vw, 20px)',
-                padding: 'clamp(12px, 1.5vw, 20px)',
-                boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
+                backgroundColor: selectedPet.id === pet.id ? '#0D2818' : '#F8F9FA',
+                borderRadius: 'clamp(10px, 1.5vw, 16px)',
+                padding: 'clamp(10px, 1.2vw, 16px)',
+                boxShadow: selectedPet.id === pet.id ? '0 4px 20px rgba(13, 40, 24, 0.3)' : '0 2px 12px rgba(0, 0, 0, 0.04)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+                if (selectedPet.id !== pet.id) {
+                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.1)';
+                }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.04)';
+                if (selectedPet.id !== pet.id) {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.04)';
+                }
               }}
             >
               {/* Square Image Card */}
               <div style={{
                 aspectRatio: '1',
                 backgroundColor: '#FFFFFF',
-                borderRadius: 'clamp(10px, 1.8vw, 16px)',
+                borderRadius: 'clamp(8px, 1.2vw, 12px)',
                 overflow: 'hidden',
                 backgroundImage: pet.image ? `url(${pet.image})` : 'none',
                 backgroundSize: 'cover',
@@ -166,15 +356,15 @@ export default function PetsPage() {
                 justifyContent: 'center',
               }}>
                 {!pet.image && (
-                  <span style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>🦎</span>
+                  <span style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}>🦎</span>
                 )}
               </div>
               {/* Pet Nickname */}
               <p style={{
-                color: '#1A1A1A',
+                color: selectedPet.id === pet.id ? '#FFFFFF' : '#1A1A1A',
                 textAlign: 'center',
-                marginTop: 'clamp(8px, 1.5vw, 14px)',
-                fontSize: 'clamp(0.9rem, 1.8vw, 1.15rem)',
+                marginTop: 'clamp(6px, 1vw, 10px)',
+                fontSize: 'clamp(0.75rem, 1.2vw, 0.95rem)',
                 fontWeight: '700',
                 lineHeight: '1.2',
                 fontFamily: 'var(--font-antonio), sans-serif',
@@ -183,10 +373,10 @@ export default function PetsPage() {
               </p>
               {/* Species Name */}
               <p style={{
-                color: '#6B7280',
+                color: selectedPet.id === pet.id ? 'rgba(255,255,255,0.7)' : '#6B7280',
                 textAlign: 'center',
-                marginTop: '4px',
-                fontSize: 'clamp(0.65rem, 1.2vw, 0.8rem)',
+                marginTop: '2px',
+                fontSize: 'clamp(0.55rem, 0.9vw, 0.7rem)',
                 fontWeight: '400',
                 lineHeight: '1.3',
               }}>
@@ -253,430 +443,34 @@ export default function PetsPage() {
         </div>
       </section>
 
-      {/* Pet Detail Modal - Elegant Fullscreen Design */}
-      {selectedPet && (
-        <div 
-          className="pet-modal-overlay"
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: '#FFFFFF',
-            zIndex: 2000,
-            overflow: 'auto',
-            animation: 'fadeIn 0.4s ease',
-          }}
-        >
-          {/* Decorative Background */}
-          <div style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'radial-gradient(ellipse at 30% 20%, rgba(13, 40, 24, 0.02) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(13, 40, 24, 0.01) 0%, transparent 50%)',
-            pointerEvents: 'none',
-          }} />
-
-          {/* Close Button - Floating */}
-          <button
-            onClick={closePetModal}
-            style={{
-              position: 'fixed',
-              top: '24px',
-              right: '24px',
-              width: '56px',
-              height: '56px',
-              borderRadius: '50%',
-              border: 'none',
-              backgroundColor: '#F8F9FA',
-              backdropFilter: 'blur(10px)',
-              color: '#1A1A1A',
-              fontSize: '28px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-              transition: 'all 0.3s ease',
-              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#FF6B6B';
-              e.currentTarget.style.color = '#FFFFFF';
-              e.currentTarget.style.transform = 'rotate(90deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#F8F9FA';
-              e.currentTarget.style.color = '#1A1A1A';
-              e.currentTarget.style.transform = 'rotate(0deg)';
-            }}
-          >
-            ×
-          </button>
-
-          {/* Main Content Container */}
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: 'clamp(60px, 8vw, 100px) clamp(24px, 5vw, 60px)',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}>
-            <div className="modal-layout" style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 'clamp(40px, 6vw, 80px)',
-              alignItems: 'center',
-            }}>
-              {/* Left: Image with elegant frame */}
-              <div style={{
-                position: 'relative',
-                animation: 'slideInLeft 0.5s ease',
-              }}>
-                {/* Decorative frame */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-12px',
-                  left: '-12px',
-                  right: '12px',
-                  bottom: '12px',
-                  border: '2px solid rgba(26, 26, 26, 0.1)',
-                  borderRadius: '24px',
-                }} />
-                <div style={{
-                  position: 'absolute',
-                  top: '12px',
-                  left: '12px',
-                  right: '-12px',
-                  bottom: '-12px',
-                  border: '2px solid rgba(26, 26, 26, 0.05)',
-                  borderRadius: '24px',
-                }} />
-                
-                {/* Main Image */}
-                <div style={{
-                  position: 'relative',
-                  aspectRatio: '4/5',
-                  backgroundColor: '#F8F9FA',
-                  backgroundImage: selectedPet.image ? `url(${selectedPet.image})` : 'none',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  overflow: 'hidden',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
-                }}>
-                  {!selectedPet.image && (
-                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}>
-                      <LizardIcon size={120} color="#F5E6D3" />
-                    </div>
-                  )}
-                  
-                  {/* Audio Controls - Floating on image */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    right: '20px',
-                    display: 'flex',
-                    gap: '12px',
-                  }}>
-                    {/* Play/Pause Button */}
-                    <button
-                      onClick={toggleAudio}
-                      style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '50%',
-                        border: 'none',
-                        backgroundColor: isPlaying ? '#0D2818' : 'rgba(255, 255, 255, 0.95)',
-                        backdropFilter: 'blur(10px)',
-                        color: isPlaying ? '#FFFFFF' : '#0D2818',
-                        fontSize: '24px',
-                        cursor: selectedPet.audio ? 'pointer' : 'default',
-                        opacity: selectedPet.audio ? 1 : 0.4,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'all 0.3s ease',
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-                      }}
-                      title={selectedPet.audio ? 'Play/Pause sound' : 'Audio coming soon'}
-                      disabled={!selectedPet.audio}
-                    >
-                      {isPlaying ? <PauseIcon size={24} color="#FFFFFF" /> : <SoundIcon size={24} color={selectedPet.audio ? '#0D2818' : '#0D281866'} />}
-                    </button>
-
-                    {/* Reset Button */}
-                    {selectedPet.audio && (
-                      <button
-                        onClick={() => {
-                          if (audioRef.current) {
-                            audioRef.current.currentTime = 0;
-                            audioRef.current.play();
-                            setIsPlaying(true);
-                          }
-                        }}
-                        style={{
-                          width: '60px',
-                          height: '60px',
-                          borderRadius: '50%',
-                          border: 'none',
-                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                          backdropFilter: 'blur(10px)',
-                          color: '#0D2818',
-                          fontSize: '24px',
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          transition: 'all 0.3s ease',
-                          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-                        }}
-                        title="Restart sound"
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#F8F9FA';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                        }}
-                      >
-                        <ResetIcon size={24} color="#0D2818" />
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Hidden audio element */}
-                  {selectedPet.audio && (
-                    <audio
-                      ref={audioRef}
-                      src={selectedPet.audio}
-                      onEnded={() => setIsPlaying(false)}
-                      onPause={() => setIsPlaying(false)}
-                      onPlay={() => setIsPlaying(true)}
-                    />
-                  )}
-                </div>
-              </div>
-
-              {/* Right: Info with elegant typography */}
-              <div style={{
-                animation: 'slideInRight 0.5s ease',
-              }}>
-                {/* Scientific Name - Above title */}
-                {selectedPet.species && (
-                  <p style={{
-                    color: '#0D2818',
-                    fontStyle: 'italic',
-                    fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
-                    marginBottom: '8px',
-                    letterSpacing: '0.05em',
-                    fontWeight: '500',
-                  }}>
-                    {selectedPet.name} • {selectedPet.species}
-                  </p>
-                )}
-
-                {/* Nickname */}
-                <h2 style={{
-                  fontFamily: '"Rubik Distressed", cursive',
-                  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                  color: '#1A1A1A',
-                  lineHeight: '1.1',
-                  marginBottom: 'clamp(20px, 3vw, 32px)',
-                }}>
-                  {selectedPet.nickname}
-                </h2>
-
-                {/* Elegant divider */}
-                <div style={{
-                  width: '80px',
-                  height: '3px',
-                  background: 'linear-gradient(90deg, #0D2818, transparent)',
-                  marginBottom: 'clamp(20px, 3vw, 32px)',
-                  borderRadius: '2px',
-                }} />
-
-                {/* Description */}
-                {selectedPet.description && (
-                  <p style={{
-                    color: '#4A4A4A',
-                    fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
-                    lineHeight: '1.8',
-                    marginBottom: 'clamp(28px, 4vw, 40px)',
-                  }}>
-                    {selectedPet.description}
-                  </p>
-                )}
-
-                {/* Info Cards - Grid layout */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '12px',
-                  marginBottom: 'clamp(20px, 3vw, 28px)',
-                }}>
-                  {selectedPet.origin && (
-                    <div style={{
-                      padding: '14px 18px',
-                      backgroundColor: '#F8F9FA',
-                      borderRadius: '12px',
-                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                    }}>
-                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌍 Origin</p>
-                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.origin}</p>
-                    </div>
-                  )}
-                  {selectedPet.lifespan && (
-                    <div style={{
-                      padding: '14px 18px',
-                      backgroundColor: '#F8F9FA',
-                      borderRadius: '12px',
-                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                    }}>
-                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>⏳ Lifespan</p>
-                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
-                    </div>
-                  )}
-                  {selectedPet.size && (
-                    <div style={{
-                      padding: '14px 18px',
-                      backgroundColor: '#F8F9FA',
-                      borderRadius: '12px',
-                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                    }}>
-                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>📏 Size</p>
-                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.size}</p>
-                    </div>
-                  )}
-                  {selectedPet.diet && (
-                    <div style={{
-                      padding: '14px 18px',
-                      backgroundColor: '#F8F9FA',
-                      borderRadius: '12px',
-                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                    }}>
-                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🍽️ Diet</p>
-                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.diet}</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Habitat Section */}
-                {selectedPet.habitat && (
-                  <div style={{
-                    padding: '14px 18px',
-                    backgroundColor: '#F8F9FA',
-                    borderRadius: '12px',
-                    marginBottom: '12px',
-                    boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                  }}>
-                    <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🏠 Habitat</p>
-                    <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.habitat}</p>
-                  </div>
-                )}
-
-                {/* Environmental Requirements */}
-                {(selectedPet.temperature || selectedPet.humidity) && (
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '12px',
-                    marginBottom: 'clamp(20px, 3vw, 28px)',
-                  }}>
-                    {selectedPet.temperature && (
-                      <div style={{
-                        padding: '14px 18px',
-                        backgroundColor: '#E8F5E9',
-                        borderRadius: '12px',
-                        boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                      }}>
-                        <p style={{ color: '#4A4A4A', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌡️ Temperature</p>
-                        <p style={{ color: '#0D2818', fontSize: '0.85rem', fontWeight: '600' }}>{selectedPet.temperature}</p>
-                      </div>
-                    )}
-                    {selectedPet.humidity && (
-                      <div style={{
-                        padding: '14px 18px',
-                        backgroundColor: '#E8F5E9',
-                        borderRadius: '12px',
-                        boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
-                      }}>
-                        <p style={{ color: '#4A4A4A', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>💧 Humidity</p>
-                        <p style={{ color: '#0D2818', fontSize: '0.85rem', fontWeight: '600' }}>{selectedPet.humidity}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Fun Fact - Elegant quote style */}
-                {selectedPet.funFact && (
-                  <div style={{
-                    position: 'relative',
-                    padding: '24px 28px',
-                    backgroundColor: '#FFF8E1',
-                    borderRadius: '20px',
-                    boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
-                  }}>
-                    <div style={{
-                      position: 'absolute',
-                      top: '-12px',
-                      left: '24px',
-                      backgroundColor: '#FFFFFF',
-                      padding: '4px 12px',
-                      borderRadius: '8px',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                    }}>
-                      <span style={{ color: '#0D2818', fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em' }}>✨ FUN FACT</span>
-                    </div>
-                    <p style={{ 
-                      color: '#1A1A1A', 
-                      fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', 
-                      lineHeight: '1.7',
-                      fontStyle: 'italic',
-                    }}>
-                      "{selectedPet.funFact}"
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Styles */}
       <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-40px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(40px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
         .pets-grid {
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(5, 1fr);
         }
-        .modal-layout {
-          grid-template-columns: 1fr 1fr;
+        .detail-layout {
+          grid-template-columns: 1fr 1.2fr;
+        }
+        @media (max-width: 1200px) {
+          .pets-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
         }
         @media (max-width: 1024px) {
+          .pets-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+          .detail-layout {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+        }
+        @media (max-width: 768px) {
           .pets-grid {
             grid-template-columns: repeat(3, 1fr) !important;
           }
         }
-        @media (max-width: 900px) {
-          .modal-layout {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-        }
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
           .pets-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
