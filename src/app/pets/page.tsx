@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 
 // Pet data - images and audio will be added later
@@ -48,10 +48,27 @@ const pets: Pet[] = [
 export default function PetsPage() {
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const closePetModal = () => {
     setSelectedPet(null);
     setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+  const toggleAudio = () => {
+    if (audioRef.current && selectedPet?.audio) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
   };
 
   return (
@@ -349,11 +366,7 @@ export default function PetsPage() {
                   
                   {/* Audio Button - Floating on image */}
                   <button
-                    onClick={() => {
-                      if (selectedPet.audio) {
-                        setIsPlaying(!isPlaying);
-                      }
-                    }}
+                    onClick={toggleAudio}
                     style={{
                       position: 'absolute',
                       bottom: '20px',
@@ -375,9 +388,21 @@ export default function PetsPage() {
                       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                     }}
                     title={selectedPet.audio ? 'Play sound' : 'Audio coming soon'}
+                    disabled={!selectedPet.audio}
                   >
                     {isPlaying ? '⏸' : '🔊'}
                   </button>
+
+                  {/* Hidden audio element */}
+                  {selectedPet.audio && (
+                    <audio
+                      ref={audioRef}
+                      src={selectedPet.audio}
+                      onEnded={() => setIsPlaying(false)}
+                      onPause={() => setIsPlaying(false)}
+                      onPlay={() => setIsPlaying(true)}
+                    />
+                  )}
                 </div>
               </div>
 
