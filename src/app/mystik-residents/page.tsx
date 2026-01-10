@@ -92,7 +92,7 @@ export default function PetsPage() {
         <div style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(13, 40, 24, 0.6)',
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
         }} />
         <div style={{
           position: 'relative',
@@ -103,16 +103,14 @@ export default function PetsPage() {
           <h1 style={{
             fontFamily: '"Rubik Distressed", cursive',
             fontSize: 'clamp(3rem, 8vw, 5rem)',
-            color: '#F5E6D3',
+            color: '#1A1A1A',
             marginBottom: '16px',
-            textShadow: '3px 3px 12px rgba(0,0,0,0.5)',
           }}>
             Meet Our Residents
           </h1>
           <p style={{
             fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-            color: '#F5E6D3',
-            textShadow: '2px 2px 8px rgba(0,0,0,0.7)',
+            color: '#4A4A4A',
             maxWidth: '600px',
             margin: '0 auto',
           }}>
@@ -126,6 +124,7 @@ export default function PetsPage() {
         maxWidth: '1400px',
         margin: '0 auto',
         padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 32px)',
+        backgroundColor: '#FFFFFF',
       }}>
         <div className="pets-grid" style={{
           display: 'grid',
@@ -139,21 +138,25 @@ export default function PetsPage() {
               style={{
                 cursor: 'pointer',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                backgroundColor: '#F8F9FA',
+                borderRadius: 'clamp(12px, 2vw, 20px)',
+                padding: 'clamp(12px, 1.5vw, 20px)',
+                boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 10px 40px rgba(74, 222, 128, 0.3)';
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.04)';
               }}
             >
               {/* Square Image Card */}
               <div style={{
                 aspectRatio: '1',
-                backgroundColor: 'rgba(245, 230, 211, 0.1)',
-                borderRadius: 'clamp(12px, 2vw, 20px)',
+                backgroundColor: '#FFFFFF',
+                borderRadius: 'clamp(10px, 1.8vw, 16px)',
                 overflow: 'hidden',
                 backgroundImage: pet.image ? `url(${pet.image})` : 'none',
                 backgroundSize: 'cover',
@@ -161,7 +164,6 @@ export default function PetsPage() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '1px solid rgba(245, 230, 211, 0.15)',
               }}>
                 {!pet.image && (
                   <span style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>🦎</span>
@@ -169,7 +171,7 @@ export default function PetsPage() {
               </div>
               {/* Pet Nickname */}
               <p style={{
-                color: '#F5E6D3',
+                color: '#1A1A1A',
                 textAlign: 'center',
                 marginTop: 'clamp(8px, 1.5vw, 14px)',
                 fontSize: 'clamp(0.9rem, 1.8vw, 1.15rem)',
@@ -181,7 +183,7 @@ export default function PetsPage() {
               </p>
               {/* Species Name */}
               <p style={{
-                color: 'rgba(245, 230, 211, 0.6)',
+                color: '#6B7280',
                 textAlign: 'center',
                 marginTop: '4px',
                 fontSize: 'clamp(0.65rem, 1.2vw, 0.8rem)',
@@ -199,13 +201,13 @@ export default function PetsPage() {
           marginTop: 'clamp(60px, 8vw, 100px)',
           textAlign: 'center',
           padding: 'clamp(40px, 6vw, 60px)',
-          background: 'linear-gradient(135deg, rgba(245, 245, 240, 0.08) 0%, rgba(245, 245, 240, 0.02) 100%)',
+          backgroundColor: '#F5F5F0',
           borderRadius: '24px',
-          border: '1px solid rgba(245, 245, 240, 0.15)',
+          boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
         }}>
           <p style={{
             fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-            color: '#F5E6D3',
+            color: '#1A1A1A',
             marginBottom: '12px',
             fontWeight: '600',
             lineHeight: '1.4',
@@ -214,7 +216,7 @@ export default function PetsPage() {
           </p>
           <p style={{
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: 'rgba(245, 230, 211, 0.7)',
+            color: '#4A4A4A',
             marginBottom: 'clamp(24px, 4vw, 36px)',
           }}>
             Come and meet them in person
@@ -224,29 +226,28 @@ export default function PetsPage() {
             style={{
               display: 'inline-block',
               padding: 'clamp(14px, 2vw, 18px) clamp(32px, 5vw, 48px)',
-              backgroundColor: '#F5F5F0',
-              color: '#0D2818',
+              backgroundColor: '#0D2818',
+              color: '#FFFFFF',
               fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
               fontWeight: '700',
               borderRadius: '50px',
               textDecoration: 'none',
               transition: 'all 0.3s ease',
-              border: '2px solid #D0D0C8',
               boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#FFFFFF';
+              e.currentTarget.style.backgroundColor = '#1A1A1A';
               e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.2)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.25)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#F5F5F0';
+              e.currentTarget.style.backgroundColor = '#0D2818';
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.15)';
             }}
           >
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              Book Your Visit <LizardIcon size={20} color="#0D2818" />
+              Book Your Visit <LizardIcon size={20} color="#FFFFFF" />
             </span>
           </Link>
         </div>
@@ -259,7 +260,7 @@ export default function PetsPage() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: '#0D2818',
+            backgroundColor: '#FFFFFF',
             zIndex: 2000,
             overflow: 'auto',
             animation: 'fadeIn 0.4s ease',
@@ -269,7 +270,7 @@ export default function PetsPage() {
           <div style={{
             position: 'fixed',
             inset: 0,
-            background: 'radial-gradient(ellipse at 30% 20%, rgba(74, 222, 128, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(74, 222, 128, 0.05) 0%, transparent 50%)',
+            background: 'radial-gradient(ellipse at 30% 20%, rgba(13, 40, 24, 0.02) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(13, 40, 24, 0.01) 0%, transparent 50%)',
             pointerEvents: 'none',
           }} />
 
@@ -284,9 +285,9 @@ export default function PetsPage() {
               height: '56px',
               borderRadius: '50%',
               border: 'none',
-              backgroundColor: 'rgba(245, 230, 211, 0.1)',
+              backgroundColor: '#F8F9FA',
               backdropFilter: 'blur(10px)',
-              color: '#F5E6D3',
+              color: '#1A1A1A',
               fontSize: '28px',
               cursor: 'pointer',
               display: 'flex',
@@ -294,13 +295,16 @@ export default function PetsPage() {
               justifyContent: 'center',
               zIndex: 10,
               transition: 'all 0.3s ease',
+              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 107, 107, 0.8)';
+              e.currentTarget.style.backgroundColor = '#FF6B6B';
+              e.currentTarget.style.color = '#FFFFFF';
               e.currentTarget.style.transform = 'rotate(90deg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(245, 230, 211, 0.1)';
+              e.currentTarget.style.backgroundColor = '#F8F9FA';
+              e.currentTarget.style.color = '#1A1A1A';
               e.currentTarget.style.transform = 'rotate(0deg)';
             }}
           >
@@ -335,7 +339,7 @@ export default function PetsPage() {
                   left: '-12px',
                   right: '12px',
                   bottom: '12px',
-                  border: '2px solid rgba(74, 222, 128, 0.3)',
+                  border: '2px solid rgba(26, 26, 26, 0.1)',
                   borderRadius: '24px',
                 }} />
                 <div style={{
@@ -344,7 +348,7 @@ export default function PetsPage() {
                   left: '12px',
                   right: '-12px',
                   bottom: '-12px',
-                  border: '2px solid rgba(74, 222, 128, 0.15)',
+                  border: '2px solid rgba(26, 26, 26, 0.05)',
                   borderRadius: '24px',
                 }} />
                 
@@ -352,7 +356,7 @@ export default function PetsPage() {
                 <div style={{
                   position: 'relative',
                   aspectRatio: '4/5',
-                  backgroundColor: 'rgba(245, 230, 211, 0.05)',
+                  backgroundColor: '#F8F9FA',
                   backgroundImage: selectedPet.image ? `url(${selectedPet.image})` : 'none',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -361,7 +365,7 @@ export default function PetsPage() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   overflow: 'hidden',
-                  boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
                 }}>
                   {!selectedPet.image && (
                     <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}>
@@ -385,9 +389,9 @@ export default function PetsPage() {
                         height: '60px',
                         borderRadius: '50%',
                         border: 'none',
-                        backgroundColor: isPlaying ? '#4ade80' : 'rgba(13, 40, 24, 0.85)',
+                        backgroundColor: isPlaying ? '#0D2818' : 'rgba(255, 255, 255, 0.95)',
                         backdropFilter: 'blur(10px)',
-                        color: isPlaying ? '#0D2818' : '#4ade80',
+                        color: isPlaying ? '#FFFFFF' : '#0D2818',
                         fontSize: '24px',
                         cursor: selectedPet.audio ? 'pointer' : 'default',
                         opacity: selectedPet.audio ? 1 : 0.4,
@@ -395,12 +399,12 @@ export default function PetsPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         transition: 'all 0.3s ease',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
                       }}
                       title={selectedPet.audio ? 'Play/Pause sound' : 'Audio coming soon'}
                       disabled={!selectedPet.audio}
                     >
-                      {isPlaying ? <PauseIcon size={24} color="#0D2818" /> : <SoundIcon size={24} color={selectedPet.audio ? '#4ade80' : '#4ade8066'} />}
+                      {isPlaying ? <PauseIcon size={24} color="#FFFFFF" /> : <SoundIcon size={24} color={selectedPet.audio ? '#0D2818' : '#0D281866'} />}
                     </button>
 
                     {/* Reset Button */}
@@ -418,26 +422,26 @@ export default function PetsPage() {
                           height: '60px',
                           borderRadius: '50%',
                           border: 'none',
-                          backgroundColor: 'rgba(13, 40, 24, 0.85)',
+                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
                           backdropFilter: 'blur(10px)',
-                          color: '#4ade80',
+                          color: '#0D2818',
                           fontSize: '24px',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           transition: 'all 0.3s ease',
-                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
                         }}
                         title="Restart sound"
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(74, 222, 128, 0.2)';
+                          e.currentTarget.style.backgroundColor = '#F8F9FA';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'rgba(13, 40, 24, 0.85)';
+                          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                         }}
                       >
-                        <ResetIcon size={24} color="#4ade80" />
+                        <ResetIcon size={24} color="#0D2818" />
                       </button>
                     )}
                   </div>
@@ -462,11 +466,12 @@ export default function PetsPage() {
                 {/* Scientific Name - Above title */}
                 {selectedPet.species && (
                   <p style={{
-                    color: '#4ade80',
+                    color: '#0D2818',
                     fontStyle: 'italic',
                     fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
                     marginBottom: '8px',
                     letterSpacing: '0.05em',
+                    fontWeight: '500',
                   }}>
                     {selectedPet.name} • {selectedPet.species}
                   </p>
@@ -476,7 +481,7 @@ export default function PetsPage() {
                 <h2 style={{
                   fontFamily: '"Rubik Distressed", cursive',
                   fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                  color: '#F5E6D3',
+                  color: '#1A1A1A',
                   lineHeight: '1.1',
                   marginBottom: 'clamp(20px, 3vw, 32px)',
                 }}>
@@ -487,7 +492,7 @@ export default function PetsPage() {
                 <div style={{
                   width: '80px',
                   height: '3px',
-                  background: 'linear-gradient(90deg, #4ade80, transparent)',
+                  background: 'linear-gradient(90deg, #0D2818, transparent)',
                   marginBottom: 'clamp(20px, 3vw, 32px)',
                   borderRadius: '2px',
                 }} />
@@ -495,7 +500,7 @@ export default function PetsPage() {
                 {/* Description */}
                 {selectedPet.description && (
                   <p style={{
-                    color: 'rgba(245, 230, 211, 0.85)',
+                    color: '#4A4A4A',
                     fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
                     lineHeight: '1.8',
                     marginBottom: 'clamp(28px, 4vw, 40px)',
@@ -514,45 +519,45 @@ export default function PetsPage() {
                   {selectedPet.origin && (
                     <div style={{
                       padding: '14px 18px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
-                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      backgroundColor: '#F8F9FA',
                       borderRadius: '12px',
+                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌍 Origin</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.origin}</p>
+                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌍 Origin</p>
+                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.origin}</p>
                     </div>
                   )}
                   {selectedPet.lifespan && (
                     <div style={{
                       padding: '14px 18px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
-                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      backgroundColor: '#F8F9FA',
                       borderRadius: '12px',
+                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>⏳ Lifespan</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
+                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>⏳ Lifespan</p>
+                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.lifespan}</p>
                     </div>
                   )}
                   {selectedPet.size && (
                     <div style={{
                       padding: '14px 18px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
-                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      backgroundColor: '#F8F9FA',
                       borderRadius: '12px',
+                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>📏 Size</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.size}</p>
+                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>📏 Size</p>
+                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.size}</p>
                     </div>
                   )}
                   {selectedPet.diet && (
                     <div style={{
                       padding: '14px 18px',
-                      backgroundColor: 'rgba(245, 230, 211, 0.03)',
-                      border: '1px solid rgba(245, 230, 211, 0.1)',
+                      backgroundColor: '#F8F9FA',
                       borderRadius: '12px',
+                      boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                     }}>
-                      <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🍽️ Diet</p>
-                      <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.diet}</p>
+                      <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🍽️ Diet</p>
+                      <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.diet}</p>
                     </div>
                   )}
                 </div>
@@ -561,13 +566,13 @@ export default function PetsPage() {
                 {selectedPet.habitat && (
                   <div style={{
                     padding: '14px 18px',
-                    backgroundColor: 'rgba(245, 230, 211, 0.03)',
-                    border: '1px solid rgba(245, 230, 211, 0.1)',
+                    backgroundColor: '#F8F9FA',
                     borderRadius: '12px',
                     marginBottom: '12px',
+                    boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                   }}>
-                    <p style={{ color: 'rgba(245, 230, 211, 0.5)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🏠 Habitat</p>
-                    <p style={{ color: '#F5E6D3', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.habitat}</p>
+                    <p style={{ color: '#6B7280', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🏠 Habitat</p>
+                    <p style={{ color: '#1A1A1A', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.habitat}</p>
                   </div>
                 )}
 
@@ -582,23 +587,23 @@ export default function PetsPage() {
                     {selectedPet.temperature && (
                       <div style={{
                         padding: '14px 18px',
-                        backgroundColor: 'rgba(74, 222, 128, 0.05)',
-                        border: '1px solid rgba(74, 222, 128, 0.15)',
+                        backgroundColor: '#E8F5E9',
                         borderRadius: '12px',
+                        boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                       }}>
-                        <p style={{ color: 'rgba(74, 222, 128, 0.7)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌡️ Temperature</p>
-                        <p style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.temperature}</p>
+                        <p style={{ color: '#4A4A4A', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>🌡️ Temperature</p>
+                        <p style={{ color: '#0D2818', fontSize: '0.85rem', fontWeight: '600' }}>{selectedPet.temperature}</p>
                       </div>
                     )}
                     {selectedPet.humidity && (
                       <div style={{
                         padding: '14px 18px',
-                        backgroundColor: 'rgba(74, 222, 128, 0.05)',
-                        border: '1px solid rgba(74, 222, 128, 0.15)',
+                        backgroundColor: '#E8F5E9',
                         borderRadius: '12px',
+                        boxShadow: '0 1px 8px rgba(0, 0, 0, 0.04)',
                       }}>
-                        <p style={{ color: 'rgba(74, 222, 128, 0.7)', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>💧 Humidity</p>
-                        <p style={{ color: '#4ade80', fontSize: '0.85rem', fontWeight: '500' }}>{selectedPet.humidity}</p>
+                        <p style={{ color: '#4A4A4A', fontSize: '0.7rem', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>💧 Humidity</p>
+                        <p style={{ color: '#0D2818', fontSize: '0.85rem', fontWeight: '600' }}>{selectedPet.humidity}</p>
                       </div>
                     )}
                   </div>
@@ -609,21 +614,23 @@ export default function PetsPage() {
                   <div style={{
                     position: 'relative',
                     padding: '24px 28px',
-                    background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(74, 222, 128, 0.02) 100%)',
+                    backgroundColor: '#FFF8E1',
                     borderRadius: '20px',
-                    border: '1px solid rgba(74, 222, 128, 0.2)',
+                    boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
                   }}>
                     <div style={{
                       position: 'absolute',
                       top: '-12px',
                       left: '24px',
-                      backgroundColor: '#0D2818',
+                      backgroundColor: '#FFFFFF',
                       padding: '4px 12px',
+                      borderRadius: '8px',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                     }}>
-                      <span style={{ color: '#4ade80', fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em' }}>✨ FUN FACT</span>
+                      <span style={{ color: '#0D2818', fontSize: '0.8rem', fontWeight: '600', letterSpacing: '0.1em' }}>✨ FUN FACT</span>
                     </div>
                     <p style={{ 
-                      color: '#F5E6D3', 
+                      color: '#1A1A1A', 
                       fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', 
                       lineHeight: '1.7',
                       fontStyle: 'italic',
