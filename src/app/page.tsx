@@ -294,7 +294,7 @@ const testimonialStyles = {
 const visitStyles = {
   section: {
     backgroundColor: '#F5F5F0',
-    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
+    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px) clamp(96px, 16vw, 160px)',
     textAlign: 'center' as const,
   },
   container: {
