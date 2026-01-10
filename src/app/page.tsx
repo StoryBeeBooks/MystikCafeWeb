@@ -11,14 +11,14 @@ function LoadingScreen({ progress }: { progress: number }) {
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
   
   const iconComponents = [
-    <LizardIcon key="lizard" size={40} color="#4ade80" />,
-    <TurtleIcon key="turtle" size={40} color="#4ade80" />,
-    <ParrotIcon key="parrot" size={40} color="#4ade80" />,
-    <SnakeIcon key="snake" size={40} color="#4ade80" />,
-    <CrocodileIcon key="croc" size={40} color="#4ade80" />,
-    <DinoIcon key="dino" size={40} color="#4ade80" />,
-    <LeafIcon key="leaf" size={40} color="#4ade80" />,
-    <PalmTreeIcon key="palm" size={40} color="#4ade80" />,
+    <LizardIcon key="lizard" size={40} color="#0D2818" />,
+    <TurtleIcon key="turtle" size={40} color="#0D2818" />,
+    <ParrotIcon key="parrot" size={40} color="#0D2818" />,
+    <SnakeIcon key="snake" size={40} color="#0D2818" />,
+    <CrocodileIcon key="croc" size={40} color="#0D2818" />,
+    <DinoIcon key="dino" size={40} color="#0D2818" />,
+    <LeafIcon key="leaf" size={40} color="#0D2818" />,
+    <PalmTreeIcon key="palm" size={40} color="#0D2818" />,
   ];
   
   useEffect(() => {
@@ -43,49 +43,45 @@ function LoadingScreen({ progress }: { progress: number }) {
       flexDirection: 'column' as const,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#0D2818',
+      backgroundColor: '#FFFFFF',
       padding: '24px',
       zIndex: 9999,
     },
     emojiRow: {
       display: 'flex',
-      gap: '16px',
-      marginBottom: '32px',
+      gap: '20px',
+      marginBottom: '40px',
       fontSize: 'clamp(32px, 6vw, 48px)',
     },
     emoji: {
       animation: 'bounce 0.6s ease-in-out infinite',
     },
     summoningText: {
-      fontFamily: 'Rubik Distressed, sans-serif',
-      fontSize: 'clamp(18px, 3vw, 28px)',
-      marginBottom: '24px',
+      fontFamily: 'Questrial, sans-serif',
+      fontSize: 'clamp(16px, 2.5vw, 20px)',
+      marginBottom: '40px',
       textAlign: 'center' as const,
-      background: 'linear-gradient(90deg, #4ade80, #facc15, #f97316, #4ade80)',
-      backgroundSize: '200% auto',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
-      animation: 'shimmer 2s linear infinite',
+      color: '#4A4A4A',
+      letterSpacing: '0.02em',
     },
     progressContainer: {
       width: '100%',
-      maxWidth: '320px',
-      height: '8px',
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      borderRadius: '8px',
+      maxWidth: '240px',
+      height: '3px',
+      backgroundColor: '#E5E5E5',
+      borderRadius: '2px',
       overflow: 'hidden',
-      marginBottom: '16px',
+      marginBottom: '24px',
     },
     progressBar: {
       height: '100%',
-      background: 'linear-gradient(90deg, #4ade80, #22c55e)',
-      borderRadius: '8px',
+      background: '#0D2818',
+      borderRadius: '2px',
       transition: 'width 0.3s ease',
       width: `${Math.min(progress, 100)}%`,
     },
     hint: {
-      color: 'rgba(255, 255, 255, 0.4)',
+      color: '#6B7280',
       fontSize: 'clamp(11px, 1.5vw, 13px)',
       textAlign: 'center' as const,
     },
@@ -148,8 +144,8 @@ const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.or
 
 const experienceStyles = {
   section: {
-    backgroundColor: '#0D2818',
-    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+    backgroundColor: '#F5F5F0',
+    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
   },
   container: {
     maxWidth: '1200px',
@@ -157,32 +153,32 @@ const experienceStyles = {
   },
   header: {
     textAlign: 'center' as const,
-    marginBottom: 'clamp(30px, 6vw, 60px)',
+    marginBottom: 'clamp(40px, 8vw, 80px)',
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
     fontSize: 'clamp(28px, 5vw, 48px)',
-    color: '#F5E6D3',
-    marginBottom: 'clamp(8px, 2vw, 16px)',
+    color: '#1A1A1A',
+    marginBottom: 'clamp(12px, 2vw, 20px)',
   },
   subtitle: {
     fontSize: 'clamp(14px, 2vw, 18px)',
-    color: 'rgba(245, 230, 211, 0.8)',
+    color: '#4A4A4A',
     maxWidth: '600px',
     margin: '0 auto',
-    lineHeight: '1.6',
+    lineHeight: '1.7',
   },
   grid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
-    gap: 'clamp(20px, 4vw, 40px)',
+    gap: 'clamp(30px, 5vw, 50px)',
   },
   card: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: '24px',
+    backgroundColor: '#FFFFFF',
+    borderRadius: '16px',
     overflow: 'hidden',
-    border: '1px solid rgba(245, 230, 211, 0.1)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
   },
   videoContainer: {
     width: '100%',
@@ -195,25 +191,25 @@ const experienceStyles = {
     objectFit: 'cover' as const,
   },
   cardContent: {
-    padding: 'clamp(16px, 3vw, 24px)',
+    padding: 'clamp(20px, 4vw, 32px)',
   },
   cardTitle: {
     fontFamily: '"Antonio", sans-serif',
     fontSize: 'clamp(20px, 3vw, 28px)',
-    color: '#F5E6D3',
-    marginBottom: 'clamp(8px, 1.5vw, 12px)',
+    color: '#1A1A1A',
+    marginBottom: 'clamp(10px, 2vw, 16px)',
   },
   cardText: {
     fontSize: 'clamp(14px, 1.8vw, 16px)',
-    color: 'rgba(245, 230, 211, 0.75)',
-    lineHeight: '1.7',
+    color: '#4A4A4A',
+    lineHeight: '1.8',
   },
 };
 
 const testimonialStyles = {
   section: {
-    backgroundColor: '#F5E6D3',
-    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+    backgroundColor: '#FFFFFF',
+    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
   },
   container: {
     maxWidth: '1200px',
@@ -221,25 +217,24 @@ const testimonialStyles = {
   },
   header: {
     textAlign: 'center' as const,
-    marginBottom: 'clamp(30px, 6vw, 60px)',
+    marginBottom: 'clamp(40px, 8vw, 80px)',
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
     fontSize: 'clamp(28px, 5vw, 42px)',
-    color: '#0D2818',
+    color: '#1A1A1A',
     marginBottom: 'clamp(8px, 2vw, 16px)',
   },
   grid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-    gap: 'clamp(16px, 3vw, 30px)',
+    gap: 'clamp(24px, 4vw, 40px)',
     marginBottom: 'clamp(30px, 6vw, 60px)',
   },
   card: {
-    backgroundColor: 'white',
-    borderRadius: 'clamp(12px, 2vw, 20px)',
-    padding: 'clamp(20px, 3vw, 30px)',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    backgroundColor: '#F8F9FA',
+    borderRadius: 'clamp(12px, 2vw, 16px)',
+    padding: 'clamp(24px, 4vw, 36px)',
     position: 'relative' as const,
     display: 'flex',
     flexDirection: 'column' as const,
@@ -250,15 +245,15 @@ const testimonialStyles = {
     top: 'clamp(10px, 2vw, 15px)',
     left: 'clamp(12px, 2vw, 20px)',
     fontSize: 'clamp(40px, 6vw, 60px)',
-    color: 'rgba(13, 40, 24, 0.1)',
+    color: 'rgba(13, 40, 24, 0.08)',
     fontFamily: 'Georgia, serif',
     lineHeight: '1',
   },
   text: {
     fontSize: 'clamp(13px, 1.8vw, 15px)',
     color: '#4A4A4A',
-    lineHeight: '1.7',
-    marginBottom: 'clamp(12px, 2vw, 20px)',
+    lineHeight: '1.8',
+    marginBottom: 'clamp(16px, 3vw, 24px)',
     position: 'relative' as const,
     zIndex: 1,
     flex: '1',
@@ -266,13 +261,13 @@ const testimonialStyles = {
   author: {
     display: 'flex',
     alignItems: 'center',
-    gap: 'clamp(8px, 1.5vw, 12px)',
+    gap: 'clamp(10px, 2vw, 14px)',
   },
   avatar: {
     width: 'clamp(36px, 5vw, 45px)',
     height: 'clamp(36px, 5vw, 45px)',
     borderRadius: '50%',
-    backgroundColor: '#1B5E20',
+    backgroundColor: '#0D2818',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -281,75 +276,76 @@ const testimonialStyles = {
     fontSize: 'clamp(14px, 2vw, 18px)',
   },
   authorName: {
-    fontWeight: 'bold',
-    color: '#0D2818',
+    fontWeight: '600',
+    color: '#1A1A1A',
     fontSize: 'clamp(14px, 1.8vw, 16px)',
   },
   authorLocation: {
-    color: '#888',
+    color: '#6B7280',
     fontSize: 'clamp(12px, 1.6vw, 14px)',
   },
   stars: {
     color: '#FFB800',
-    marginBottom: 'clamp(10px, 1.5vw, 15px)',
+    marginBottom: 'clamp(12px, 2vw, 18px)',
     fontSize: 'clamp(14px, 2vw, 18px)',
   },
 };
 
 const visitStyles = {
   section: {
-    backgroundColor: '#0D2818',
-    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
+    backgroundColor: '#F5F5F0',
+    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
     textAlign: 'center' as const,
   },
   container: {
-    maxWidth: '800px',
+    maxWidth: '700px',
     margin: '0 auto',
   },
   tagline: {
-    fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: 'clamp(16px, 3vw, 24px)',
-    color: '#1B5E20',
-    marginBottom: 'clamp(12px, 2vw, 20px)',
+    fontFamily: 'Questrial, sans-serif',
+    fontSize: 'clamp(14px, 2vw, 16px)',
+    color: '#0D2818',
+    marginBottom: 'clamp(16px, 3vw, 24px)',
     letterSpacing: '0.2em',
+    textTransform: 'uppercase' as const,
   },
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
     fontSize: 'clamp(28px, 5vw, 42px)',
-    color: '#F5E6D3',
-    marginBottom: 'clamp(4px, 1vw, 8px)',
+    color: '#1A1A1A',
+    marginBottom: 'clamp(8px, 1.5vw, 12px)',
   },
   location: {
-    fontSize: 'clamp(14px, 2.5vw, 20px)',
-    color: '#1B5E20',
-    marginBottom: 'clamp(16px, 3vw, 30px)',
-    fontWeight: 'bold',
+    fontSize: 'clamp(16px, 2.5vw, 20px)',
+    color: '#0D2818',
+    marginBottom: 'clamp(24px, 4vw, 40px)',
+    fontWeight: '500',
   },
   description: {
-    fontSize: 'clamp(14px, 2vw, 18px)',
-    color: 'rgba(245, 230, 211, 0.85)',
-    lineHeight: '1.8',
-    marginBottom: 'clamp(24px, 4vw, 40px)',
+    fontSize: 'clamp(14px, 2vw, 17px)',
+    color: '#4A4A4A',
+    lineHeight: '1.9',
+    marginBottom: 'clamp(24px, 4vw, 36px)',
   },
   note: {
     fontSize: 'clamp(12px, 1.6vw, 14px)',
-    color: 'rgba(245, 230, 211, 0.6)',
-    marginBottom: 'clamp(24px, 4vw, 40px)',
+    color: '#6B7280',
+    marginBottom: 'clamp(32px, 5vw, 48px)',
     fontStyle: 'italic',
   },
   ctaButton: {
     display: 'inline-block',
-    backgroundColor: '#F5E6D3',
-    color: '#0D2818',
-    padding: 'clamp(12px, 2vw, 18px) clamp(30px, 5vw, 50px)',
+    backgroundColor: '#0D2818',
+    color: '#FFFFFF',
+    padding: 'clamp(14px, 2.5vw, 20px) clamp(36px, 6vw, 56px)',
     borderRadius: '40px',
     textDecoration: 'none',
-    fontWeight: 'normal',
-    fontSize: 'clamp(14px, 2vw, 18px)',
-    fontFamily: 'Rubik Distressed, sans-serif',
+    fontWeight: '500',
+    fontSize: 'clamp(14px, 2vw, 17px)',
+    fontFamily: 'Questrial, sans-serif',
     cursor: lizardCursor,
     transition: 'all 0.3s ease',
-    border: '2px solid #F5E6D3',
+    border: 'none',
   },
 };
 
@@ -503,11 +499,11 @@ export default function Home() {
               style={experienceStyles.card}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.04)';
               }}
             >
               <div style={experienceStyles.videoContainer}>
@@ -545,11 +541,11 @@ export default function Home() {
               style={experienceStyles.card}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.04)';
               }}
             >
               <div style={experienceStyles.videoContainer}>
@@ -574,7 +570,7 @@ export default function Home() {
               </div>
               <div style={experienceStyles.cardContent}>
                 <h3 style={{ ...experienceStyles.cardTitle, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <LizardIcon size={24} color="#4ade80" /> Chameleons
+                  <LizardIcon size={24} color="#0D2818" /> Chameleons
                 </h3>
                 <p style={experienceStyles.cardText}>
                   Masters of disguise await you! Watch in wonder as our chameleons shift 
@@ -650,12 +646,12 @@ export default function Home() {
             href="/book"
             style={visitStyles.ctaButton}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#0D2818';
-              e.currentTarget.style.color = '#F5E6D3';
+              e.currentTarget.style.backgroundColor = '#1A3A2A';
+              e.currentTarget.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#F5E6D3';
-              e.currentTarget.style.color = '#0D2818';
+              e.currentTarget.style.backgroundColor = '#0D2818';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
             Book Your Visit

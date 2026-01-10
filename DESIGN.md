@@ -1,38 +1,71 @@
 # Mystik Cafe - Atmosphere & Visual Language
-*Goal: Immerse the user in a living, breathing digital jungle.*
+*Goal: Create a clean, sophisticated, and inviting digital experience.*
 
 ## 1. The "Vibe" (Emotional North Star)
-The user should feel like they are **parting the leaves** to discover something hidden.
-- **Keywords:** Humidity, Discovery, Tactile, Lush, Secretive, Alive.
-- **The Feeling:** It’s not just "green"; it’s *deep* rainforest shadow and *bright* dappled sunlight.
-- **The Pace:** Slow and observant. The user shouldn't rush; they should explore.
+The user should feel like they are entering a **premium, modern sanctuary** for exotic creatures.
+- **Keywords:** Clean, Sophisticated, Airy, Inviting, Premium, Trustworthy.
+- **The Feeling:** Not a zoo, but a curated experience. Think high-end café meets nature sanctuary.
+- **The Pace:** Effortless and intuitive. The design should guide, not overwhelm.
 
-## 2. Visual Language & Metaphors
-When building UI, use these metaphors to guide your code decisions:
+## 2. Design Philosophy: Minimalist & Clean
+**Core Principles:**
+- **Whitespace is King:** Let content breathe. More space = more elegance.
+- **No Unnecessary Frames:** Remove bordered boxes and containers. Use spacing and subtle shadows instead.
+- **Flat & Clean:** Reduce visual clutter. If an element doesn't serve a purpose, remove it.
+- **Hierarchy Through Typography:** Use font weight, size, and color to create hierarchy, not boxes.
 
-### "The Canopy Layer" (Navigation & Headers)
-- **Concept:** High above the ground, bright but protective.
-- **Execution:** Sticky headers shouldn't look like "bars"; they should feel like a canopy edge. Use organic, wavy bottom borders (SVG separators) that mimic leaf shapes, not straight lines.
+## 3. Color System (Updated January 2026)
 
-### "The Understory" (Content Areas)
-- **Concept:** Where the animals live. Shadowy, rich, and dense.
-- **Backgrounds:** Never pure flat white. Use very subtle texture patterns (grain, leaf veins) or "off-white" stone colors (`#F8F9FA`) to reduce screen glare, mimicking the soft light of a forest floor.
-- **Depth:** Use heavy drop shadows on cards to lift them off the "ground." The UI should have *Z-axis depth*, like layers of foliage.
+### Background Hierarchy (Light to Dark)
+| Level | Color | Hex | Usage |
+|-------|-------|-----|-------|
+| **Primary** | Pure White | `#FFFFFF` | Main content areas, cards |
+| **Secondary** | Milky White | `#F5F5F0` | Alternate sections, subtle backgrounds |
+| **Tertiary** | Light Grey | `#F8F9FA` | Subtle dividers, input backgrounds |
+| **Accent** | Dark Green | `#0D2818` | Header, footer, special sections (sparingly) |
 
-### "Sunbeams" (Accents & Buttons)
-- **Concept:** The light breaking through the trees.
-- **Buttons:** These are your sunbeams. They should be vibrant, glowing (slight shadow/glow effect), and inviting.
-- **Colors:** Use "Poison Frog Orange" or "Sunlight Yellow" for calls-to-action to slice through the green.
+### Text Color Hierarchy (Dark to Light)
+| Level | Color | Hex | Usage |
+|-------|-------|-----|-------|
+| **Primary** | Black | `#1A1A1A` | Main headings, important text |
+| **Secondary** | Dark Grey | `#4A4A4A` | Subheadings, body text |
+| **Tertiary** | Grey | `#6B7280` | Captions, secondary info |
+| **Accent** | Navy Blue | `#1E3A5F` | Links, special highlights |
+| **Brand** | Dark Green | `#0D2818` | Brand elements, CTAs |
 
-## 3. Typography Personality
-- **Headings:** Must feel **Hand-Carved**. Imagine a wooden signpost on a safari trail. Use fonts that have slightly imperfect, rounded edges.
-- **Body Text:** Clean and legible, like a field guide or a naturalist's journal.
+### Accent Colors (Use Sparingly)
+| Color | Hex | Usage |
+|-------|-----|-------|
+| **Emerald** | `#4ade80` | Success states, eco messaging |
+| **Warm Cream** | `#F5E6D3` | Warm accents on dark backgrounds |
+
+## 4. Visual Language & Metaphors (Refined)
+
+### "Clean Canopy" (Navigation & Headers)
+- **Concept:** Light, airy, and unobtrusive.
+- **Execution:** Simple, clean navigation. White or light backgrounds. No heavy borders.
+
+### "Open Space" (Content Areas)
+- **Concept:** Gallery-like presentation. Content should feel curated.
+- **Backgrounds:** White or milky white. Clean and bright.
+- **Depth:** Subtle shadows only (`box-shadow: 0 2px 8px rgba(0,0,0,0.08)`). No heavy drop shadows.
+- **Cards:** No visible borders. Use subtle shadows and background color differences.
+
+### "Nature Touches" (Accents)
+- **Concept:** Hints of nature, not overwhelming jungle.
+- **Icons:** Clean SVG icons in dark green or grey.
+- **Images:** High-quality photography as the nature element, not green backgrounds.
+
+## 5. Typography Personality
+- **Headings:** Bold and confident. Clean lines, professional feel.
+- **Body Text:** Highly legible, comfortable reading experience.
 
 ### Current Font Stack
 | Font | Use Case | CSS |
 |------|----------|-----|
-| **Rubik Distressed** | Headlines, CTAs, buttons | `fontFamily: 'Rubik Distressed, sans-serif'` |
-| **Inter** | Body text, paragraphs | `font-[var(--font-inter)]` |
+| **Rubik Distressed** | Feature Headlines only | `fontFamily: 'Rubik Distressed, sans-serif'` |
+| **Antonio** | Section titles, card titles | `fontFamily: 'Antonio, sans-serif'` |
+| **Questrial** | Body text, paragraphs | `fontFamily: 'Questrial, sans-serif'` |
 
 ### Adding New Google Fonts
 1. Go to [fonts.google.com](https://fonts.google.com) and find the font
@@ -51,39 +84,54 @@ When building UI, use these metaphors to guide your code decisions:
 > style={{ marginBottom: '64px', padding: '20px 40px' }}
 > ```
 
-## 4. Motion & Interaction (The "Alive" Factor)
-- **Cursor (Lizard on Hover):** All links and buttons must show the lizard emoji cursor on hover:
+## 6. UI Element Guidelines
+
+### Buttons
+- **Primary:** Dark green background (`#0D2818`), white text
+- **Secondary:** White background, dark green border and text
+- **Tertiary:** Text only with underline on hover
+
+### Cards
+- **NO visible borders**
+- White background with subtle shadow
+- Generous padding (24px-32px)
+- Rounded corners (16px-24px)
+
+### Sections
+- Alternate between white and milky white backgrounds
+- Use generous vertical spacing (80px-120px between sections)
+- No frame/border containers
+
+### Forms & Inputs
+- Clean, borderless inputs with subtle bottom border or light grey background
+- Focus state: Dark green underline
+
+## 7. Motion & Interaction
+- **Cursor (Lizard on Hover):** Keep for brand personality:
   ```jsx
   cursor: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer'
   ```
-- **Hover States:** Leaves rustle when touched. Buttons should have a "bouncy" spring physics animation on hover, not a linear fade.
-- **Scrolling:** Elements should reveal themselves slowly (fade-up with a slight delay), like an animal stepping out from behind a tree.
-- **Micro-Interactions:** A chameleon eye following the cursor, or a leaf swaying gently in the corner.
+- **Hover States:** Subtle and elegant. Slight scale (1.02) or shadow increase.
+- **Transitions:** Smooth and quick (0.2s-0.3s ease).
 
-## 5. Tone of Voice
-- **Do not say:** "Click here to subscribe."
-- **Say:** "Join the Expedition."
-- **Do not say:** "Contact Us."
-- **Say:** "Send a Radio Signal."
-- **Voice:** Enthusiastic, educational, and slightly mysterious. Like a favorite zookeeper telling you a secret.
+## 8. Tone of Voice
+- **Professional but Warm:** Not overly playful, but approachable.
+- **Educational:** Share knowledge elegantly.
+- **Trustworthy:** Inspire confidence in animal care and visitor experience.
 
----
-*Note to AI: When generating code, prioritize "organic shapes" (border-radius: 20px+) over "digital squares." If a div can be rounded, round it. If a background can have a subtle gradient, add it.*
-
-
-## 6. Responsive Rules (Mobile & Tablet)
-*Principle: "Thumb-Friendly Jungle"*
+## 9. Responsive Rules (Mobile & Tablet)
+*Principle: "Thumb-Friendly & Clean"*
 
 ### A. Breakpoints (Tailwind Standards)
 - **Mobile First:** Code for mobile first (no prefix), then add `md:` (Tablet) and `lg:` (Desktop).
 - **Tablet (iPad):** `md: 768px`. The "Hybrid Zone." Ensure 3-column grids become 2-columns here.
-- **Desktop:** `lg: 1024px`. Full "Canopy" experience.
+- **Desktop:** `lg: 1024px`. Full experience.
 
 ### B. Navigation Behavior
 - **Mobile (`< md`):**
   - **Hamburger Menu:** Must be at the *bottom right* or *top right* (easily reachable).
-  - **Drawer:** Slide out from the right (`bg-jungle-dark`).
-  - **Links:** Large text (24px+), centered, with 20px padding between items (no accidental clicks).
+  - **Drawer:** Slide out from the right.
+  - **Links:** Large text (24px+), centered, with 20px padding between items.
 - **Tablet (`md` to `lg`):**
   - Keep the Hamburger menu if there are >5 links.
   - If <5 links, show text links but increase padding.
@@ -112,3 +160,6 @@ When building UI, use these metaphors to guide your code decisions:
 - **Hero Section:**
   - Mobile: Text goes *below* the 3D model/Image (Stack vertical).
   - Desktop: Text and 3D model sit *side-by-side*.
+
+---
+*Note to AI: Prioritize whitespace and cleanliness. Remove unnecessary borders and frames. Use typography and spacing to create hierarchy. When in doubt, simplify.*
