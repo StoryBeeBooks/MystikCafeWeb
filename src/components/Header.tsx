@@ -98,7 +98,7 @@ const styles = {
   hamburgerLine: {
     width: '24px',
     height: '2px',
-    backgroundColor: '#6B2D2D',
+    backgroundColor: '#1A1A1A',
     transition: 'all 0.3s ease',
   },
   mobileMenu: {
@@ -106,17 +106,17 @@ const styles = {
     top: '74px',
     left: 0,
     right: 0,
-    backgroundColor: '#FDF8F4',
+    backgroundColor: '#FFFFFF',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
-    gap: '20px',
-    borderBottom: '1px solid rgba(139, 69, 69, 0.1)',
+    gap: '16px',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
     zIndex: 1001,
   },
   mobileLink: {
-    color: '#6B2D2D',
+    color: '#1A1A1A',
     textDecoration: 'none',
     fontSize: '16px',
     padding: '12px 24px',
@@ -252,7 +252,7 @@ export default function Header() {
             aria-label="Menu"
           >
             {isMenuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B2D2D" strokeWidth="2" strokeLinecap="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -270,39 +270,37 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div style={styles.mobileMenu} className="mobile-menu">
-          <div style={{...styles.scheduleSection, marginBottom: '10px'}}>
-            <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
-            <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
-          </div>
           <a 
             href="tel:647-560-6524" 
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
-            📞 647-560-6524
+            647-560-6524
           </a>
           <Link 
             href="/mystik-residents" 
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <LizardIcon size={20} color="#1A1A1A" /> Mystik Residents
-            </span>
+            Mystik Residents
           </Link>
+          <div style={{...styles.scheduleSection, margin: '8px 0'}}>
+            <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
+            <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
+          </div>
           <Link 
             href="/book" 
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
-            📅 Booking
+            Booking
           </Link>
           <Link 
             href="/signin" 
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
-            👤 Sign Up / Sign In
+            Sign Up / Sign In
           </Link>
         </div>
       )}
