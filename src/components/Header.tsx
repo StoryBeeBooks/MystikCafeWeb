@@ -284,7 +284,15 @@ export default function Header() {
           >
             Mystik Residents
           </Link>
-          <div style={{...styles.scheduleSection, margin: '8px 0'}}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column' as const,
+            alignItems: 'center',
+            color: '#1A1A1A',
+            fontSize: '13px',
+            lineHeight: '1.4',
+            padding: '8px 0',
+          }}>
             <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
             <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
           </div>
