@@ -88,7 +88,7 @@ export default function PetsPage() {
   return (
     <main style={{
       minHeight: '100vh',
-      backgroundColor: '#0D2818',
+      backgroundColor: '#FFFFFF',
       fontFamily: '"Questrial", sans-serif',
     }}>
       {/* Header Section */}
