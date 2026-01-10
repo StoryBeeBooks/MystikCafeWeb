@@ -309,27 +309,25 @@ export default function PetsPage() {
         </div>
       </section>
 
-      {/* Pets Carousel */}
+      {/* Pets Carousels - Two Separate Rows */}
       <section style={{
         maxWidth: '1400px',
         margin: '0 auto',
         padding: '0 clamp(16px, 4vw, 32px) clamp(40px, 8vw, 80px)',
         backgroundColor: '#FFFFFF',
       }}>
-        {/* Carousel Container */}
-        <div style={{ position: 'relative' }}>
-          {/* Navigation Arrows - Desktop */}
+        {/* Row 1 - First 10 pets */}
+        <div style={{ position: 'relative', marginBottom: '24px' }}>
+          {/* Left Arrow */}
           <button
-            className="carousel-arrow carousel-arrow-left"
+            className="carousel-arrow"
             onClick={() => {
-              const container = document.getElementById('pets-carousel');
-              if (container) {
-                container.scrollBy({ left: -300, behavior: 'smooth' });
-              }
+              const container = document.getElementById('pets-row-1');
+              if (container) container.scrollBy({ left: -320, behavior: 'smooth' });
             }}
             style={{
               position: 'absolute',
-              left: '-20px',
+              left: '-24px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '48px',
@@ -357,17 +355,16 @@ export default function PetsPage() {
             <ChevronLeftIcon size={24} color="#1A1A1A" />
           </button>
 
+          {/* Right Arrow */}
           <button
-            className="carousel-arrow carousel-arrow-right"
+            className="carousel-arrow"
             onClick={() => {
-              const container = document.getElementById('pets-carousel');
-              if (container) {
-                container.scrollBy({ left: 300, behavior: 'smooth' });
-              }
+              const container = document.getElementById('pets-row-1');
+              if (container) container.scrollBy({ left: 320, behavior: 'smooth' });
             }}
             style={{
               position: 'absolute',
-              right: '-20px',
+              right: '-24px',
               top: '50%',
               transform: 'translateY(-50%)',
               width: '48px',
@@ -395,25 +392,23 @@ export default function PetsPage() {
             <ChevronRightIcon size={24} color="#1A1A1A" />
           </button>
 
-          {/* Scrollable Cards Container */}
+          {/* Row 1 Cards */}
           <div
-            id="pets-carousel"
-            className="pets-carousel"
+            id="pets-row-1"
+            className="pets-row"
             style={{
-              display: 'grid',
-              gridTemplateRows: 'repeat(2, 1fr)',
-              gridAutoFlow: 'column',
-              gridAutoColumns: 'minmax(140px, 160px)',
-              gap: '12px',
+              display: 'flex',
+              gap: '16px',
               overflowX: 'auto',
               overflowY: 'hidden',
               scrollSnapType: 'x mandatory',
               scrollBehavior: 'smooth',
-              paddingBottom: '8px',
               WebkitOverflowScrolling: 'touch',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
             }}
           >
-            {pets.map((pet) => (
+            {pets.slice(0, 10).map((pet) => (
               <div
                 key={pet.id}
                 onClick={() => selectPet(pet)}
@@ -421,70 +416,225 @@ export default function PetsPage() {
                   cursor: 'pointer',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   backgroundColor: selectedPet.id === pet.id ? '#0D2818' : '#F8F9FA',
-                  borderRadius: '12px',
-                  padding: '10px',
-                  boxShadow: selectedPet.id === pet.id ? '0 4px 20px rgba(13, 40, 24, 0.3)' : '0 2px 12px rgba(0, 0, 0, 0.04)',
+                  borderRadius: '16px',
+                  padding: '16px',
+                  boxShadow: selectedPet.id === pet.id ? '0 4px 24px rgba(13, 40, 24, 0.3)' : '0 2px 16px rgba(0, 0, 0, 0.04)',
                   scrollSnapAlign: 'start',
-                  minWidth: '140px',
+                  minWidth: '200px',
+                  maxWidth: '200px',
+                  flexShrink: 0,
                 }}
                 onMouseEnter={(e) => {
                   if (selectedPet.id !== pet.id) {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(-6px)';
+                    e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.12)';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (selectedPet.id !== pet.id) {
                     e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.04)';
+                    e.currentTarget.style.boxShadow = '0 2px 16px rgba(0, 0, 0, 0.04)';
                   }
                 }}
               >
-              {/* Square Image Card */}
-              <div style={{
-                aspectRatio: '1',
-                backgroundColor: '#FFFFFF',
-                borderRadius: '10px',
-                overflow: 'hidden',
-                backgroundImage: pet.image ? `url(${pet.image})` : 'none',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                {!pet.image && (
-                  <span style={{ fontSize: '2rem' }}>🦎</span>
-                )}
+                <div style={{
+                  aspectRatio: '1',
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  backgroundImage: pet.image ? `url(${pet.image})` : 'none',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  {!pet.image && <span style={{ fontSize: '3rem' }}>🦎</span>}
+                </div>
+                <p style={{
+                  color: selectedPet.id === pet.id ? '#FFFFFF' : '#1A1A1A',
+                  textAlign: 'center',
+                  marginTop: '12px',
+                  fontSize: '1rem',
+                  fontWeight: '700',
+                  lineHeight: '1.2',
+                  fontFamily: 'var(--font-antonio), sans-serif',
+                }}>
+                  {pet.nickname}
+                </p>
+                <p style={{
+                  color: selectedPet.id === pet.id ? 'rgba(255,255,255,0.7)' : '#6B7280',
+                  textAlign: 'center',
+                  marginTop: '4px',
+                  fontSize: '0.75rem',
+                  fontWeight: '400',
+                  lineHeight: '1.3',
+                }}>
+                  {pet.name}
+                </p>
               </div>
-              {/* Pet Nickname */}
-              <p style={{
-                color: selectedPet.id === pet.id ? '#FFFFFF' : '#1A1A1A',
-                textAlign: 'center',
-                marginTop: '8px',
-                fontSize: '0.85rem',
-                fontWeight: '700',
-                lineHeight: '1.2',
-                fontFamily: 'var(--font-antonio), sans-serif',
-              }}>
-                {pet.nickname}
-              </p>
-              {/* Species Name */}
-              <p style={{
-                color: selectedPet.id === pet.id ? 'rgba(255,255,255,0.7)' : '#6B7280',
-                textAlign: 'center',
-                marginTop: '2px',
-                fontSize: '0.65rem',
-                fontWeight: '400',
-                lineHeight: '1.3',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}>
-                {pet.name}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 - Last 10 pets */}
+        <div style={{ position: 'relative' }}>
+          {/* Left Arrow */}
+          <button
+            className="carousel-arrow"
+            onClick={() => {
+              const container = document.getElementById('pets-row-2');
+              if (container) container.scrollBy({ left: -320, behavior: 'smooth' });
+            }}
+            style={{
+              position: 'absolute',
+              left: '-24px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              border: 'none',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#F5F5F0';
+              e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#FFFFFF';
+              e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+            }}
+          >
+            <ChevronLeftIcon size={24} color="#1A1A1A" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            className="carousel-arrow"
+            onClick={() => {
+              const container = document.getElementById('pets-row-2');
+              if (container) container.scrollBy({ left: 320, behavior: 'smooth' });
+            }}
+            style={{
+              position: 'absolute',
+              right: '-24px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              border: 'none',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#F5F5F0';
+              e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#FFFFFF';
+              e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+            }}
+          >
+            <ChevronRightIcon size={24} color="#1A1A1A" />
+          </button>
+
+          {/* Row 2 Cards */}
+          <div
+            id="pets-row-2"
+            className="pets-row"
+            style={{
+              display: 'flex',
+              gap: '16px',
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              scrollSnapType: 'x mandatory',
+              scrollBehavior: 'smooth',
+              WebkitOverflowScrolling: 'touch',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+            }}
+          >
+            {pets.slice(10, 20).map((pet) => (
+              <div
+                key={pet.id}
+                onClick={() => selectPet(pet)}
+                style={{
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  backgroundColor: selectedPet.id === pet.id ? '#0D2818' : '#F8F9FA',
+                  borderRadius: '16px',
+                  padding: '16px',
+                  boxShadow: selectedPet.id === pet.id ? '0 4px 24px rgba(13, 40, 24, 0.3)' : '0 2px 16px rgba(0, 0, 0, 0.04)',
+                  scrollSnapAlign: 'start',
+                  minWidth: '200px',
+                  maxWidth: '200px',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => {
+                  if (selectedPet.id !== pet.id) {
+                    e.currentTarget.style.transform = 'translateY(-6px)';
+                    e.currentTarget.style.boxShadow = '0 8px 28px rgba(0, 0, 0, 0.12)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (selectedPet.id !== pet.id) {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 2px 16px rgba(0, 0, 0, 0.04)';
+                  }
+                }}
+              >
+                <div style={{
+                  aspectRatio: '1',
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  backgroundImage: pet.image ? `url(${pet.image})` : 'none',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  {!pet.image && <span style={{ fontSize: '3rem' }}>🦎</span>}
+                </div>
+                <p style={{
+                  color: selectedPet.id === pet.id ? '#FFFFFF' : '#1A1A1A',
+                  textAlign: 'center',
+                  marginTop: '12px',
+                  fontSize: '1rem',
+                  fontWeight: '700',
+                  lineHeight: '1.2',
+                  fontFamily: 'var(--font-antonio), sans-serif',
+                }}>
+                  {pet.nickname}
+                </p>
+                <p style={{
+                  color: selectedPet.id === pet.id ? 'rgba(255,255,255,0.7)' : '#6B7280',
+                  textAlign: 'center',
+                  marginTop: '4px',
+                  fontSize: '0.75rem',
+                  fontWeight: '400',
+                  lineHeight: '1.3',
+                }}>
+                  {pet.name}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -547,20 +697,12 @@ export default function PetsPage() {
 
       {/* Styles */}
       <style jsx>{`
-        .pets-carousel {
-          scrollbar-width: thin;
-          scrollbar-color: #0D2818 #F5F5F0;
+        .pets-row {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
-        .pets-carousel::-webkit-scrollbar {
-          height: 8px;
-        }
-        .pets-carousel::-webkit-scrollbar-track {
-          background: #F5F5F0;
-          border-radius: 4px;
-        }
-        .pets-carousel::-webkit-scrollbar-thumb {
-          background: #0D2818;
-          border-radius: 4px;
+        .pets-row::-webkit-scrollbar {
+          display: none;
         }
         .detail-layout {
           grid-template-columns: 1fr 1.2fr;
