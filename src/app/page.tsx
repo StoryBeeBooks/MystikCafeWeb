@@ -527,7 +527,7 @@ export default function Home() {
                 </video>
               </div>
               <div style={experienceStyles.cardContent}>
-                <h3 style={experienceStyles.cardTitle}>🐸 Rainforest Frogs</h3>
+                <h3 style={experienceStyles.cardTitle}>Rainforest Frogs</h3>
                 <p style={experienceStyles.cardText}>
                   Witness the jewels of the jungle! Our vibrant poison dart frogs showcase 
                   nature's most stunning colors. These tiny amphibians are living proof that 
@@ -569,8 +569,8 @@ export default function Home() {
                 </video>
               </div>
               <div style={experienceStyles.cardContent}>
-                <h3 style={{ ...experienceStyles.cardTitle, display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <LizardIcon size={24} color="#0D2818" /> Chameleons
+                <h3 style={experienceStyles.cardTitle}>
+                  Chameleons
                 </h3>
                 <p style={experienceStyles.cardText}>
                   Masters of disguise await you! Watch in wonder as our chameleons shift 
@@ -605,7 +605,6 @@ export default function Home() {
                 <div style={testimonialStyles.stars}>★★★★★</div>
                 <p style={testimonialStyles.text}>"{testimonial.text}"</p>
                 <div style={testimonialStyles.author}>
-                  <div style={testimonialStyles.avatar}>{testimonial.name[0]}</div>
                   <div>
                     <div style={testimonialStyles.authorName}>{testimonial.name}</div>
                     <div style={testimonialStyles.authorLocation}>{testimonial.location}</div>
@@ -635,9 +634,7 @@ export default function Home() {
           <h2 style={visitStyles.title}>Visit Us in Person</h2>
           <p style={visitStyles.location}>at Kensington Market</p>
           <p style={visitStyles.description}>
-            Where jungle thrills and ocean vibes collide.<br /><br />
-            Sip, snack, and connect in a dreamy world of glowing exotic fishes, 
-            curious reptiles, and wild surprises. Mystik is your escape into the unexpected.
+            Where jungle thrills and ocean vibes collide. Sip, snack, and connect in a dreamy world of glowing exotic fishes, curious reptiles, and wild surprises. Mystik is your escape into the unexpected.
           </p>
           <p style={visitStyles.note}>
             Reservations recommended for "Reptile Jungle". Walk-ins not guaranteed.

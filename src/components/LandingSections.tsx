@@ -419,7 +419,7 @@ export function Membership() {
 // Gallery Section - Magazine-style editorial layout
 const galleryStyles = {
   section: {
-    backgroundColor: '#0D2818',
+    backgroundColor: '#F5F5F0',
     padding: 'clamp(60px, 8vw, 96px) clamp(16px, 3vw, 24px)',
     overflow: 'hidden',
   },
@@ -444,7 +444,7 @@ const galleryStyles = {
   title: {
     fontFamily: 'Rubik Distressed, sans-serif',
     fontSize: 'clamp(36px, 6vw, 64px)',
-    color: '#F5E6D3',
+    color: '#1A1A1A',
     marginBottom: 'clamp(16px, 2vw, 24px)',
     letterSpacing: '-0.02em',
   },
@@ -452,7 +452,7 @@ const galleryStyles = {
     color: '#1B5E20',
   },
   subtitle: {
-    color: 'rgba(245, 230, 211, 0.7)',
+    color: '#4A4A4A',
     fontSize: 'clamp(14px, 2vw, 18px)',
     maxWidth: '560px',
     margin: '0 auto',
@@ -540,12 +540,11 @@ export function Gallery() {
       <div style={galleryStyles.container}>
         {/* Header */}
         <div style={galleryStyles.header}>
-          <span style={galleryStyles.tagline}>The Experience</span>
           <h2 style={galleryStyles.title}>
             Moments at <span style={galleryStyles.titleAccent}>Mystik</span>
           </h2>
           <p style={galleryStyles.subtitle}>
-            Wild connections. Unforgettable memories. Real moments captured by our guests.
+            Unforgettable Memories Captured
           </p>
         </div>
         
