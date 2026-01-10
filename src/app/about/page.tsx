@@ -1,294 +1,112 @@
 'use client';
 
-import { SparklesIcon } from '@/components/icons';
-
-const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
-
-const styles = {
-  // Hero Section
-  hero: {
-    position: 'relative' as const,
-    width: '100%',
-    minHeight: 'clamp(400px, 60vh, 600px)',
-    backgroundImage: 'url(https://assets.k12path.com/MystikCafe/jungle-landscape-cartoon.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  heroOverlay: {
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(13, 40, 24, 0.65)',
-  },
-  heroContent: {
-    position: 'relative' as const,
-    zIndex: 10,
-    textAlign: 'center' as const,
-    padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)',
-    maxWidth: '900px',
-  },
-  heroTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: 'clamp(36px, 8vw, 72px)',
-    color: 'white',
-    marginBottom: 'clamp(16px, 3vw, 24px)',
-    textShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
-  },
-  heroSubtitle: {
-    fontSize: 'clamp(16px, 2.5vw, 22px)',
-    color: 'rgba(255, 255, 255, 0.9)',
-    lineHeight: '1.7',
-    maxWidth: '700px',
-    margin: '0 auto',
-  },
-
-  // Story Section
-  storySection: {
-    backgroundColor: '#F5E6D3',
-    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
-  },
-  storyContainer: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))',
-    gap: 'clamp(40px, 6vw, 80px)',
-    alignItems: 'center',
-  },
-  storyContent: {
-    order: 1,
-  },
-  storyLabel: {
-    fontSize: 'clamp(12px, 1.5vw, 14px)',
-    color: '#1B5E20',
-    letterSpacing: '0.3em',
-    textTransform: 'uppercase' as const,
-    marginBottom: 'clamp(12px, 2vw, 16px)',
-    fontWeight: '600',
-  },
-  storyTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: 'clamp(28px, 5vw, 42px)',
-    color: '#0D2818',
-    marginBottom: 'clamp(20px, 3vw, 32px)',
-    lineHeight: '1.2',
-  },
-  storyText: {
-    fontSize: 'clamp(15px, 2vw, 18px)',
-    color: '#3D3D3D',
-    lineHeight: '1.8',
-    marginBottom: 'clamp(16px, 2vw, 24px)',
-  },
-  videoContainer: {
-    order: 2,
-    position: 'relative' as const,
-    borderRadius: 'clamp(16px, 3vw, 32px)',
-    overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(13, 40, 24, 0.2)',
-  },
-  video: {
-    width: '100%',
-    height: 'auto',
-    display: 'block',
-  },
-
-  // Mission/Vision Section
-  mvSection: {
-    backgroundColor: '#0D2818',
-    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
-  },
-  mvContainer: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-  },
-  mvGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))',
-    gap: 'clamp(40px, 6vw, 60px)',
-  },
-  mvCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: 'clamp(16px, 3vw, 24px)',
-    padding: 'clamp(30px, 5vw, 50px)',
-    border: '1px solid rgba(245, 230, 211, 0.1)',
-  },
-  mvIcon: {
-    fontSize: 'clamp(40px, 6vw, 56px)',
-    marginBottom: 'clamp(16px, 2vw, 24px)',
-  },
-  mvTitle: {
-    fontFamily: '"Antonio", sans-serif',
-    fontSize: 'clamp(24px, 4vw, 32px)',
-    color: '#F5E6D3',
-    marginBottom: 'clamp(16px, 2vw, 20px)',
-  },
-  mvText: {
-    fontSize: 'clamp(14px, 1.8vw, 16px)',
-    color: 'rgba(245, 230, 211, 0.85)',
-    lineHeight: '1.8',
-  },
-  mvHighlight: {
-    color: '#4ade80',
-    fontStyle: 'italic',
-    display: 'block',
-    marginTop: 'clamp(12px, 2vw, 16px)',
-    fontSize: 'clamp(15px, 2vw, 18px)',
-  },
-
-  // Pillars Section
-  pillarsSection: {
-    backgroundColor: '#F5E6D3',
-    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
-  },
-  pillarsContainer: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-  },
-  pillarsHeader: {
-    textAlign: 'center' as const,
-    marginBottom: 'clamp(40px, 6vw, 60px)',
-  },
-  pillarsLabel: {
-    fontSize: 'clamp(12px, 1.5vw, 14px)',
-    color: '#1B5E20',
-    letterSpacing: '0.3em',
-    textTransform: 'uppercase' as const,
-    marginBottom: 'clamp(12px, 2vw, 16px)',
-    fontWeight: '600',
-  },
-  pillarsTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: 'clamp(28px, 5vw, 42px)',
-    color: '#0D2818',
-  },
-  pillarsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-    gap: 'clamp(24px, 4vw, 40px)',
-  },
-  pillarCard: {
-    backgroundColor: 'white',
-    borderRadius: 'clamp(16px, 3vw, 24px)',
-    overflow: 'hidden',
-    boxShadow: '0 8px 30px rgba(13, 40, 24, 0.1)',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  },
-  pillarImage: {
-    width: '100%',
-    aspectRatio: '4/3',
-    objectFit: 'cover' as const,
-  },
-  pillarContent: {
-    padding: 'clamp(20px, 3vw, 32px)',
-  },
-  pillarNumber: {
-    display: 'inline-block',
-    backgroundColor: '#1B5E20',
-    color: 'white',
-    width: 'clamp(32px, 4vw, 40px)',
-    height: 'clamp(32px, 4vw, 40px)',
-    borderRadius: '50%',
-    textAlign: 'center' as const,
-    lineHeight: 'clamp(32px, 4vw, 40px)',
-    fontSize: 'clamp(14px, 2vw, 18px)',
-    fontWeight: 'bold',
-    marginBottom: 'clamp(12px, 2vw, 16px)',
-  },
-  pillarCardTitle: {
-    fontFamily: '"Antonio", sans-serif',
-    fontSize: 'clamp(20px, 3vw, 26px)',
-    color: '#0D2818',
-    marginBottom: 'clamp(12px, 2vw, 16px)',
-  },
-  pillarCardText: {
-    fontSize: 'clamp(14px, 1.8vw, 16px)',
-    color: '#4A4A4A',
-    lineHeight: '1.7',
-  },
-
-  // CTA Section
-  ctaSection: {
-    backgroundColor: '#0D2818',
-    padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
-    textAlign: 'center' as const,
-  },
-  ctaContainer: {
-    maxWidth: '700px',
-    margin: '0 auto',
-  },
-  ctaTitle: {
-    fontFamily: 'Rubik Distressed, sans-serif',
-    fontSize: 'clamp(28px, 5vw, 42px)',
-    color: '#F5E6D3',
-    marginBottom: 'clamp(16px, 3vw, 24px)',
-  },
-  ctaText: {
-    fontSize: 'clamp(15px, 2vw, 18px)',
-    color: 'rgba(245, 230, 211, 0.8)',
-    lineHeight: '1.7',
-    marginBottom: 'clamp(30px, 5vw, 40px)',
-  },
-  ctaButton: {
-    display: 'inline-block',
-    backgroundColor: '#F5E6D3',
-    color: '#0D2818',
-    padding: 'clamp(14px, 2vw, 18px) clamp(36px, 5vw, 50px)',
-    borderRadius: '40px',
-    textDecoration: 'none',
-    fontWeight: 'normal',
-    fontSize: 'clamp(16px, 2vw, 18px)',
-    fontFamily: 'Rubik Distressed, sans-serif',
-    cursor: lizardCursor,
-    transition: 'all 0.3s ease',
-    border: '2px solid #F5E6D3',
-  },
-};
+import Link from 'next/link';
+import { LizardIcon } from '@/components/icons';
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Hero Section */}
-      <section style={styles.hero}>
-        <div style={styles.heroOverlay} />
-        <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>About Mystik Café</h1>
-          <p style={styles.heroSubtitle}>
-            Where the aroma of ethically sourced coffee blends with the quiet wonder of nature. 
-            A sanctuary for the curious, a haven for the wild at heart.
-          </p>
-        </div>
+    <main style={{
+      minHeight: '100vh',
+      backgroundColor: '#FFFFFF',
+      fontFamily: '"Questrial", sans-serif',
+    }}>
+      {/* Header Section */}
+      <section style={{
+        backgroundColor: '#F5F5F0',
+        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 5vw, 40px) clamp(40px, 6vw, 60px)',
+        textAlign: 'center',
+      }}>
+        <h1 style={{
+          fontFamily: '"Rubik Distressed", cursive',
+          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+          color: '#1A1A1A',
+          marginBottom: '12px',
+        }}>
+          About Mystik Café
+        </h1>
+        <p style={{
+          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+          color: '#4A4A4A',
+          maxWidth: '700px',
+          margin: '0 auto',
+          lineHeight: '1.7',
+        }}>
+          Where the aroma of ethically sourced coffee blends with the quiet wonder of nature. 
+          A sanctuary for the curious, a haven for the wild at heart.
+        </p>
       </section>
 
       {/* Our Story Section */}
-      <section style={styles.storySection}>
-        <div style={styles.storyContainer}>
-          <div style={styles.storyContent}>
-            <p style={styles.storyLabel}>Our Story</p>
-            <h2 style={styles.storyTitle}>Reimagining the Café Experience</h2>
-            <p style={styles.storyText}>
-              Mystik Café was born from a simple yet powerful idea: <strong>What if a coffee shop could be a portal to the wild?</strong>
+      <section style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 4vw, 32px)',
+        backgroundColor: '#FFFFFF',
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))',
+          gap: 'clamp(40px, 6vw, 80px)',
+          alignItems: 'center',
+        }}>
+          <div>
+            <p style={{
+              fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
+              color: '#0D2818',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+              fontWeight: '600',
+            }}>
+              Our Story
             </p>
-            <p style={styles.storyText}>
-              We did not just want to serve coffee. We wanted to spark curiosity. We believed that in a busy world, 
-              people needed a place to pause, breathe, and reconnect, not just with each other, but with the 
+            <h2 style={{
+              fontFamily: '"Rubik Distressed", cursive',
+              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+              color: '#1A1A1A',
+              marginBottom: 'clamp(20px, 3vw, 32px)',
+              lineHeight: '1.2',
+            }}>
+              Reimagining the Café Experience
+            </h2>
+            <p style={{
+              fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+              color: '#4A4A4A',
+              lineHeight: '1.8',
+              marginBottom: 'clamp(16px, 2vw, 24px)',
+            }}>
+              Mystik Café was born from a simple yet powerful idea: <strong style={{ color: '#1A1A1A' }}>What if a coffee shop could be a portal to the wild?</strong>
+            </p>
+            <p style={{
+              fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+              color: '#4A4A4A',
+              lineHeight: '1.8',
+              marginBottom: 'clamp(16px, 2vw, 24px)',
+            }}>
+              We didn't just want to serve coffee. We wanted to spark curiosity. We believed that in a busy world, 
+              people needed a place to pause, breathe, and reconnect—not just with each other, but with the 
               fascinating creatures we share this planet with.
             </p>
-            <p style={styles.storyText}>
+            <p style={{
+              fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+              color: '#4A4A4A',
+              lineHeight: '1.8',
+            }}>
               From that seed, Mystik grew into a sanctuary. A place where you can sip a latte while watching a 
-              chameleon change colors, or enjoy a fresh pastry in the company of ancient reptiles. Here, every 
-              visit becomes an adventure, every cup tells a story, and every creature reminds us of the wild 
-              beauty that exists just beyond our daily lives.
+              chameleon change colors, or enjoy a fresh pastry in the company of ancient reptiles.
             </p>
           </div>
-          <div style={styles.videoContainer}>
+          <div style={{
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          }}>
             <video 
-              style={styles.video}
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
               autoPlay 
               loop 
               muted 
@@ -301,168 +119,387 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section style={styles.mvSection}>
-        <div style={styles.mvContainer}>
-          <div style={styles.mvGrid}>
+      <section style={{
+        backgroundColor: '#F5F5F0',
+        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 4vw, 32px)',
+      }}>
+        <div style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+        }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))',
+            gap: 'clamp(24px, 4vw, 40px)',
+          }}>
             {/* Mission */}
-            <div style={styles.mvCard}>
-              <div style={{ ...styles.mvIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <SparklesIcon size={48} color="#4ade80" />
-              </div>
-              <h3 style={styles.mvTitle}>Our Mission</h3>
-              <p style={styles.mvText}>
+            <div style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: '24px',
+              padding: 'clamp(30px, 5vw, 50px)',
+              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
+            }}>
+              <p style={{
+                fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
+                color: '#0D2818',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: '12px',
+                fontWeight: '600',
+              }}>
+                Our Mission
+              </p>
+              <h3 style={{
+                fontFamily: '"Antonio", sans-serif',
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                color: '#1A1A1A',
+                marginBottom: 'clamp(16px, 2vw, 20px)',
+              }}>
+                Inspire Curiosity & Compassion
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)',
+                color: '#4A4A4A',
+                lineHeight: '1.8',
+                marginBottom: '16px',
+              }}>
                 To inspire curiosity, compassion, and a deeper connection to the natural world.
+                We are more than a café—we are a living classroom.
               </p>
-              <p style={styles.mvText}>
-                We are more than a café. We are a living classroom. We exist to bridge the gap between 
-                humans and nature, proving that understanding leads to caring, and caring leads to conservation.
-              </p>
-              <span style={styles.mvHighlight}>
+              <p style={{
+                color: '#0D2818',
+                fontStyle: 'italic',
+                fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+                fontWeight: '500',
+                borderLeft: '3px solid #0D2818',
+                paddingLeft: '16px',
+              }}>
                 "Understanding leads to caring. Caring leads to conservation."
-              </span>
+              </p>
             </div>
 
             {/* Vision */}
-            <div style={styles.mvCard}>
-              <div style={{ ...styles.mvIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <SparklesIcon size={48} color="#4ade80" />
-              </div>
-              <h3 style={styles.mvTitle}>Our Vision</h3>
-              <p style={styles.mvText}>
+            <div style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: '24px',
+              padding: 'clamp(30px, 5vw, 50px)',
+              boxShadow: '0 2px 20px rgba(0, 0, 0, 0.04)',
+            }}>
+              <p style={{
+                fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
+                color: '#0D2818',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: '12px',
+                fontWeight: '600',
+              }}>
+                Our Vision
+              </p>
+              <h3 style={{
+                fontFamily: '"Antonio", sans-serif',
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                color: '#1A1A1A',
+                marginBottom: 'clamp(16px, 2vw, 20px)',
+              }}>
+                Wonder & Respect for All Creatures
+              </h3>
+              <p style={{
+                fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)',
+                color: '#4A4A4A',
+                lineHeight: '1.8',
+                marginBottom: '16px',
+              }}>
                 A world where every creature is viewed with wonder and respect.
+                We envision a community that dares to look closer, where fear is replaced by fascination.
               </p>
-              <p style={styles.mvText}>
-                We envision a community that dares to look closer, where an afternoon coffee break becomes 
-                a moment of discovery, and where fear of the unknown is replaced by fascination. We strive 
-                to be a hub where artists, families, and explorers come together to celebrate the wild beauty of life.
-              </p>
-              <span style={styles.mvHighlight}>
+              <p style={{
+                color: '#0D2818',
+                fontStyle: 'italic',
+                fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
+                fontWeight: '500',
+                borderLeft: '3px solid #0D2818',
+                paddingLeft: '16px',
+              }}>
                 "Where fear becomes fascination, and strangers become family."
-              </span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Three Pillars Section */}
-      <section style={styles.pillarsSection}>
-        <div style={styles.pillarsContainer}>
-          <div style={styles.pillarsHeader}>
-            <p style={styles.pillarsLabel}>What Drives Us</p>
-            <h2 style={styles.pillarsTitle}>The Three Pillars of Mystik</h2>
+      <section style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: 'clamp(60px, 8vw, 100px) clamp(16px, 4vw, 32px)',
+        backgroundColor: '#FFFFFF',
+      }}>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: 'clamp(40px, 6vw, 60px)',
+        }}>
+          <p style={{
+            fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)',
+            color: '#0D2818',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '12px',
+            fontWeight: '600',
+          }}>
+            What Drives Us
+          </p>
+          <h2 style={{
+            fontFamily: '"Rubik Distressed", cursive',
+            fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+            color: '#1A1A1A',
+          }}>
+            The Three Pillars of Mystik
+          </h2>
+        </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+          gap: 'clamp(24px, 4vw, 40px)',
+        }}>
+          {/* Pillar 1 */}
+          <div 
+            style={{
+              backgroundColor: '#F8F9FA',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <img 
+              src="https://assets.k12path.com/MystikCafe/about%20us%201.jpeg" 
+              alt="Compassion and Care"
+              style={{
+                width: '100%',
+                aspectRatio: '4/3',
+                objectFit: 'cover',
+              }}
+            />
+            <div style={{ padding: 'clamp(20px, 3vw, 32px)' }}>
+              <div style={{
+                display: 'inline-block',
+                backgroundColor: '#0D2818',
+                color: 'white',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                textAlign: 'center',
+                lineHeight: '36px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                marginBottom: '16px',
+              }}>1</div>
+              <h4 style={{
+                fontFamily: '"Antonio", sans-serif',
+                fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
+                color: '#1A1A1A',
+                marginBottom: '12px',
+              }}>
+                Compassion & Care
+              </h4>
+              <p style={{
+                fontSize: 'clamp(0.9rem, 1.4vw, 1rem)',
+                color: '#4A4A4A',
+                lineHeight: '1.7',
+              }}>
+                Our animals are family. We uphold the highest standards of ethical care and enrichment, 
+                ensuring every resident thrives in a habitat designed for their wellbeing.
+              </p>
+            </div>
           </div>
-          <div style={styles.pillarsGrid}>
-            {/* Pillar 1 */}
-            <div 
-              style={styles.pillarCard}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 16px 40px rgba(13, 40, 24, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(13, 40, 24, 0.1)';
-              }}
-            >
-              <img 
-                src="https://assets.k12path.com/MystikCafe/about%20us%201.jpeg" 
-                alt="Compassion and Care"
-                style={styles.pillarImage}
-              />
-              <div style={styles.pillarContent}>
-                <div style={styles.pillarNumber}>1</div>
-                <h4 style={styles.pillarCardTitle}>Compassion & Care</h4>
-                <p style={styles.pillarCardText}>
-                  Our animals are family. We uphold the highest standards of ethical care and enrichment, 
-                  ensuring every resident thrives. From the smallest gecko to the oldest tortoise, every 
-                  creature lives in a habitat designed for their wellbeing, not just for display.
-                </p>
-              </div>
-            </div>
 
-            {/* Pillar 2 */}
-            <div 
-              style={styles.pillarCard}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 16px 40px rgba(13, 40, 24, 0.15)';
+          {/* Pillar 2 */}
+          <div 
+            style={{
+              backgroundColor: '#F8F9FA',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <img 
+              src="https://assets.k12path.com/MystikCafe/about%20us%202.jpeg" 
+              alt="Community and Connection"
+              style={{
+                width: '100%',
+                aspectRatio: '4/3',
+                objectFit: 'cover',
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(13, 40, 24, 0.1)';
-              }}
-            >
-              <img 
-                src="https://assets.k12path.com/MystikCafe/about%20us%202.jpeg" 
-                alt="Community and Connection"
-                style={styles.pillarImage}
-              />
-              <div style={styles.pillarContent}>
-                <div style={styles.pillarNumber}>2</div>
-                <h4 style={styles.pillarCardTitle}>Community & Connection</h4>
-                <p style={styles.pillarCardText}>
-                  Mystik is a home for the curious, a space where local staff, passionate educators, and 
-                  visitors connect. Whether you are an artist sketching a lizard or a student learning 
-                  about ecosystems, you belong here.
-                </p>
-              </div>
+            />
+            <div style={{ padding: 'clamp(20px, 3vw, 32px)' }}>
+              <div style={{
+                display: 'inline-block',
+                backgroundColor: '#0D2818',
+                color: 'white',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                textAlign: 'center',
+                lineHeight: '36px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                marginBottom: '16px',
+              }}>2</div>
+              <h4 style={{
+                fontFamily: '"Antonio", sans-serif',
+                fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
+                color: '#1A1A1A',
+                marginBottom: '12px',
+              }}>
+                Community & Connection
+              </h4>
+              <p style={{
+                fontSize: 'clamp(0.9rem, 1.4vw, 1rem)',
+                color: '#4A4A4A',
+                lineHeight: '1.7',
+              }}>
+                Mystik is a home for the curious—a space where local staff, passionate educators, and 
+                visitors connect. Whether you're an artist or a student, you belong here.
+              </p>
             </div>
+          </div>
 
-            {/* Pillar 3 */}
-            <div 
-              style={styles.pillarCard}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 16px 40px rgba(13, 40, 24, 0.15)';
+          {/* Pillar 3 */}
+          <div 
+            style={{
+              backgroundColor: '#F8F9FA',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(0, 0, 0, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <img 
+              src="https://assets.k12path.com/MystikCafe/about%20us%203.jpeg" 
+              alt="Craft and Indulgence"
+              style={{
+                width: '100%',
+                aspectRatio: '4/3',
+                objectFit: 'cover',
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(13, 40, 24, 0.1)';
-              }}
-            >
-              <img 
-                src="https://assets.k12path.com/MystikCafe/about%20us%203.jpeg" 
-                alt="Craft and Indulgence"
-                style={styles.pillarImage}
-              />
-              <div style={styles.pillarContent}>
-                <div style={styles.pillarNumber}>3</div>
-                <h4 style={styles.pillarCardTitle}>Craft & Indulgence</h4>
-                <p style={styles.pillarCardText}>
-                  We take our food as seriously as our fauna. From bold, locally roasted coffee to our 
-                  signature desserts inspired by nature and premium ice creams, every menu item is crafted 
-                  to surprise and delight. We believe a great experience tastes as good as it feels.
-                </p>
-              </div>
+            />
+            <div style={{ padding: 'clamp(20px, 3vw, 32px)' }}>
+              <div style={{
+                display: 'inline-block',
+                backgroundColor: '#0D2818',
+                color: 'white',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                textAlign: 'center',
+                lineHeight: '36px',
+                fontSize: '1rem',
+                fontWeight: 'bold',
+                marginBottom: '16px',
+              }}>3</div>
+              <h4 style={{
+                fontFamily: '"Antonio", sans-serif',
+                fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
+                color: '#1A1A1A',
+                marginBottom: '12px',
+              }}>
+                Craft & Indulgence
+              </h4>
+              <p style={{
+                fontSize: 'clamp(0.9rem, 1.4vw, 1rem)',
+                color: '#4A4A4A',
+                lineHeight: '1.7',
+              }}>
+                We take our food as seriously as our fauna. From bold, locally roasted coffee to our 
+                signature desserts, every menu item is crafted to surprise and delight.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section style={styles.ctaSection}>
-        <div style={styles.ctaContainer}>
-          <h2 style={styles.ctaTitle}>Ready to Enter the Wild?</h2>
-          <p style={styles.ctaText}>
-            Step through our doors and discover a world where coffee meets conservation, 
-            where curiosity is celebrated, and where every visit is an adventure waiting to unfold.
+      <section style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: '0 clamp(16px, 4vw, 32px) clamp(60px, 8vw, 100px)',
+        backgroundColor: '#FFFFFF',
+      }}>
+        <div style={{
+          textAlign: 'center',
+          padding: 'clamp(40px, 6vw, 60px)',
+        }}>
+          <p style={{
+            fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+            color: '#1A1A1A',
+            marginBottom: '12px',
+            fontWeight: '600',
+            lineHeight: '1.4',
+          }}>
+            Ready to Enter the Wild?
           </p>
-          <a 
+          <p style={{
+            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            color: '#4A4A4A',
+            marginBottom: 'clamp(24px, 4vw, 36px)',
+            maxWidth: '600px',
+            margin: '0 auto clamp(24px, 4vw, 36px)',
+          }}>
+            Step through our doors and discover a world where coffee meets conservation.
+          </p>
+          <Link 
             href="/book"
-            style={styles.ctaButton}
+            style={{
+              display: 'inline-block',
+              padding: 'clamp(14px, 2vw, 18px) clamp(32px, 5vw, 48px)',
+              backgroundColor: '#0D2818',
+              color: '#FFFFFF',
+              fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
+              fontWeight: '700',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
+            }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#0D2818';
-              e.currentTarget.style.color = '#F5E6D3';
+              e.currentTarget.style.backgroundColor = '#1A1A1A';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.25)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#F5E6D3';
-              e.currentTarget.style.color = '#0D2818';
+              e.currentTarget.style.backgroundColor = '#0D2818';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.15)';
             }}
           >
-            Book Your Visit
-          </a>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              Book Your Visit <LizardIcon size={20} color="#FFFFFF" />
+            </span>
+          </Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }
