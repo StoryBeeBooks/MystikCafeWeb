@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { LizardIcon } from './icons';
 
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
 
@@ -280,7 +281,9 @@ export default function Header() {
             style={styles.mobileLink}
             onClick={() => setIsMenuOpen(false)}
           >
-            🦎 Pets
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <LizardIcon size={20} color="#F5E6D3" /> Pets
+            </span>
           </Link>
           <Link 
             href="/book" 

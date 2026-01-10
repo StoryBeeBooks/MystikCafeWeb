@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { LeafIcon, LizardIcon, SparklesIcon, DrinkIcon } from '@/components/icons';
 
 // Types for booking system
 interface CartItem {
@@ -29,9 +30,9 @@ export default function BookPage() {
       image: 'https://assets.k12path.com/MystikCafe/Plan1.jpg',
       description: 'Step inside Mystik Café\'s Reptile Jungle for a quick 15-minute glimpse into our hidden world. Meet a few of our animal ambassadors, enjoy the ambiance, and capture a moment of wonder before you decide to stay longer.',
       includes: [
-        '🌿 Access to the Reptile Jungle',
-        '🦎 Meet some animal residents',
-        '📸 Photo opportunities',
+        <span key="1" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><LeafIcon size={16} color="#4ade80" /> Access to the Reptile Jungle</span>,
+        <span key="2" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><LizardIcon size={16} color="#4ade80" /> Meet some animal residents</span>,
+        <span key="3" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>📸 Photo opportunities</span>,
       ],
       extensions: [
         '+10 min for $6.99',
@@ -100,8 +101,8 @@ export default function BookPage() {
   
   // Experience options
   const experiences = {
-    sips: { name: 'Sips & Senses', price: 28.99, emoji: '🧉' },
-    ultimate: { name: 'Ultimate Mystik Experience', price: 33.99, emoji: '✨' },
+    sips: { name: 'Sips & Senses', price: 28.99, icon: <DrinkIcon size={24} color="#4ade80" /> },
+    ultimate: { name: 'Ultimate Mystik Experience', price: 33.99, icon: <SparklesIcon size={24} color="#4ade80" /> },
   };
 
   // Calendar helper functions
@@ -801,7 +802,7 @@ export default function BookPage() {
                                 transition: 'all 0.2s ease',
                               }}
                             >
-                              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{exp.emoji}</div>
+                              <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{exp.icon}</div>
                               <div style={{ fontWeight: '600', marginBottom: '4px' }}>{exp.name}</div>
                               <div style={{ color: selectedSlot.experience === key ? '#4ade80' : '#0D2818', fontWeight: '700' }}>${exp.price.toFixed(2)}/person</div>
                             </button>
@@ -943,7 +944,9 @@ export default function BookPage() {
                         }}>
                           <div style={{ flex: 1, minWidth: '200px' }}>
                             <p style={{ color: '#2C2C2C', fontWeight: '600', marginBottom: '4px' }}>
-                              {experiences[item.experience].emoji} {experiences[item.experience].name}
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                {experiences[item.experience].icon} {experiences[item.experience].name}
+                              </span>
                             </p>
                             <p style={{ color: '#5A5A5A', fontSize: '0.85rem' }}>
                               {item.date} at {item.time}
@@ -1185,8 +1188,11 @@ export default function BookPage() {
                 color: '#4ade80',
                 marginBottom: '16px',
                 fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
               }}>
-                🦎 Guest Conduct & Animal Safety
+                <LizardIcon size={24} color="#4ade80" /> Guest Conduct & Animal Safety
               </h3>
               <ul style={{ color: '#F5E6D3', paddingLeft: '20px', lineHeight: '1.9' }}>
                 <li style={{ marginBottom: '10px' }}>Interactive reptile encounters allowed only during special staff-supervised sessions</li>

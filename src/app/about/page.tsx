@@ -1,5 +1,7 @@
 'use client';
 
+import { SparklesIcon } from '@/components/icons';
+
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
 
 const styles = {
@@ -304,7 +306,9 @@ export default function AboutPage() {
           <div style={styles.mvGrid}>
             {/* Mission */}
             <div style={styles.mvCard}>
-              <div style={styles.mvIcon}>🎯</div>
+              <div style={{ ...styles.mvIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <SparklesIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.mvTitle}>Our Mission</h3>
               <p style={styles.mvText}>
                 To inspire curiosity, compassion, and a deeper connection to the natural world.
@@ -320,7 +324,9 @@ export default function AboutPage() {
 
             {/* Vision */}
             <div style={styles.mvCard}>
-              <div style={styles.mvIcon}>✨</div>
+              <div style={{ ...styles.mvIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <SparklesIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.mvTitle}>Our Vision</h3>
               <p style={styles.mvText}>
                 A world where every creature is viewed with wonder and respect.

@@ -4,21 +4,31 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Gallery } from '@/components/LandingSections';
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { LizardIcon, TurtleIcon, ParrotIcon, SnakeIcon, CrocodileIcon, DinoIcon, LeafIcon, PalmTreeIcon } from '@/components/icons';
 
 // Loading component with progress bar
 function LoadingScreen({ progress }: { progress: number }) {
-  const [currentEmoji, setCurrentEmoji] = useState(0);
+  const [currentIconIndex, setCurrentIconIndex] = useState(0);
   
-  const emojis = ['🦎', '🐢', '🦜', '🐍', '🐊', '🦖', '🌿', '🌴'];
+  const iconComponents = [
+    <LizardIcon key="lizard" size={40} color="#4ade80" />,
+    <TurtleIcon key="turtle" size={40} color="#4ade80" />,
+    <ParrotIcon key="parrot" size={40} color="#4ade80" />,
+    <SnakeIcon key="snake" size={40} color="#4ade80" />,
+    <CrocodileIcon key="croc" size={40} color="#4ade80" />,
+    <DinoIcon key="dino" size={40} color="#4ade80" />,
+    <LeafIcon key="leaf" size={40} color="#4ade80" />,
+    <PalmTreeIcon key="palm" size={40} color="#4ade80" />,
+  ];
   
   useEffect(() => {
-    // Rotate emojis
-    const emojiInterval = setInterval(() => {
-      setCurrentEmoji(prev => (prev + 1) % emojis.length);
+    // Rotate icons
+    const iconInterval = setInterval(() => {
+      setCurrentIconIndex(prev => (prev + 1) % iconComponents.length);
     }, 400);
     
     return () => {
-      clearInterval(emojiInterval);
+      clearInterval(iconInterval);
     };
   }, []);
   
@@ -94,20 +104,21 @@ function LoadingScreen({ progress }: { progress: number }) {
         }
       `}</style>
       
-      {/* Bouncing emojis */}
+      {/* Bouncing icons */}
       <div style={loadingStyles.emojiRow}>
-        {emojis.slice(0, 5).map((emoji, index) => (
-          <span 
+        {iconComponents.slice(0, 5).map((icon, index) => (
+          <div
             key={index} 
             style={{
               ...loadingStyles.emoji,
               animationDelay: `${index * 0.1}s`,
-              opacity: currentEmoji === index ? 1 : 0.6,
-              transform: currentEmoji === index ? 'scale(1.2)' : 'scale(1)',
+              opacity: currentIconIndex === index ? 1 : 0.6,
+              transform: currentIconIndex === index ? 'scale(1.2)' : 'scale(1)',
               transition: 'opacity 0.3s, transform 0.3s',
             }}
           >
-            {emoji}
+            {icon}
+          </div>
           </span>
         ))}
       </div>
@@ -563,7 +574,9 @@ export default function Home() {
                 </video>
               </div>
               <div style={experienceStyles.cardContent}>
-                <h3 style={experienceStyles.cardTitle}>🦎 Chameleons</h3>
+                <h3 style={{ ...experienceStyles.cardTitle, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <LizardIcon size={24} color="#4ade80" /> Chameleons
+                </h3>
                 <p style={experienceStyles.cardText}>
                   Masters of disguise await you! Watch in wonder as our chameleons shift 
                   colors before your eyes. With their swiveling eyes and lightning-fast tongues, 

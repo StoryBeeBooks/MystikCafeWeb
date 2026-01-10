@@ -1,5 +1,7 @@
 'use client';
 
+import { LightBulbIcon, HeartIcon, LizardIcon } from '@/components/icons';
+
 const styles = {
   // Page Container
   page: {
@@ -332,14 +334,16 @@ export default function SafetyPage() {
       <section style={styles.rememberSection}>
         <div style={styles.rememberContainer}>
           <div style={styles.rememberHeader}>
-            <span style={styles.rememberIcon}>💡</span>
+            <span style={{ ...styles.rememberIcon, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <LightBulbIcon size={40} color="#4ade80" />
+            </span>
             <h2 style={styles.rememberTitle}>Just Remember:</h2>
           </div>
           <div style={styles.rememberContent}>
             <div>
               <p style={styles.rememberIntro}>
                 Mystik is not a zoo. It is a sanctuary of design, discovery, and respect — for animals 
-                and humans alike. Thanks for being part of the magic. <span style={styles.rememberEmoji}>💚</span>
+                and humans alike. Thanks for being part of the magic. <span style={{ display: 'inline-flex', alignItems: 'center' }}><HeartIcon size={20} color="#4ade80" /></span>
               </p>
             </div>
             <ul style={styles.rememberList}>
@@ -415,7 +419,7 @@ export default function SafetyPage() {
             magic happens.
           </p>
           <p style={styles.closingHighlight}>
-            Thank you for respecting the wild. 🦎
+            Thank you for respecting the wild. <span style={{ display: 'inline-flex', alignItems: 'center' }}><LizardIcon size={24} color="#4ade80" /></span>
           </p>
         </div>
       </section>

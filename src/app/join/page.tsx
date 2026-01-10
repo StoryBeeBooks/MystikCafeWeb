@@ -1,5 +1,7 @@
 'use client';
 
+import { GlobeIcon, LizardIcon, SparklesIcon } from '@/components/icons';
+
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
 
 const styles = {
@@ -507,7 +509,9 @@ export default function JoinPage() {
               </p>
             </div>
             <div style={styles.conductCard}>
-              <div style={styles.conductIcon}>🌍</div>
+              <div style={{ ...styles.conductIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <GlobeIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.conductCardTitle}>Respect for All</h3>
               <p style={styles.conductCardText}>
                 We treat every person, guest, and creature with dignity and respect. Discrimination, harassment, and unkindness 
@@ -624,7 +628,9 @@ export default function JoinPage() {
               }}
             >
               <div style={styles.roleHeader}>
-                <div style={styles.roleIcon}>🦎</div>
+                <div style={{ ...styles.roleIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <LizardIcon size={48} color="#4ade80" />
+                </div>
                 <h3 style={styles.roleTitle}>Animal Ambassador</h3>
               </div>
               <div style={styles.roleBody}>
@@ -683,7 +689,7 @@ export default function JoinPage() {
                     <span>🤝</span> Build community partnerships
                   </li>
                   <li style={{ ...styles.roleHighlight, borderBottom: 'none' }}>
-                    <span>✨</span> Grow our brand awareness
+                    <span style={{ display: 'inline-flex' }}><SparklesIcon size={20} color="#4ade80" /></span> Grow our brand awareness
                   </li>
                 </ul>
               </div>

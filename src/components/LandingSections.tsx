@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { LizardIcon } from './icons';
 
 // Testimonial data
 const testimonials = [
@@ -345,12 +346,12 @@ export function VisitUs() {
 // Membership Section
 export function Membership() {
   const benefits = [
-    { icon: "🦎", title: "Meet Every Reptile", desc: "Exclusive access to all our scaly friends" },
-    { icon: "📚", title: "Learn Their Stories", desc: "History, origin, and unique personality of each pet" },
-    { icon: "🎓", title: "Expert Knowledge", desc: "Monthly educational sessions with our animal ambassadors" },
-    { icon: "☕", title: "Member Perks", desc: "Discounts on café items and priority booking" },
-    { icon: "📸", title: "Photo Moments", desc: "Exclusive photo opportunities with rare species" },
-    { icon: "🎁", title: "Special Events", desc: "VIP invitations to new arrivals and seasonal events" },
+    { icon: <LizardIcon size={32} color="#4ade80" />, title: "Meet Every Reptile", desc: "Exclusive access to all our scaly friends" },
+    { icon: <span style={{ fontSize: '32px' }}>📚</span>, title: "Learn Their Stories", desc: "History, origin, and unique personality of each pet" },
+    { icon: <span style={{ fontSize: '32px' }}>🎓</span>, title: "Expert Knowledge", desc: "Monthly educational sessions with our animal ambassadors" },
+    { icon: <span style={{ fontSize: '32px' }}>☕</span>, title: "Member Perks", desc: "Discounts on café items and priority booking" },
+    { icon: <span style={{ fontSize: '32px' }}>📸</span>, title: "Photo Moments", desc: "Exclusive photo opportunities with rare species" },
+    { icon: <span style={{ fontSize: '32px' }}>🎁</span>, title: "Special Events", desc: "VIP invitations to new arrivals and seasonal events" },
   ];
 
   return (

@@ -1,5 +1,7 @@
 'use client';
 
+import { LizardIcon, GlobeIcon, LeafIcon, PalmTreeIcon } from '@/components/icons';
+
 const lizardCursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'><text y=\'24\' font-size=\'24\'>🦎</text></svg>"), pointer';
 
 const styles = {
@@ -395,7 +397,9 @@ export default function SponsorsPage() {
               </p>
             </div>
             <div style={styles.impactCard}>
-              <div style={styles.impactIcon}>🦎</div>
+              <div style={{ ...styles.impactIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <LizardIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.impactCardTitle}>Animal Welfare</h3>
               <p style={styles.impactCardText}>
                 Ensure our reptile residents receive the best veterinary care, enrichment activities, 
@@ -403,7 +407,9 @@ export default function SponsorsPage() {
               </p>
             </div>
             <div style={styles.impactCard}>
-              <div style={styles.impactIcon}>🌍</div>
+              <div style={{ ...styles.impactIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <GlobeIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.impactCardTitle}>Conservation Awareness</h3>
               <p style={styles.impactCardText}>
                 Help us spread the message that every creature matters. Your support funds programs 
@@ -501,7 +507,9 @@ export default function SponsorsPage() {
                 e.currentTarget.style.borderColor = 'rgba(245, 230, 211, 0.2)';
               }}
             >
-              <div style={styles.levelIcon}>🌿</div>
+              <div style={{ ...styles.levelIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <LeafIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.levelName}>Explorer</h3>
               <p style={styles.levelDescription}>
                 For families and small businesses ready to explore new ways of giving back. Includes special recognition and perks.
@@ -535,7 +543,9 @@ export default function SponsorsPage() {
                 e.currentTarget.style.borderColor = 'rgba(245, 230, 211, 0.2)';
               }}
             >
-              <div style={styles.levelIcon}>🌴</div>
+              <div style={{ ...styles.levelIcon, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <PalmTreeIcon size={48} color="#4ade80" />
+              </div>
               <h3 style={styles.levelName}>Rainforest</h3>
               <p style={styles.levelDescription}>
                 Our highest tier for corporate partners and philanthropists. Transform our mission with your visionary support.

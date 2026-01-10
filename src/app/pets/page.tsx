@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import { LizardIcon, SoundIcon, PauseIcon, ResetIcon } from '@/components/icons';
 
 // Pet data - images and audio will be added later
 interface Pet {
@@ -244,7 +245,9 @@ export default function PetsPage() {
               e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.15)';
             }}
           >
-            Book Your Visit 🦎
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              Book Your Visit <LizardIcon size={20} color="#0D2818" />
+            </span>
           </Link>
         </div>
       </section>
@@ -361,7 +364,9 @@ export default function PetsPage() {
                   boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)',
                 }}>
                   {!selectedPet.image && (
-                    <span style={{ fontSize: 'clamp(6rem, 15vw, 10rem)', opacity: 0.5 }}>🦎</span>
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.5 }}>
+                      <LizardIcon size={120} color="#F5E6D3" />
+                    </div>
                   )}
                   
                   {/* Audio Controls - Floating on image */}
@@ -395,7 +400,7 @@ export default function PetsPage() {
                       title={selectedPet.audio ? 'Play/Pause sound' : 'Audio coming soon'}
                       disabled={!selectedPet.audio}
                     >
-                      {isPlaying ? '⏸' : '🔊'}
+                      {isPlaying ? <PauseIcon size={24} color="#0D2818" /> : <SoundIcon size={24} color={selectedPet.audio ? '#4ade80' : '#4ade8066'} />}
                     </button>
 
                     {/* Reset Button */}
@@ -432,7 +437,7 @@ export default function PetsPage() {
                           e.currentTarget.style.backgroundColor = 'rgba(13, 40, 24, 0.85)';
                         }}
                       >
-                        ↻
+                        <ResetIcon size={24} color="#4ade80" />
                       </button>
                     )}
                   </div>
