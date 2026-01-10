@@ -558,10 +558,10 @@ export default function BookPage() {
               }}>
                 {/* Calendar */}
                 <div style={{
-                  backgroundColor: 'rgba(245, 230, 211, 0.03)',
+                  backgroundColor: '#F5F5F0',
                   borderRadius: '24px',
                   padding: 'clamp(20px, 4vw, 32px)',
-                  border: '1px solid rgba(245, 230, 211, 0.1)',
+                  border: '1px solid #E0E0D8',
                 }}>
                   {/* Month Navigation */}
                   <div style={{
@@ -573,13 +573,13 @@ export default function BookPage() {
                     <button
                       onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
                       style={{
-                        backgroundColor: 'rgba(74, 222, 128, 0.2)',
+                        backgroundColor: '#D5D5CE',
                         border: 'none',
                         borderRadius: '50%',
                         width: '40px',
                         height: '40px',
                         cursor: 'pointer',
-                        color: '#4ade80',
+                        color: '#2C2C2C',
                         fontSize: '1.2rem',
                         display: 'flex',
                         alignItems: 'center',
@@ -591,20 +591,20 @@ export default function BookPage() {
                     <h3 style={{
                       fontFamily: '"Rubik Distressed", cursive',
                       fontSize: 'clamp(1.2rem, 3vw, 1.6rem)',
-                      color: '#F5E6D3',
+                      color: '#2C2C2C',
                     }}>
                       {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                     </h3>
                     <button
                       onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
                       style={{
-                        backgroundColor: 'rgba(74, 222, 128, 0.2)',
+                        backgroundColor: '#D5D5CE',
                         border: 'none',
                         borderRadius: '50%',
                         width: '40px',
                         height: '40px',
                         cursor: 'pointer',
-                        color: '#4ade80',
+                        color: '#2C2C2C',
                         fontSize: '1.2rem',
                         display: 'flex',
                         alignItems: 'center',
@@ -625,7 +625,7 @@ export default function BookPage() {
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
                       <div key={day} style={{
                         textAlign: 'center',
-                        color: day === 'Wed' ? '#ff6b6b' : 'rgba(245, 230, 211, 0.6)',
+                        color: day === 'Wed' ? '#8B2635' : '#5A5A5A',
                         fontSize: 'clamp(0.7rem, 1.5vw, 0.85rem)',
                         fontWeight: '600',
                         padding: '8px 0',
@@ -665,12 +665,12 @@ export default function BookPage() {
                             disabled={isDisabled}
                             style={{
                               aspectRatio: '1',
-                              border: isSelected ? '2px solid #4ade80' : '1px solid rgba(245, 230, 211, 0.1)',
+                              border: isSelected ? '3px solid #0D2818' : '1px solid #D0D0C8',
                               borderRadius: '12px',
-                              backgroundColor: isSelected ? 'rgba(74, 222, 128, 0.3)' : 
-                                              isDisabled ? 'rgba(255, 107, 107, 0.1)' : 
-                                              'rgba(245, 230, 211, 0.05)',
-                              color: isDisabled ? 'rgba(255, 107, 107, 0.5)' : '#F5E6D3',
+                              backgroundColor: isSelected ? '#0D2818' : 
+                                              isDisabled ? '#E8D4D4' : 
+                                              '#FFFFFF',
+                              color: isSelected ? '#F5E6D3' : isDisabled ? '#8B2635' : '#2C2C2C',
                               fontSize: 'clamp(0.85rem, 2vw, 1rem)',
                               fontWeight: isSelected ? '700' : '500',
                               cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -697,12 +697,12 @@ export default function BookPage() {
                     marginTop: '20px',
                     flexWrap: 'wrap',
                   }}>
-                    <span style={{ fontSize: '0.8rem', color: 'rgba(245, 230, 211, 0.6)' }}>
-                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: 'rgba(74, 222, 128, 0.3)', borderRadius: '3px', marginRight: '6px', border: '1px solid #4ade80' }}></span>
+                    <span style={{ fontSize: '0.8rem', color: '#5A5A5A' }}>
+                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: '#0D2818', borderRadius: '3px', marginRight: '6px', border: '1px solid #0D2818' }}></span>
                       Selected
                     </span>
-                    <span style={{ fontSize: '0.8rem', color: 'rgba(245, 230, 211, 0.6)' }}>
-                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: 'rgba(255, 107, 107, 0.1)', borderRadius: '3px', marginRight: '6px' }}></span>
+                    <span style={{ fontSize: '0.8rem', color: '#5A5A5A' }}>
+                      <span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: '#E8D4D4', borderRadius: '3px', marginRight: '6px' }}></span>
                       Closed
                     </span>
                   </div>
