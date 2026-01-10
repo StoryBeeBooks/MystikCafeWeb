@@ -189,7 +189,7 @@ const styles = {
 
   // Sponsorship Levels Section
   levelsSection: {
-    backgroundColor: '#1B5E20',
+    backgroundColor: '#0D2818',
     padding: 'clamp(60px, 10vw, 100px) clamp(16px, 4vw, 24px)',
   },
   levelsContainer: {
