@@ -270,13 +270,6 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div style={styles.mobileMenu} className="mobile-menu">
-          <a 
-            href="tel:647-560-6524" 
-            style={styles.mobileLink}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            647-560-6524
-          </a>
           <Link 
             href="/mystik-residents" 
             style={styles.mobileLink}
@@ -284,18 +277,6 @@ export default function Header() {
           >
             Mystik Residents
           </Link>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column' as const,
-            alignItems: 'center',
-            color: '#1A1A1A',
-            fontSize: '13px',
-            lineHeight: '1.4',
-            padding: '8px 0',
-          }}>
-            <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
-            <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
-          </div>
           <Link 
             href="/book" 
             style={styles.mobileLink}
@@ -310,6 +291,25 @@ export default function Header() {
           >
             Sign Up / Sign In
           </Link>
+          <a 
+            href="tel:647-560-6524" 
+            style={styles.mobileLink}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            647-560-6524
+          </a>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column' as const,
+            alignItems: 'center',
+            color: '#1A1A1A',
+            fontSize: '13px',
+            lineHeight: '1.4',
+            padding: '8px 0',
+          }}>
+            <span style={styles.scheduleMain}>Open Daily 11AM – 6:30PM</span>
+            <span style={styles.scheduleSub}>Last Admission 6PM · Closed Wednesdays</span>
+          </div>
         </div>
       )}
 
